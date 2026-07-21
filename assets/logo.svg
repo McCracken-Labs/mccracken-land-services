@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 52" width="70" height="52" role="img" aria-label="McCracken Land Services mark">
+  <!-- survey sightline + sun -->
+  <line x1="15" y1="10" x2="56" y2="10" stroke="#d8b256" stroke-width="1.3" stroke-linecap="round"/>
+  <path d="M52 10 l-5 -2.6 v5.2 z" fill="#d8b256"/>
+  <g stroke="#d8b256" stroke-width="1.3" stroke-linecap="round">
+    <line x1="62" y1="10" x2="62" y2="5"/>
+    <line x1="62" y1="10" x2="66.5" y2="7"/>
+    <line x1="62" y1="10" x2="66.5" y2="13"/>
+    <line x1="62" y1="10" x2="62" y2="15"/>
+    <line x1="62" y1="10" x2="57.5" y2="13"/>
+  </g>
+  <circle cx="62" cy="10" r="2.6" fill="#d8b256"/>
+  <!-- faceted M -->
+  <!-- white body of M -->
+  <polygon points="6,48 6,16 14,16 26,38 38,16 46,16 46,48 39,48 39,29 30,44 22,44 13,29 13,48" fill="#ffffff"/>
+  <!-- gold left upright accent -->
+  <polygon points="6,48 6,16 13,16 13,48" fill="#d8b256"/>
+  <!-- gold inner-left facet -->
+  <polygon points="14,16 26,38 22,44 13,29 13,20" fill="#d8b256" opacity="0.92"/>
+</svg>
