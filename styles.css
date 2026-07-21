@@ -242,6 +242,8 @@ section { position: relative; }
   outline: none; border-color: var(--gold-500); background: #fff; box-shadow: 0 0 0 3px var(--gold-glow);
 }
 .field textarea { resize: vertical; }
+.field-hint { font-weight: 400; color: var(--ink-500); font-size: .8rem; }
+.hp-field { position: absolute !important; left: -9999px; width: 1px; height: 1px; overflow: hidden; opacity: 0; }
 .form-note { font-size: .86rem; color: var(--ink-500); margin: 14px 0 0; text-align: center; }
 
 /* ---------- Footer ---------- */
