@@ -3,33 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Deed Call Formatter | McCracken Land Services</title>
-  <meta name="description" content="Drag in a deed or paste a metes-and-bounds description and get the calls formatted exactly the way Greenbriar Net Deed Plotter needs them. Runs in your browser, so nothing is uploaded." />
+  <title>Net Deed Plotter Formatter | McCracken Land Services</title>
+  <meta name="description" content="Paste a metes-and-bounds description and get the calls formatted exactly the way Greenbriar Net Deed Plotter needs them. Runs in your browser, so nothing is uploaded." />
   <meta name="theme-color" content="#0b2233" />
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet" />
   <style>
-    :root{
-      --navy-900:#0b2233;--navy-800:#0f2a3f;--navy-700:#163b56;--gold-500:#c79a3b;--gold-400:#d8b256;
-      --sand-50:#f7f4ee;--sand-100:#efe9df;--ink-900:#14202b;--ink-700:#33454f;--ink-500:#5d6b73;
-      --white:#fff;--line:rgba(15,42,63,.12);--radius:14px;--radius-sm:10px;
-      --shadow-sm:0 1px 2px rgba(11,34,51,.06),0 4px 14px rgba(11,34,51,.06);
-      --shadow-md:0 10px 40px rgba(11,34,51,.12);
-      --font-head:"Source Serif 4",Georgia,serif;--font-body:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-    }
+    :root{--navy-900:#0b2233;--navy-800:#0f2a3f;--navy-700:#163b56;--gold-500:#c79a3b;--gold-400:#d8b256;
+      --sand-50:#f7f4ee;--sand-100:#efe9df;--ink-900:#14202b;--ink-700:#33454f;--ink-500:#5d6b73;--white:#fff;
+      --line:rgba(15,42,63,.12);--radius:14px;--radius-sm:10px;--shadow-sm:0 1px 2px rgba(11,34,51,.06),0 4px 14px rgba(11,34,51,.06);--shadow-md:0 10px 40px rgba(11,34,51,.12);
+      --font-head:"Source Serif 4",Georgia,serif;--font-body:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
     *{box-sizing:border-box}
     body{margin:0;font-family:var(--font-body);color:var(--ink-700);background:var(--sand-50);line-height:1.6;-webkit-font-smoothing:antialiased}
     a{color:var(--navy-700);text-decoration:none}a:hover{color:var(--gold-500)}
     .container{width:100%;max-width:1060px;margin:0 auto;padding:0 22px}
     header.site-header{background:rgba(11,34,51,.96);position:sticky;top:0;z-index:20;border-bottom:1px solid rgba(255,255,255,.08)}
-    .header-inner{display:flex;align-items:center;justify-content:space-between;height:66px}
-    .brand{display:flex;align-items:center;gap:11px}
-    .brand-name{font-family:var(--font-head);font-weight:700;color:#fff;font-size:1.1rem}
-    .brand-sub{color:var(--gold-400);font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;font-weight:600}
-    .back{color:rgba(255,255,255,.85);font-size:.9rem;font-weight:500}
-    .back:hover{color:#fff}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;height:74px}
+    .back{color:rgba(255,255,255,.85);font-size:.9rem;font-weight:500}.back:hover{color:#fff}
     .hero{background:var(--navy-800);color:#fff;padding:52px 0 44px}
     .eyebrow{color:var(--gold-400);font-weight:600;letter-spacing:.2em;text-transform:uppercase;font-size:.74rem;margin:0 0 12px}
     .hero h1{font-family:var(--font-head);font-weight:600;font-size:clamp(1.9rem,4vw,2.7rem);line-height:1.1;margin:0 0 14px}
@@ -40,12 +32,7 @@
     .panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:22px}
     .panel h2{font-family:var(--font-head);font-weight:600;color:var(--ink-900);font-size:1.15rem;margin:0 0 6px}
     .panel .hint{font-size:.86rem;color:var(--ink-500);margin:0 0 14px}
-    .dropzone{border:2px dashed rgba(15,42,63,.28);border-radius:var(--radius-sm);background:var(--sand-50);padding:22px 16px;text-align:center;color:var(--ink-500);font-size:.92rem;cursor:pointer;transition:border-color .2s,background .2s;margin-bottom:14px}
-    .dropzone:hover{border-color:var(--gold-500)}
-    .dropzone.drag{border-color:var(--gold-500);background:rgba(199,154,59,.08);color:var(--ink-700)}
-    .dropzone strong{color:var(--navy-700)}
-    .dropzone .dz-icon{display:block;margin:0 auto 8px}
-    textarea{width:100%;min-height:220px;padding:14px;border:1.5px solid var(--line);border-radius:var(--radius-sm);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.9rem;color:var(--ink-900);background:var(--sand-50);resize:vertical;line-height:1.5}
+    textarea{width:100%;min-height:300px;padding:14px;border:1.5px solid var(--line);border-radius:var(--radius-sm);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.9rem;color:var(--ink-900);background:var(--sand-50);resize:vertical;line-height:1.5}
     textarea:focus{outline:none;border-color:var(--gold-500);background:#fff;box-shadow:0 0 0 3px rgba(199,154,59,.16)}
     .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:14px 0}
     .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-body);font-weight:600;font-size:.92rem;padding:11px 20px;border-radius:999px;border:1.5px solid transparent;cursor:pointer;transition:transform .15s,background .2s}
@@ -62,8 +49,6 @@
     .summary b{color:var(--ink-900)}
     .copybox{width:100%;min-height:130px;margin-top:14px;padding:12px;border:1.5px solid var(--line);border-radius:var(--radius-sm);font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.9rem;background:var(--navy-900);color:#e9eef3;line-height:1.6;white-space:pre;overflow:auto}
     .empty{color:var(--ink-500);font-size:.92rem;padding:26px 4px}
-    .status{font-size:.85rem;margin:8px 0 0;min-height:1.1em}
-    .status.err{color:#b00020}.status.ok{color:#2e7d32}
     .note{background:var(--sand-100);border-left:3px solid var(--gold-500);border-radius:8px;padding:14px 16px;font-size:.88rem;color:var(--ink-700);margin-top:26px}
     .note code{background:rgba(15,42,63,.08);padding:1px 6px;border-radius:5px;font-size:.9em}
     footer{background:var(--navy-900);color:rgba(255,255,255,.6);padding:26px 0;font-size:.85rem;text-align:center}
@@ -74,9 +59,7 @@
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="../index.html">
-        <img src="../assets/logo-full-trans.png" alt="McCracken Land Services" style="height:44px;width:auto;display:block" />
-      </a>
+      <a class="brand" href="../index.html"><img src="../assets/logo-full-trans.png" alt="McCracken Land Services" style="height:44px;width:auto;display:block" /></a>
       <a class="back" href="../index.html#tools">&larr; Back to tools</a>
     </div>
   </header>
@@ -85,8 +68,8 @@
     <div class="container">
       <span class="badge">Beta tool &bull; runs in your browser</span>
       <p class="eyebrow">Landman Tools</p>
-      <h1>Deed Call Formatter</h1>
-      <p>Drag in a deed or paste the legal description, and get every course written the exact way Greenbriar Net Deed Plotter reads it, like <code style="color:#fff">N22.1310E 200.7</code>. Everything runs on your own computer. Nothing is uploaded or stored.</p>
+      <h1>Net Deed Plotter Formatter</h1>
+      <p>Paste the metes-and-bounds description and get every course written the exact way Greenbriar Net Deed Plotter reads it, like <code style="color:#fff">N22.1310E 200.7</code>. Everything runs on your own computer. Nothing is uploaded or stored.</p>
     </div>
   </section>
 
@@ -94,19 +77,9 @@
     <div class="container">
       <div class="grid">
         <div class="panel">
-          <h2>Add the deed</h2>
-          <p class="hint">Drop in a text-based PDF or a text file, or paste the "beginning at, thence" body below.</p>
-
-          <div class="dropzone" id="dropzone">
-            <svg class="dz-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#163b56" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4"/><path d="m7 9 5-5 5 5"/><path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
-            <strong>Drag a deed here</strong> or click to choose a file<br />
-            <span style="font-size:.82rem">PDF or .txt</span>
-            <input type="file" id="fileInput" accept=".pdf,.txt,text/plain,application/pdf" hidden />
-          </div>
-          <p class="status" id="fileStatus"></p>
-
+          <h2>Paste the description</h2>
+          <p class="hint">Paste the "beginning at, thence" body of the deed. Worded or symbol formats both work (for example "North 12 degrees 30 minutes East 250 feet" or "N12&deg;30'E 250'").</p>
           <textarea id="input" spellcheck="false" placeholder="BEGINNING at the Northeast corner;&#10;thence South 89 degrees 45 minutes 30 seconds West, 1320.00 feet;&#10;thence South 00&deg;12'10&quot; East, 660.00 feet;&#10;thence North 89&deg;45'30&quot; East a distance of 1320.00 feet;&#10;thence North 00&deg;12'10&quot; West 660.00 feet to the POINT OF BEGINNING."></textarea>
-
           <div class="controls">
             <button class="btn btn-primary" id="run">Format calls</button>
             <button class="btn btn-ghost" id="sample">Load sample</button>
@@ -122,7 +95,6 @@
           <p class="hint">Type or paste these into Net Deed Plotter, one per line, starting at the first thence. Review every course against the deed before you rely on it.</p>
           <div class="summary" id="summary" style="display:none">
             <span><b id="ct">0</b> calls</span>
-            <span>Total: <b id="total">0</b></span>
           </div>
           <div id="output"><div class="empty">Formatted calls will appear here.</div></div>
           <textarea class="copybox" id="copybox" style="display:none" readonly></textarea>
@@ -135,26 +107,21 @@
 
       <div class="note">
         <strong>The format, in plain terms.</strong> Net Deed Plotter reads each straight course as
-        <code>Ndd.mmssE&nbsp;distance</code>: quadrant, degrees, a period, then minutes and seconds as four digits, the second quadrant, a space, and the distance. So "North 22 degrees 13 minutes 10 seconds East, 200.7 feet" becomes <code>N22.1310E 200.7</code>. Varas keep a <code>V</code> on the distance so the plot scales right. <strong>Curves are not parsed yet</strong>, so enter any curve (direction, radius, arc length, central angle) by hand. Get the software at <a href="https://deedplotter.com/" target="_blank" rel="noopener">deedplotter.com</a>. New to it? See the McCracken <a href="../index.html#tools">Net Deed Plotter cheat sheet</a> on the Tools page.
+        <code>Ndd.mmssE&nbsp;distance</code>: quadrant, degrees, a period, then minutes and seconds as four digits, the second quadrant, a space, and the distance. So "North 22 degrees 13 minutes 10 seconds East, 200.7 feet" becomes <code>N22.1310E 200.7</code>. Varas keep a <code>V</code> on the distance. <strong>Curves are not parsed</strong>, so enter any curve by hand. Get the software at <a href="https://deedplotter.com/" target="_blank" rel="noopener">deedplotter.com</a>, and see the McCracken <a href="../index.html#tools">Net Deed Plotter cheat sheet</a> on the Tools page.
+        <br /><br /><strong>Working from a scanned deed?</strong> This tool needs typed or clean text. Scanned county deeds with rough OCR will not parse reliably. An AI deed reader that handles messy scans is in the works.
       </div>
     </div>
   </main>
 
   <footer>
-    <div class="container">
-      &copy; <span id="year"></span> McCracken Land Services &bull; <a href="../index.html">Home</a>
-    </div>
+    <div class="container">&copy; <span id="year"></span> McCracken Land Services &bull; <a href="../index.html">Home</a></div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script>
   (function(){
     document.getElementById('year').textContent = new Date().getFullYear();
-    if (window['pdfjsLib']) { pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js'; }
-
     var input=document.getElementById('input'),output=document.getElementById('output'),
-        copybox=document.getElementById('copybox'),copyrow=document.getElementById('copyrow'),
-        summary=document.getElementById('summary'),fileStatus=document.getElementById('fileStatus');
+        copybox=document.getElementById('copybox'),copyrow=document.getElementById('copyrow'),summary=document.getElementById('summary');
 
     var SAMPLE = "BEGINNING at the Northeast corner of the Southeast Quarter;\n"+
       "thence South 89 degrees 45 minutes 30 seconds West, 1320.00 feet;\n"+
@@ -167,7 +134,7 @@
     var VARA_FT = 2.7778;
 
     function normalize(t){
-      t = t.replace(/[‘’′]/g,"'").replace(/[“”″]/g,'"').replace(/°/g,' deg ');
+      t = t.replace(/[‘’′]/g,"'").replace(/[“”″]/g,'"').replace(/[°º]/g,' deg ');
       t = t.replace(/-/g,' ');
       t = t.replace(/\bnorth\b/gi,'N').replace(/\bsouth\b/gi,'S').replace(/\beast\b/gi,'E').replace(/\bwest\b/gi,'W');
       t = t.replace(/\bdegrees?\b|\bdegs?\b\.?/gi,' deg ').replace(/\bminutes?\b|\bmins?\b\.?/gi,' min ').replace(/\bseconds?\b|\bsecs?\b\.?/gi,' sec ');
@@ -179,7 +146,8 @@
 
     function parse(text){
       var t = normalize(text);
-      var re = /([NS])\s*([0-9]{1,3}(?:\.[0-9]+)?)\s*(?:deg)?\s*([0-9]{1,2})?\s*(?:min|')?\s*([0-9]{1,2}(?:\.[0-9]+)?)?\s*(?:sec|")?\s*([EW])[^0-9]{0,25}?([0-9][0-9,]*(?:\.[0-9]+)?)\s*(chains?|chs?|rods?|poles?|perch|varas?|vrs?|links?|lk|feet|foot|ft|')?/gi;
+      // bearing, then up to ~150 chars of connecting text, then a distance FOLLOWED by a unit
+      var re = /([NS])\s*([0-9]{1,3}(?:\.[0-9]+)?)\s*(?:deg)?\s*([0-9]{1,2})?\s*(?:min|')?\s*([0-9]{1,2}(?:\.[0-9]+)?)?\s*(?:sec|")?\s*([EW])[\s\S]{0,150}?([0-9][0-9,]*(?:\.[0-9]+)?)\s*(chains?|chs?|rods?|poles?|perch|varas?|vrs?|links?|lk|feet|foot|ft|')/gi;
       var m, calls=[];
       while((m=re.exec(t))!==null){
         var dist=parseFloat((m[6]||'0').replace(/,/g,''));
@@ -194,7 +162,7 @@
       var calls = parse(input.value);
       var convVaras = document.getElementById('convVaras').checked;
       if(!calls.length){
-        output.innerHTML='<div class="empty">No bearing/distance calls found. Make sure the text has courses like "N 12&deg;30\' E 250 feet".</div>';
+        output.innerHTML='<div class="empty">No bearing/distance calls found. Make sure the text has courses like "N 12&deg;30\' E 250 feet". If this came from a scanned deed, the OCR may be too rough to read.</div>';
         copybox.style.display='none';copyrow.style.display='none';summary.style.display='none';return;
       }
       var rows='<table><thead><tr><th>#</th><th>Net Deed Plotter</th><th>Reads as</th><th class="num">Distance</th></tr></thead><tbody>';
@@ -213,64 +181,14 @@
       rows+='</tbody></table>';
       output.innerHTML=rows;
       copybox.value=copy.join('\n');copybox.style.display='block';copyrow.style.display='flex';
-      document.getElementById('ct').textContent=calls.length;
-      document.getElementById('total').textContent=calls.length+' course'+(calls.length>1?'s':'');
+      document.getElementById('ct').textContent=calls.length+' call'+(calls.length>1?'s':'');
       summary.style.display='flex';
       document.getElementById('copied').textContent='';
     }
 
-    /* ---- file drag & drop ---- */
-    function setFileStatus(msg, kind){ fileStatus.textContent=msg||''; fileStatus.className='status '+(kind||''); }
-
-    function extractPdf(arrayBuffer){
-      if(!window['pdfjsLib']){ setFileStatus('PDF reader did not load. Paste the text instead.', 'err'); return; }
-      setFileStatus('Reading PDF...');
-      pdfjsLib.getDocument({data:arrayBuffer}).promise.then(function(pdf){
-        var pages=[];
-        for(var i=1;i<=pdf.numPages;i++) pages.push(i);
-        return pages.reduce(function(chain,n){
-          return chain.then(function(acc){
-            return pdf.getPage(n).then(function(page){ return page.getTextContent(); })
-              .then(function(tc){ return acc + tc.items.map(function(it){return it.str;}).join(' ') + '\n'; });
-          });
-        }, Promise.resolve(''));
-      }).then(function(text){
-        if(text.replace(/\s/g,'').length < 20){
-          setFileStatus('This PDF has little or no selectable text (it may be a scan). Paste the text or try a text-based PDF.', 'err');
-          return;
-        }
-        input.value = text;
-        setFileStatus('Loaded text from PDF.', 'ok');
-        render();
-      }).catch(function(){ setFileStatus('Could not read that PDF. Paste the text instead.', 'err'); });
-    }
-
-    function handleFile(file){
-      if(!file) return;
-      var name=(file.name||'').toLowerCase();
-      if(name.endsWith('.txt') || file.type==='text/plain'){
-        var r=new FileReader();
-        r.onload=function(){ input.value=String(r.result||''); setFileStatus('Loaded '+file.name, 'ok'); render(); };
-        r.readAsText(file);
-      } else if(name.endsWith('.pdf') || file.type==='application/pdf'){
-        var r2=new FileReader();
-        r2.onload=function(){ extractPdf(r2.result); };
-        r2.readAsArrayBuffer(file);
-      } else {
-        setFileStatus('Unsupported file. Use a PDF or a .txt file, or paste the text.', 'err');
-      }
-    }
-
-    var dz=document.getElementById('dropzone'), fi=document.getElementById('fileInput');
-    dz.addEventListener('click', function(){ fi.click(); });
-    fi.addEventListener('change', function(){ handleFile(fi.files[0]); fi.value=''; });
-    ['dragenter','dragover'].forEach(function(ev){ dz.addEventListener(ev,function(e){ e.preventDefault(); dz.classList.add('drag'); }); });
-    ['dragleave','drop'].forEach(function(ev){ dz.addEventListener(ev,function(e){ e.preventDefault(); dz.classList.remove('drag'); }); });
-    dz.addEventListener('drop', function(e){ if(e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]); });
-
     document.getElementById('run').addEventListener('click',render);
-    document.getElementById('sample').addEventListener('click',function(){input.value=SAMPLE;setFileStatus('');render();});
-    document.getElementById('clear').addEventListener('click',function(){input.value='';setFileStatus('');output.innerHTML='<div class="empty">Formatted calls will appear here.</div>';copybox.style.display='none';copyrow.style.display='none';summary.style.display='none';});
+    document.getElementById('sample').addEventListener('click',function(){input.value=SAMPLE;render();});
+    document.getElementById('clear').addEventListener('click',function(){input.value='';output.innerHTML='<div class="empty">Formatted calls will appear here.</div>';copybox.style.display='none';copyrow.style.display='none';summary.style.display='none';});
     document.getElementById('copy').addEventListener('click',function(){
       copybox.select();copybox.setSelectionRange(0,99999);
       try{ if(navigator.clipboard){navigator.clipboard.writeText(copybox.value);} else {document.execCommand('copy');}
