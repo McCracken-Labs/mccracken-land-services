@@ -21,11 +21,13 @@
     });
   }
 
-  /* Contact form (Formspree AJAX) */
-  var form = document.getElementById("contactForm");
-  if (form) {
-    var statusEl = document.getElementById("formStatus");
-    var submitBtn = document.getElementById("contactSubmit");
+  /* Formspree AJAX forms (contact + resume) */
+  function initFormspreeForm(opts) {
+    var form = document.getElementById(opts.formId);
+    if (!form) return;
+    var statusEl = document.getElementById(opts.statusId);
+    var submitBtn = document.getElementById(opts.submitId);
+    var sendLabel = opts.sendLabel;
     function setStatus(msg, kind) {
       if (!statusEl) return;
       statusEl.textContent = msg;
@@ -34,13 +36,13 @@
     }
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = "Sending..."; }
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = opts.sendingLabel; }
       var data = new FormData(form);
       fetch(form.action, { method: "POST", body: data, headers: { Accept: "application/json" } })
         .then(function (res) {
           if (res.ok) {
             form.reset();
-            setStatus("Thanks. Your message is on its way, and I'll get back to you soon.", "ok");
+            setStatus(opts.successMsg, "ok");
           } else {
             return res.json().then(function (d) {
               var m = d && d.errors && d.errors.length ? d.errors.map(function (x) { return x.message; }).join(", ") : "Something went wrong. Please try again.";
@@ -52,10 +54,21 @@
           setStatus("Couldn't send right now. Please check your connection and try again.", "err");
         })
         .then(function () {
-          if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = "Send message"; }
+          if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = sendLabel; }
         });
     });
   }
+
+  initFormspreeForm({
+    formId: "contactForm", statusId: "formStatus", submitId: "contactSubmit",
+    sendingLabel: "Sending...", sendLabel: "Send message",
+    successMsg: "Thanks. Your message is on its way, and I'll get back to you soon."
+  });
+  initFormspreeForm({
+    formId: "resumeForm", statusId: "resumeStatus", submitId: "resumeSubmit",
+    sendingLabel: "Sending...", sendLabel: "Submit resume",
+    successMsg: "Thanks. Your resume is on its way, and I'll be in touch if something fits."
+  });
 
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 

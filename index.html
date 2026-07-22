@@ -68,7 +68,7 @@
           <span class="stat-label">Service capabilities</span>
         </div>
         <div class="stat reveal">
-          <span class="stat-num">Since&nbsp;2008</span>
+          <span class="stat-num">Since&nbsp;2004</span>
           <span class="stat-label">In the land business</span>
         </div>
         <div class="stat reveal">
@@ -262,7 +262,7 @@
         <div class="about-body reveal">
           <p class="section-eyebrow">About</p>
           <h2 id="about-title" class="section-title">Meet the landman behind the work.</h2>
-          <p>Michael McCracken has worked in the land business since 2008. He started McCracken Land Services so brokers and clients could work directly with an experienced landman instead of being handed down the line to whoever happens to be free.</p>
+          <p>Michael McCracken has worked in the land business since 2004. He started McCracken Land Services so brokers and clients could work directly with an experienced landman instead of being handed down the line to whoever happens to be free.</p>
           <p>His experience covers title examination and curative, mineral and surface ownership research, leasing and right of way, due diligence, courthouse and Corporation Commission research, and GIS mapping and deed plotting. If it touches land, title, or minerals, he has done it.</p>
           <p>The approach is simple. Do the work right, and get it back when you said you would. Brokers and clients keep coming back because the details get handled and nothing slips through.</p>
           <a class="btn btn-primary" href="#contact">Work with McCracken</a>
@@ -369,6 +369,50 @@
       </div>
     </section>
 
+    <!-- ===================== NOW HIRING ===================== -->
+    <section class="careers" id="careers" aria-labelledby="careers-title">
+      <div class="container careers-inner">
+        <div class="careers-intro reveal">
+          <p class="section-eyebrow">Now hiring</p>
+          <h2 id="careers-title" class="section-title">Looking for landman work?</h2>
+          <p>I work with brokers and land companies that are almost always looking for good landmen. Send your resume and I will get it in front of the right people when something fits. If you want to know what makes a resume stand out, <a href="blog/contract-landman-resume.html">here is what I look for</a>.</p>
+        </div>
+        <form class="contact-form careers-form reveal" id="resumeForm" action="https://formspree.io/f/xpqvjqgv" method="POST" novalidate>
+          <div class="field">
+            <label for="r-name">Name</label>
+            <input type="text" id="r-name" name="name" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="r-email">Your email <span class="field-hint">(so I can reply)</span></label>
+            <input type="email" id="r-email" name="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="r-phone">Phone <span class="field-hint">(optional)</span></label>
+            <input type="tel" id="r-phone" name="phone" autocomplete="tel" />
+          </div>
+          <div class="field">
+            <label for="r-years">Years in land work <span class="field-hint">(optional)</span></label>
+            <input type="text" id="r-years" name="years_in_land_work" />
+          </div>
+          <div class="field">
+            <label for="r-link">Link to your resume or LinkedIn</label>
+            <input type="url" id="r-link" name="resume_link" placeholder="https://" required />
+            <p class="form-note" style="text-align:left;margin:8px 0 0">Paste a link to your resume (Google Drive, Dropbox, and the like) or your LinkedIn profile.</p>
+          </div>
+          <div class="field">
+            <label for="r-message">Anything else <span class="field-hint">(optional)</span></label>
+            <textarea id="r-message" name="message" rows="3"></textarea>
+          </div>
+          <input type="hidden" name="_subject" value="New resume submission from McCrackenLandServices.com" />
+          <input type="hidden" name="submission_type" value="Resume / hiring" />
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp-field" />
+          <div class="form-status" id="resumeStatus" role="status" aria-live="polite" hidden></div>
+          <button type="submit" class="btn btn-primary btn-block" id="resumeSubmit">Submit resume</button>
+          <p class="form-note">Your resume comes straight to me and is never shared or posted publicly.</p>
+        </form>
+      </div>
+    </section>
+
     <!-- ===================== CONTACT ===================== -->
     <section class="contact" id="contact" aria-labelledby="contact-title">
       <div class="container contact-inner">
@@ -433,6 +477,7 @@
         <a href="blog/index.html">Blog</a>
         <a href="#expertise">Expertise</a>
         <a href="#about">About</a>
+        <a href="#careers">Hiring</a>
         <a href="#contact">Contact</a>
         <a href="https://www.linkedin.com/in/michaeltmccracken/" target="_blank" rel="noopener">LinkedIn</a>
       </nav>
