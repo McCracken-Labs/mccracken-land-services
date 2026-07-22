@@ -76,8 +76,9 @@ a:hover { color: var(--gold-500); }
   backdrop-filter: saturate(140%) blur(10px);
   border-bottom: 1px solid rgba(255,255,255,.08);
 }
-.header-inner { display: flex; align-items: center; justify-content: space-between; height: 74px; }
+.header-inner { display: flex; align-items: center; justify-content: space-between; height: 84px; }
 .brand { display: flex; align-items: center; gap: 12px; }
+.brand-full { height: 56px; width: auto; display: block; }
 .brand-mark { display: block; }
 .brand-text { display: flex; flex-direction: column; line-height: 1.05; }
 .brand-name { font-family: var(--font-head); font-weight: 700; color: #fff; font-size: 1.18rem; letter-spacing: .2px; }
@@ -269,9 +270,9 @@ a.tool-card:hover .tool-cta { color: var(--gold-400); }
 /* ---------- Footer ---------- */
 .site-footer { background: var(--navy-900); color: rgba(255,255,255,.7); border-top: 1px solid rgba(255,255,255,.08); padding: 42px 0; }
 .footer-inner { display: grid; grid-template-columns: 1fr auto; gap: 20px 40px; align-items: center; }
-.footer-brand { display: flex; align-items: center; gap: 14px; }
-.footer-brand .brand-name { font-size: 1.05rem; }
-.footer-tag { margin: 4px 0 0; font-size: .8rem; color: rgba(255,255,255,.55); letter-spacing: .04em; }
+.footer-brand { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.footer-full { height: 48px; width: auto; display: block; }
+.footer-tag { margin: 0; font-size: .8rem; color: rgba(255,255,255,.55); letter-spacing: .04em; }
 .footer-nav { display: flex; gap: 22px; flex-wrap: wrap; }
 .footer-nav a { color: rgba(255,255,255,.78); font-size: .95rem; }
 .footer-nav a:hover { color: var(--gold-400); }
@@ -296,6 +297,8 @@ a.tool-card:hover .tool-cta { color: var(--gold-400); }
 
 @media (max-width: 760px) {
   .nav-toggle { display: flex; z-index: 120; }
+  .header-inner { height: 74px; }
+  .brand-full { height: 46px; }
   .nav-menu {
     position: fixed; inset: 74px 0 auto 0; flex-direction: column; align-items: stretch; gap: 4px;
     background: var(--navy-900); padding: 16px 20px 24px; border-bottom: 1px solid rgba(255,255,255,.1);

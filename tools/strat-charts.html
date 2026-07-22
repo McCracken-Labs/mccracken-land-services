@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stratigraphic Chart Library | McCracken Land Services</title>
+  <meta name="description" content="Downloadable stratigraphic charts for oil and gas basins across Oklahoma, the Permian, Williston, Powder River, East Texas, and North Louisiana." />
+  <meta name="theme-color" content="#0b2233" />
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet" />
+  <style>
+    :root{--navy-900:#0b2233;--navy-800:#0f2a3f;--navy-700:#163b56;--gold-500:#c79a3b;--gold-400:#d8b256;
+      --sand-50:#f7f4ee;--sand-100:#efe9df;--ink-900:#14202b;--ink-700:#33454f;--ink-500:#5d6b73;--line:rgba(15,42,63,.12);
+      --radius:14px;--shadow-sm:0 1px 2px rgba(11,34,51,.06),0 4px 14px rgba(11,34,51,.06);--shadow-md:0 10px 40px rgba(11,34,51,.12);
+      --head:"Source Serif 4",Georgia,serif;--body:"Inter",system-ui,Arial,sans-serif}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:var(--body);color:var(--ink-700);background:var(--sand-50);line-height:1.6;-webkit-font-smoothing:antialiased}
+    a{color:var(--navy-700);text-decoration:none}a:hover{color:var(--gold-500)}
+    .container{width:100%;max-width:1140px;margin:0 auto;padding:0 22px}
+    header.site-header{background:rgba(11,34,51,.96);position:sticky;top:0;z-index:20;border-bottom:1px solid rgba(255,255,255,.08)}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;height:74px}
+    .back{color:rgba(255,255,255,.85);font-size:.9rem;font-weight:500}.back:hover{color:#fff}
+    .hero{background:var(--navy-800);color:#fff;padding:48px 0 40px}
+    .eyebrow{color:var(--gold-400);font-weight:600;letter-spacing:.2em;text-transform:uppercase;font-size:.74rem;margin:0 0 12px}
+    .hero h1{font-family:var(--head);font-weight:600;font-size:clamp(1.9rem,4vw,2.7rem);line-height:1.1;margin:0 0 14px}
+    .hero p{color:rgba(255,255,255,.85);max-width:720px;margin:0;font-size:1.05rem}
+    main{padding:40px 0 60px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .chart{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+    .chart:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+    .chart-img{display:block;background:#eef1f4;border-bottom:1px solid var(--line)}
+    .chart-img img{display:block;width:100%;height:260px;object-fit:cover;object-position:top center}
+    .chart-body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
+    .region{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--gold-500);font-weight:700;margin:0 0 6px}
+    .chart h3{font-family:var(--head);font-weight:600;color:var(--ink-900);font-size:1.12rem;margin:0 0 8px;line-height:1.25}
+    .source{font-size:.82rem;color:var(--ink-500);margin:0 0 16px;flex:1}
+    .actions{display:flex;gap:10px}
+    .btn{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:.86rem;padding:9px 16px;border-radius:999px;border:1.5px solid transparent;cursor:pointer}
+    .btn-primary{background:var(--gold-500);color:var(--navy-900)}.btn-primary:hover{background:var(--gold-400)}
+    .btn-ghost{background:transparent;color:var(--navy-700);border-color:var(--line)}.btn-ghost:hover{border-color:var(--gold-500);color:var(--gold-500)}
+    .note{background:var(--sand-100);border-left:3px solid var(--gold-500);border-radius:8px;padding:14px 16px;font-size:.88rem;color:var(--ink-700);margin:30px 0 0}
+    footer{background:var(--navy-900);color:rgba(255,255,255,.6);padding:26px 0;font-size:.85rem;text-align:center}
+    footer a{color:var(--gold-400)}
+    @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:600px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html"><img src="../assets/logo-full-trans.png" alt="McCracken Land Services" style="height:44px;width:auto;display:block" /></a>
+      <a class="back" href="../index.html#tools">&larr; Back to tools</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">Landman Tools</p>
+      <h1>Stratigraphic Chart Library</h1>
+      <p>Reference stratigraphic charts for the basins and provinces landmen work most. Click any chart to open the full-size image, or download it for your files.</p>
+    </div>
+  </section>
+
+  <main>
+    <div class="container">
+      <div class="grid" id="grid"></div>
+      <div class="note">
+        <strong>About these charts.</strong> Each chart is published by the geological survey or author credited beneath it and remains the property of its original publisher. They are collected here as a working reference for landmen and geologists. When you use a chart in your own work, cite the original source. If you are a publisher and would like a chart credited differently or removed, contact McCracken Land Services.
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">&copy; <span id="year"></span> McCracken Land Services &bull; <a href="../index.html">Home</a></div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    var CHARTS = [
+      {f:'oklahoma-stratigraphic-guide.jpg', r:'Oklahoma', t:'Oklahoma Stratigraphic Guide to Oil & Gas Reservoirs', s:'Oklahoma Geological Survey, SP 2008-1, by Dan T. Boyd.'},
+      {f:'permian-basin-stratigraphy.jpg', r:'West Texas & SE New Mexico', t:'Permian Basin Stratigraphy & Tectonic History', s:'Published Permian Basin chart covering the Delaware Basin, Central Basin Platform, and Midland Basin.'},
+      {f:'north-dakota-stratigraphic-column.jpg', r:'Williston Basin', t:'North Dakota Stratigraphic Column', s:'North Dakota Geological Survey, Miscellaneous Series 91 (2009).'},
+      {f:'north-louisiana-salt-basin.jpg', r:'North Louisiana', t:'North Louisiana Salt Basin Stratigraphic Column', s:'Published North Louisiana Salt Basin column, Triassic through Paleogene.'},
+      {f:'east-texas-stratigraphic-chart.jpg', r:'East Texas Basin', t:'East Texas Stratigraphic Chart', s:'Published East Texas Basin chart covering the Houston and Rio Grande embayments.'},
+      {f:'powder-river-basin.jpg', r:'Wyoming & Montana', t:'Powder River Basin Stratigraphic Column', s:'U.S. Geological Survey, Storage Assessment Unit chart (public domain).'}
+    ];
+    var grid = document.getElementById('grid');
+    grid.innerHTML = CHARTS.map(function(c){
+      var full = 'downloads/strat-charts/' + c.f;
+      var thumb = 'downloads/strat-charts/thumbs/' + c.f;
+      return '<article class="chart">'+
+        '<a class="chart-img" href="'+full+'" target="_blank" rel="noopener"><img loading="lazy" src="'+thumb+'" alt="'+c.t+'" /></a>'+
+        '<div class="chart-body">'+
+          '<p class="region">'+c.r+'</p>'+
+          '<h3>'+c.t+'</h3>'+
+          '<p class="source">'+c.s+'</p>'+
+          '<div class="actions">'+
+            '<a class="btn btn-primary" href="'+full+'" target="_blank" rel="noopener">View full</a>'+
+            '<a class="btn btn-ghost" href="'+full+'" download>Download</a>'+
+          '</div>'+
+        '</div>'+
+      '</article>';
+    }).join('');
+  </script>
+</body>
+</html>
