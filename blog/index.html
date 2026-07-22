@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog | McCracken Land Services</title>
+  <meta name="description" content="Notes from the field on title, data, GIS, and the changing work of the landman, by Michael McCracken." />
+  <meta name="theme-color" content="#0b2233" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="McCracken Land Services Blog" />
+  <meta property="og:description" content="Notes from the field on title, data, GIS, and the changing work of the landman." />
+  <meta property="og:url" content="https://www.mccrackenlandservices.com/blog/" />
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet" />
+  <style>
+
+    :root{--navy-900:#0b2233;--navy-800:#0f2a3f;--navy-700:#163b56;--gold-500:#c79a3b;--gold-400:#d8b256;
+      --sand-50:#f7f4ee;--sand-100:#efe9df;--ink-900:#14202b;--ink-700:#33454f;--ink-500:#5d6b73;--line:rgba(15,42,63,.12);
+      --radius:14px;--shadow-sm:0 1px 2px rgba(11,34,51,.06),0 4px 14px rgba(11,34,51,.06);--shadow-md:0 10px 40px rgba(11,34,51,.12);
+      --head:"Source Serif 4",Georgia,serif;--body:"Inter",system-ui,Arial,sans-serif}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:var(--body);color:var(--ink-700);background:var(--sand-50);line-height:1.65;-webkit-font-smoothing:antialiased}
+    a{color:var(--navy-700);text-decoration:none}a:hover{color:var(--gold-500)}
+    .container{width:100%;max-width:1140px;margin:0 auto;padding:0 22px}
+    .measure{max-width:720px;margin:0 auto}
+    header.site-header{background:rgba(11,34,51,.96);position:sticky;top:0;z-index:20;border-bottom:1px solid rgba(255,255,255,.08)}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;height:74px}
+    .header-inner nav a{color:rgba(255,255,255,.85);font-size:.9rem;font-weight:500;margin-left:22px}
+    .header-inner nav a:hover{color:#fff}
+    footer{background:var(--navy-900);color:rgba(255,255,255,.62);padding:30px 0;font-size:.85rem}
+    .foot-inner{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}
+    footer a{color:var(--gold-400)}
+    .li-btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.9rem;padding:9px 16px;border-radius:999px;border:1.5px solid var(--gold-500);color:var(--gold-500)}
+    .li-btn:hover{background:var(--gold-500);color:var(--navy-900)}
+    .li-btn svg{width:16px;height:16px;fill:currentColor}
+
+    .blog-hero{background:var(--navy-800);color:#fff;padding:50px 0 44px}
+    .blog-hero .kicker{color:var(--gold-400);font-weight:600;letter-spacing:.18em;text-transform:uppercase;font-size:.74rem;margin:0 0 12px}
+    .blog-hero h1{font-family:var(--head);font-weight:700;font-size:clamp(2rem,4.4vw,2.9rem);line-height:1.1;margin:0 0 14px}
+    .blog-hero p{color:rgba(255,255,255,.82);max-width:640px;margin:0;font-size:1.05rem}
+    main{padding:44px 0 60px}
+    .feature{display:block;background:var(--navy-900);color:#fff;border-radius:18px;padding:36px 38px;box-shadow:var(--shadow-md);margin-bottom:40px;border:1px solid rgba(255,255,255,.06)}
+    .feature:hover{color:#fff}
+    .feature .pc-tag{color:var(--gold-400);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.7rem;margin:0 0 12px}
+    .feature h2{font-family:var(--head);font-weight:700;font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.18;margin:0 0 14px;color:#fff}
+    .feature .fdek{color:rgba(255,255,255,.82);font-size:1.08rem;max-width:660px;margin:0 0 18px}
+    .feature .pc-meta{color:rgba(255,255,255,.6);font-size:.85rem;margin:0}
+    .feature .readmore{display:inline-block;margin-top:16px;color:var(--gold-400);font-weight:600;font-size:.92rem}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+    .post-card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:26px 26px 24px;transition:transform .2s,box-shadow .2s}
+    .post-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+    .pc-tag{color:var(--gold-500);font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:.68rem;margin:0 0 10px}
+    .post-card h3{font-family:var(--head);font-weight:700;color:var(--ink-900);font-size:1.24rem;line-height:1.24;margin:0 0 10px}
+    .pc-dek{color:var(--ink-700);font-size:.96rem;margin:0 0 16px;flex:1}
+    .pc-meta{color:var(--ink-500);font-size:.82rem;margin:0}
+    .sub{margin-top:44px;background:var(--sand-100);border-left:3px solid var(--gold-500);border-radius:10px;padding:22px 24px}
+    .sub p{margin:0 0 14px;color:var(--ink-700);font-size:.96rem}
+    @media(max-width:720px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html"><img src="../assets/logo-full-trans.png" alt="McCracken Land Services" style="height:44px;width:auto;display:block" /></a>
+      <nav aria-label="Primary">
+        <a href="../index.html#services">Services</a>
+        <a href="../index.html#tools">Tools</a>
+        <a href="index.html">Blog</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="blog-hero">
+    <div class="container">
+      <p class="kicker">The McCracken Land Services Blog</p>
+      <h1>Notes from the field.</h1>
+      <p>Straight talk on title, data, GIS, certification, and where the work of the landman is heading. Written by Michael McCracken.</p>
+    </div>
+  </section>
+
+  <main>
+    <div class="container">
+      <a class="feature" href="the-landmans-job-changed.html">
+        <p class="pc-tag">Latest &bull; The Profession</p>
+        <h2>The Landman&#x27;s Job Changed. Most of Us Haven&#x27;t Caught Up.</h2>
+        <p class="fdek">Title is still part of the work. The larger part now is managing data that keeps traveling through the whole organization long after it leaves your hands.</p>
+        <p class="pc-meta">July 15, 2026 &bull; 3 min read</p>
+        <span class="readmore">Read the post &rarr;</span>
+      </a>
+
+      <div class="grid">
+        <a class="post-card" href="contract-landman-resume.html">
+          <p class="pc-tag">Hiring</p>
+          <h3>A Resume Is a Reflection of the Landman</h3>
+          <p class="pc-dek">Title work runs on accuracy. So should the resume. What a clean, current, reachable resume says about how a landman will handle the job.</p>
+          <p class="pc-meta">May 27, 2026 &bull; 1 min read</p>
+        </a>
+        <a class="post-card" href="landwork-as-data.html">
+          <p class="pc-tag">Data &amp; Tools</p>
+          <h3>Information Is the Lifeblood. Now It Has to Be Data.</h3>
+          <p class="pc-dek">The yellow pad is gone. The job now is capturing courthouse records so they move cleanly from spreadsheet to database to client, and hold up once AI enters the workflow.</p>
+          <p class="pc-meta">April 29, 2026 &bull; 2 min read</p>
+        </a>
+        <a class="post-card" href="excel-vs-proprietary-software.html">
+          <p class="pc-tag">Data &amp; Tools</p>
+          <h3>Excel or Proprietary Software for Ownership Reports?</h3>
+          <p class="pc-dek">Excel gives you control and a visible audit trail. Land systems give you consistency across properties. A look at what landmen actually trust when deadlines are tight.</p>
+          <p class="pc-meta">March 24, 2026 &bull; 1 min read</p>
+        </a>
+        <a class="post-card" href="aapl-cpl-pathway.html">
+          <p class="pc-tag">The Profession</p>
+          <h3>It&#x27;s Time for the AAPL to Talk About the CPL Pathway</h3>
+          <p class="pc-dek">Twenty years in the business and capped at RPL because of a degree requirement. Why the AAPL should build an experience-based path to the CPL.</p>
+          <p class="pc-meta">February 18, 2026 &bull; 1 min read</p>
+        </a>
+      </div>
+
+      <div class="sub">
+        <p>Michael posts these first on LinkedIn. Connect there to read new pieces as they go up and join the discussion.</p>
+        <a class="li-btn" href="https://www.linkedin.com/in/michaeltmccracken/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z"/></svg>
+          Follow on LinkedIn
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container foot-inner">
+      <span>&copy; <span id="yr"></span> McCracken Land Services &bull; Title, Research, Leasing, Due Diligence, GIS</span>
+      <a class="li-btn" href="https://www.linkedin.com/in/michaeltmccracken/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z"/></svg>
+        Connect on LinkedIn
+      </a>
+    </div>
+  </footer>
+  <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>
