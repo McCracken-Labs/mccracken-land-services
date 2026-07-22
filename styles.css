@@ -98,7 +98,7 @@ a:hover { color: var(--gold-500); }
 .hero { position: relative; overflow: hidden; min-height: 90vh; display: flex; align-items: center; background: #0b1526; color: #fff; }
 .hero-parallax {
   position: absolute; left: 0; right: 0; top: -14%; height: 128%; z-index: 0;
-  background: url("assets/hero.svg") center center / cover no-repeat;
+  background: url("assets/hero.jpg") center center / cover no-repeat;
   will-change: transform;
 }
 .hero-overlay {
@@ -195,7 +195,7 @@ section { position: relative; }
 .band { position: relative; overflow: hidden; color: #fff; }
 .band-parallax {
   position: absolute; left: 0; right: 0; top: -16%; height: 132%; z-index: 0;
-  background: url("assets/hero.svg") center 35% / cover no-repeat;
+  background: url("assets/hero.jpg") center 35% / cover no-repeat;
   will-change: transform;
 }
 .band-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(8,12,20,.82), rgba(8,12,20,.9)); }
