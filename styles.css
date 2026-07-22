@@ -219,6 +219,8 @@ section { position: relative; }
 .tool-badge { align-self: flex-start; font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 4px 11px; border-radius: 999px; margin-bottom: 12px; }
 .tool-badge.live { background: rgba(46,125,50,.12); color: #2e7d32; border: 1px solid rgba(46,125,50,.3); }
 .tool-badge.soon { background: var(--sand-100); color: var(--ink-500); border: 1px solid var(--line); }
+.tool-badge.pdf { background: rgba(199,154,59,.14); color: var(--gold-500); border: 1px solid rgba(199,154,59,.4); }
+.tool-badge.ext { background: rgba(31,78,112,.1); color: var(--navy-600); border: 1px solid rgba(31,78,112,.28); }
 .tool-card h3 { font-family: var(--font-head); font-weight: 600; color: var(--ink-900); font-size: 1.28rem; margin: 0 0 8px; }
 .tool-card p { margin: 0; color: var(--ink-500); font-size: .96rem; }
 .tool-card .tool-cta { margin-top: 16px; color: var(--gold-500); font-weight: 600; font-size: .95rem; }
