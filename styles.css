@@ -126,7 +126,7 @@ a:hover { color: var(--gold-500); }
 
 /* ---------- Section basics ---------- */
 section { position: relative; }
-.intro, .services, .process, .expertise, .about, .why, .contact { padding: 88px 0; }
+.intro, .services, .process, .expertise, .about, .why, .tools, .contact { padding: 88px 0; }
 .section-eyebrow { color: var(--gold-500); font-weight: 700; letter-spacing: .18em; text-transform: uppercase; font-size: .76rem; margin: 0 0 14px; }
 .section-title { font-family: var(--font-head); font-weight: 600; color: var(--ink-900); font-size: clamp(1.7rem, 3.4vw, 2.5rem); line-height: 1.14; letter-spacing: -.3px; margin: 0 0 16px; }
 .section-head { max-width: 720px; margin-bottom: 48px; }
@@ -211,6 +211,21 @@ section { position: relative; }
 }
 .about-body p { font-size: 1.05rem; margin: 0 0 18px; }
 .about-body .btn { margin-top: 8px; }
+
+/* ---------- Tools ---------- */
+.tools { background: var(--white); }
+.tool-card { display: flex; flex-direction: column; text-align: left; }
+.tool-card .card-icon { margin-bottom: 16px; }
+.tool-badge { align-self: flex-start; font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 4px 11px; border-radius: 999px; margin-bottom: 12px; }
+.tool-badge.live { background: rgba(46,125,50,.12); color: #2e7d32; border: 1px solid rgba(46,125,50,.3); }
+.tool-badge.soon { background: var(--sand-100); color: var(--ink-500); border: 1px solid var(--line); }
+.tool-card h3 { font-family: var(--font-head); font-weight: 600; color: var(--ink-900); font-size: 1.28rem; margin: 0 0 8px; }
+.tool-card p { margin: 0; color: var(--ink-500); font-size: .96rem; }
+.tool-card .tool-cta { margin-top: 16px; color: var(--gold-500); font-weight: 600; font-size: .95rem; }
+a.tool-card { color: inherit; }
+a.tool-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(199,154,59,.5); }
+a.tool-card:hover .tool-cta { color: var(--gold-400); }
+.tool-card.muted { background: var(--sand-50); }
 
 /* ---------- Why ---------- */
 .why { background: var(--sand-100); }
