@@ -364,7 +364,7 @@
           </ul>
         </div>
 
-        <form class="contact-form reveal" action="https://formspree.io/f/your-form-id" method="POST" novalidate>
+        <form class="contact-form reveal" id="contactForm" action="https://formspree.io/f/xpqvjqgv" method="POST" novalidate>
           <div class="field">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" autocomplete="name" required />
@@ -381,9 +381,11 @@
             <label for="message">How can I help?</label>
             <textarea id="message" name="message" rows="4" required></textarea>
           </div>
+          <input type="hidden" name="_subject" value="New inquiry from McCrackenLandServices.com" />
           <!-- honeypot: hidden from people, catches bots -->
           <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp-field" />
-          <button type="submit" class="btn btn-primary btn-block">Send message</button>
+          <div class="form-status" id="formStatus" role="status" aria-live="polite" hidden></div>
+          <button type="submit" class="btn btn-primary btn-block" id="contactSubmit">Send message</button>
           <p class="form-note">Protected against spam. No email address or phone number is published on this site.</p>
         </form>
       </div>

@@ -259,6 +259,9 @@ a.tool-card:hover .tool-cta { color: var(--gold-400); }
 .field textarea { resize: vertical; }
 .field-hint { font-weight: 400; color: var(--ink-500); font-size: .8rem; }
 .hp-field { position: absolute !important; left: -9999px; width: 1px; height: 1px; overflow: hidden; opacity: 0; }
+.form-status { border-radius: var(--radius-sm); padding: 12px 14px; margin: 4px 0 14px; font-size: .92rem; font-weight: 500; }
+.form-status.ok { background: rgba(46,125,50,.1); color: #2e7d32; border: 1px solid rgba(46,125,50,.3); }
+.form-status.err { background: rgba(176,0,32,.08); color: #b00020; border: 1px solid rgba(176,0,32,.25); }
 .form-note { font-size: .86rem; color: var(--ink-500); margin: 14px 0 0; text-align: center; }
 
 /* ---------- Footer ---------- */

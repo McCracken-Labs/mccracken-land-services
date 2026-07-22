@@ -21,6 +21,42 @@
     });
   }
 
+  /* Contact form (Formspree AJAX) */
+  var form = document.getElementById("contactForm");
+  if (form) {
+    var statusEl = document.getElementById("formStatus");
+    var submitBtn = document.getElementById("contactSubmit");
+    function setStatus(msg, kind) {
+      if (!statusEl) return;
+      statusEl.textContent = msg;
+      statusEl.className = "form-status " + (kind || "");
+      statusEl.hidden = false;
+    }
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = "Sending..."; }
+      var data = new FormData(form);
+      fetch(form.action, { method: "POST", body: data, headers: { Accept: "application/json" } })
+        .then(function (res) {
+          if (res.ok) {
+            form.reset();
+            setStatus("Thanks. Your message is on its way, and I'll get back to you soon.", "ok");
+          } else {
+            return res.json().then(function (d) {
+              var m = d && d.errors && d.errors.length ? d.errors.map(function (x) { return x.message; }).join(", ") : "Something went wrong. Please try again.";
+              setStatus(m, "err");
+            }).catch(function () { setStatus("Something went wrong. Please try again.", "err"); });
+          }
+        })
+        .catch(function () {
+          setStatus("Couldn't send right now. Please check your connection and try again.", "err");
+        })
+        .then(function () {
+          if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = "Send message"; }
+        });
+    });
+  }
+
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* Scroll reveal */
