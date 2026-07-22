@@ -70,6 +70,22 @@
     successMsg: "Thanks. Your resume is on its way, and I'll be in touch if something fits."
   });
 
+  /* Hero video sound toggle (starts muted for autoplay) */
+  var heroSound = document.getElementById("heroSound");
+  var heroVideo = document.querySelector(".hero-video");
+  if (heroSound && heroVideo) {
+    heroSound.addEventListener("click", function () {
+      heroVideo.muted = !heroVideo.muted;
+      var on = !heroVideo.muted;
+      heroSound.classList.toggle("is-on", on);
+      heroSound.setAttribute("aria-pressed", on ? "true" : "false");
+      heroSound.setAttribute("aria-label", on ? "Turn sound off" : "Turn sound on");
+      var label = heroSound.querySelector(".hs-text");
+      if (label) label.textContent = on ? "Sound on" : "Sound off";
+      if (on) { var p = heroVideo.play(); if (p && p.catch) p.catch(function () {}); }
+    });
+  }
+
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* Scroll reveal */
