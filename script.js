@@ -1,4 +1,4 @@
-/* McCracken Land Services — script.js */
+/* McCracken Land Services, script.js */
 (function () {
   "use strict";
 

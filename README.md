@@ -1,7 +1,7 @@
-# McCracken Land Services — Website
+# McCracken Land Services, Website
 
 A fast, mobile-friendly static website for McCracken Land Services. No build step,
-no frameworks — just HTML, CSS, and a little JavaScript, so it hosts free on GitHub
+no frameworks, just HTML, CSS, and a little JavaScript, so it hosts free on GitHub
 Pages and loads instantly.
 
 ```
@@ -19,14 +19,14 @@ CNAME           → tells GitHub Pages your custom domain
 
 You want this under your **mccracken-labs** GitHub account. Two ways:
 
-**Option A — GitHub website (easiest, no command line)**
+**Option A, GitHub website (easiest, no command line)**
 1. Go to <https://github.com/new> and create a repository named `mccracken-land-services`
    (or whatever you like). Set it to **Public**.
 2. On the new repo page, click **"uploading an existing file"**.
-3. Drag in everything from this folder — `index.html`, `styles.css`, `script.js`,
-   `CNAME`, `.nojekyll`, and the whole `assets` folder — then **Commit changes**.
+3. Drag in everything from this folder, `index.html`, `styles.css`, `script.js`,
+   `CNAME`, `.nojekyll`, and the whole `assets` folder, then **Commit changes**.
 
-**Option B — Command line**
+**Option B, Command line**
 ```bash
 cd mccracken-land-services
 git init
@@ -47,7 +47,7 @@ git push -u origin main
 2. Under **Build and deployment → Source**, choose **Deploy from a branch**.
 3. Set **Branch** to `main` and folder to `/ (root)`, then **Save**.
 4. Wait 1–2 minutes. GitHub gives you a temporary URL like
-   `https://mccracken-labs.github.io/mccracken-land-services/` — open it to confirm the
+   `https://mccracken-labs.github.io/mccracken-land-services/`, open it to confirm the
    site works before you touch the domain.
 
 ---
@@ -77,7 +77,7 @@ business to **Squarespace**, migrating every domain there. Log in at
 |-------|-------------|----------------------------|
 | CNAME | `www`       | `mccracken-labs.github.io` |
 
-> Use `mccracken-labs.github.io` exactly — your account name + `.github.io`, no repo name.
+> Use `mccracken-labs.github.io` exactly, your account name + `.github.io`, no repo name.
 
 *(Optional IPv6: four AAAA records on `@`: `2606:50c0:8000::153`, `2606:50c0:8001::153`,
 `2606:50c0:8002::153`, `2606:50c0:8003::153`.)*
@@ -105,13 +105,12 @@ The form points at a placeholder. To deliver messages to your inbox, use free
 
 ## 5. Things to update before go-live
 
-- **Phone number** — currently `[ Add your phone number ]` in `index.html`.
-- **Stephens Land Services line** — under "How we work," the "Capacity for large projects"
+- **Contact form**, add your Formspree ID (replaces `your-form-id`) to start receiving
+  messages. No email or phone is published on the site by design.
+- **Stephens Land Services line**, under "How we work," the "Capacity for large projects"
   card names Stephens. Confirm the wording with them before publishing.
-- **Service area** — set to "Texas & surrounding states."
-- **About text** — solid first draft; tweak to sound like you.
-- **A real photo** — the "MM" monogram is a placeholder; drop a headshot in `assets/`
-  and swap the `.about-portrait` block for an `<img>`.
+- **Service area**, set to "Oklahoma & surrounding states."
+- **Guides & Writeups**, the Tools section has a spot ready for your PDF guides.
 
 To edit text, open `index.html` in any editor, change the words, re-commit. The live site
 updates within a minute or two.
@@ -121,7 +120,7 @@ updates within a minute or two.
 ## Note on automatic publishing
 
 This site was built in a **cloud** Cowork session, which has no connection to your GitHub
-account — so it can't push for you. Your daily news site publishes itself because that task
+account, so it can't push for you. Your daily news site publishes itself because that task
 runs **on your computer** through the Claude desktop app, using your computer's own GitHub
 login. To get this site publishing the same automatic way, run the task on your computer
 (desktop app → "Run this task" → on your computer), and it can push here and stay updated.
