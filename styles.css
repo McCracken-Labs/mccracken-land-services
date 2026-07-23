@@ -212,9 +212,9 @@ section { position: relative; }
 
 /* ---------- About ---------- */
 .about { background: var(--white); }
-.about-inner { display: grid; grid-template-columns: 340px 1fr; gap: 56px; align-items: center; }
+.about-inner { display: grid; grid-template-columns: 240px 1fr; gap: 56px; align-items: center; }
 .about-photo {
-  width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: var(--radius);
+  width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; border-radius: var(--radius);
   box-shadow: var(--shadow-md); border: 1px solid var(--line);
 }
 .about-body p { font-size: 1.05rem; margin: 0 0 18px; }
@@ -312,7 +312,7 @@ a.tool-card:hover .tool-cta { color: var(--gold-400); }
   .stat:nth-child(2) { border-right: 0; }
   .process-inner { grid-template-columns: 1fr; gap: 34px; }
   .about-inner { grid-template-columns: 1fr; gap: 34px; }
-  .about-media { max-width: 320px; }
+  .about-media { max-width: 220px; }
   .contact-inner { grid-template-columns: 1fr; gap: 36px; }
 }
 
