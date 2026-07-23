@@ -302,6 +302,9 @@ a.tool-card:hover .tool-cta { color: var(--gold-400); }
 .footer-nav a { color: rgba(255,255,255,.78); font-size: .95rem; }
 .footer-nav a:hover { color: var(--gold-400); }
 .footer-legal { grid-column: 1 / -1; margin: 8px 0 0; font-size: .82rem; color: rgba(255,255,255,.45); border-top: 1px solid rgba(255,255,255,.08); padding-top: 20px; }
+.footer-credit { display: inline-block; margin-top: 6px; font-size: .8rem; color: rgba(255,255,255,.4); letter-spacing: .02em; }
+.footer-credit a { color: var(--gold-400); font-weight: 600; }
+.footer-credit a:hover { color: #fff; }
 
 /* ---------- Reveal animation ---------- */
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
