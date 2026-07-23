@@ -175,14 +175,14 @@ section { position: relative; }
 .process-lead p { font-size: 1.08rem; color: var(--ink-700); margin: 0; }
 .process-cards { display: grid; gap: 20px; }
 .process-card {
-  background: var(--sand-50); border: 1px solid var(--line); border-radius: var(--radius);
+  background: linear-gradient(160deg, rgba(199,154,59,.10), rgba(255,255,255,0)); border: 1px solid rgba(199,154,59,.45);
+  border-left: 3px solid var(--gold-500); border-radius: var(--radius);
   padding: 28px 26px; box-shadow: var(--shadow-sm);
   transition: transform .22s var(--ease), box-shadow .22s var(--ease);
 }
 .process-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
 .process-card h3 { font-family: var(--font-head); font-weight: 600; color: var(--ink-900); font-size: 1.2rem; margin: 0 0 8px; }
 .process-card p { margin: 0; color: var(--ink-500); font-size: .98rem; }
-.process-card.highlight { background: linear-gradient(160deg, rgba(199,154,59,.10), rgba(255,255,255,0)); border-color: rgba(199,154,59,.45); border-left: 3px solid var(--gold-500); }
 .process-card.highlight strong { color: var(--navy-700); }
 
 /* ---------- Expertise ---------- */
