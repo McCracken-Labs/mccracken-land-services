@@ -281,6 +281,13 @@ a.tool-card:hover .tool-cta { color: var(--gold-400); }
 .form-status.err { background: rgba(176,0,32,.08); color: #b00020; border: 1px solid rgba(176,0,32,.25); }
 .form-note { font-size: .86rem; color: var(--ink-500); margin: 14px 0 0; text-align: center; }
 
+/* ---------- Energy market ticker ---------- */
+.ticker-band { background: var(--navy-800); border-top: 1px solid rgba(199,154,59,.35); border-bottom: 1px solid rgba(255,255,255,.06); padding: 6px 0; }
+.ticker-band .tradingview-widget-container { width: 100%; }
+.ticker-band .tradingview-widget-copyright { font-size: .68rem; text-align: center; padding: 2px 0 0; }
+.ticker-band .tradingview-widget-copyright, .ticker-band .tradingview-widget-copyright a { color: rgba(255,255,255,.4); text-decoration: none; }
+.ticker-band .tradingview-widget-copyright a:hover { color: var(--gold-400); }
+
 /* ---------- Footer ---------- */
 .site-footer { background: var(--navy-900); color: rgba(255,255,255,.7); border-top: 1px solid rgba(255,255,255,.08); padding: 42px 0; }
 .footer-inner { display: grid; grid-template-columns: 1fr auto; gap: 20px 40px; align-items: center; }
