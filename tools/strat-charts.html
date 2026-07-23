@@ -30,7 +30,8 @@
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
     .chart{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
     .chart:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
-    .chart-img{display:block;background:#eef1f4;border-bottom:1px solid var(--line)}
+    .chart-img{position:relative;display:block;background:#eef1f4;border-bottom:1px solid var(--line)}
+    .fmt-chip{position:absolute;top:10px;right:10px;background:var(--gold-500);color:var(--navy-900);font-size:.68rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:4px 9px;border-radius:999px;box-shadow:0 2px 6px rgba(11,34,51,.25)}
     .chart-img img{display:block;width:100%;height:260px;object-fit:cover;object-position:top center}
     .chart-body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
     .region{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--gold-500);font-weight:700;margin:0 0 6px}
@@ -79,7 +80,7 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     var CHARTS = [
-      {f:'oklahoma-stratigraphic-guide.jpg', r:'Oklahoma', t:'Oklahoma Stratigraphic Guide to Oil & Gas Reservoirs', s:'Oklahoma Geological Survey, SP 2008-1, by Dan T. Boyd.'},
+      {f:'oklahoma-stratigraphic-guide.jpg', full:'oklahoma-stratigraphic-guide.pdf', fmt:'Searchable PDF', r:'Oklahoma', t:'Oklahoma Stratigraphic Guide to Oil & Gas Reservoirs', s:'Oklahoma Geological Survey, SP 2008-1, by Dan T. Boyd. Searchable PDF, so you can find a formation by name instead of hunting through the fine print.'},
       {f:'permian-basin-stratigraphy.jpg', r:'West Texas & SE New Mexico', t:'Permian Basin Stratigraphy & Tectonic History', s:'Published Permian Basin chart covering the Delaware Basin, Central Basin Platform, and Midland Basin.'},
       {f:'north-dakota-stratigraphic-column.jpg', r:'Williston Basin', t:'North Dakota Stratigraphic Column', s:'North Dakota Geological Survey, Miscellaneous Series 91 (2009).'},
       {f:'north-louisiana-salt-basin.jpg', r:'North Louisiana', t:'North Louisiana Salt Basin Stratigraphic Column', s:'Published North Louisiana Salt Basin column, Triassic through Paleogene.'},
@@ -88,16 +89,19 @@
     ];
     var grid = document.getElementById('grid');
     grid.innerHTML = CHARTS.map(function(c){
-      var full = 'downloads/strat-charts/' + c.f;
+      var full = 'downloads/strat-charts/' + (c.full || c.f);
       var thumb = 'downloads/strat-charts/thumbs/' + c.f;
+      var isPdf = c.full && /\.pdf$/i.test(c.full);
+      var fmtChip = c.fmt ? '<span class="fmt-chip">'+c.fmt+'</span>' : '';
+      var viewLabel = isPdf ? 'Open PDF' : 'View full';
       return '<article class="chart">'+
-        '<a class="chart-img" href="'+full+'" target="_blank" rel="noopener"><img loading="lazy" src="'+thumb+'" alt="'+c.t+'" /></a>'+
+        '<a class="chart-img" href="'+full+'" target="_blank" rel="noopener"><img loading="lazy" src="'+thumb+'" alt="'+c.t+'" />'+fmtChip+'</a>'+
         '<div class="chart-body">'+
           '<p class="region">'+c.r+'</p>'+
           '<h3>'+c.t+'</h3>'+
           '<p class="source">'+c.s+'</p>'+
           '<div class="actions">'+
-            '<a class="btn btn-primary" href="'+full+'" target="_blank" rel="noopener">View full</a>'+
+            '<a class="btn btn-primary" href="'+full+'" target="_blank" rel="noopener">'+viewLabel+'</a>'+
             '<a class="btn btn-ghost" href="'+full+'" download>Download</a>'+
           '</div>'+
         '</div>'+
