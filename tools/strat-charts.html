@@ -51,8 +51,8 @@
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <a href="../index.html"><img src="../assets/logo-full-trans.svg" alt="McCracken Land Services" style="height:44px;width:auto;display:block" /></a>
-      <a class="back" href="../index.html#tools">&larr; Back to tools</a>
+      <a href="../index.html#top"><img src="../assets/logo-full-trans.svg" alt="McCracken Land Services" style="height:44px;width:auto;display:block" /></a>
+      <a class="back" href="index.html">&larr; Back to tools</a>
     </div>
   </header>
 
@@ -81,11 +81,11 @@
     document.getElementById('year').textContent = new Date().getFullYear();
     var CHARTS = [
       {f:'oklahoma-stratigraphic-guide.jpg', full:'oklahoma-stratigraphic-guide.pdf', fmt:'Searchable PDF', r:'Oklahoma', t:'Oklahoma Stratigraphic Guide to Oil & Gas Reservoirs', s:'Oklahoma Geological Survey, SP 2008-1, by Dan T. Boyd. Searchable PDF, so you can find a formation by name instead of hunting through the fine print.'},
-      {f:'permian-basin-stratigraphy.jpg', r:'West Texas & SE New Mexico', t:'Permian Basin Stratigraphy & Tectonic History', s:'Published Permian Basin chart covering the Delaware Basin, Central Basin Platform, and Midland Basin.'},
-      {f:'north-dakota-stratigraphic-column.jpg', r:'Williston Basin', t:'North Dakota Stratigraphic Column', s:'North Dakota Geological Survey, Miscellaneous Series 91 (2009).'},
-      {f:'north-louisiana-salt-basin.jpg', r:'North Louisiana', t:'North Louisiana Salt Basin Stratigraphic Column', s:'Published North Louisiana Salt Basin column, Triassic through Paleogene.'},
-      {f:'east-texas-stratigraphic-chart.jpg', r:'East Texas Basin', t:'East Texas Stratigraphic Chart', s:'Published East Texas Basin chart covering the Houston and Rio Grande embayments.'},
-      {f:'powder-river-basin.jpg', r:'Wyoming & Montana', t:'Powder River Basin Stratigraphic Column', s:'U.S. Geological Survey, Storage Assessment Unit chart (public domain).'}
+      {f:'permian-basin-stratigraphy.jpg', full:'permian-basin-stratigraphy.pdf', fmt:'Searchable PDF', r:'West Texas & SE New Mexico', t:'Permian Basin Stratigraphy & Tectonic History', s:'Published Permian Basin chart covering the Delaware Basin, Central Basin Platform, and Midland Basin. Searchable PDF.'},
+      {f:'north-dakota-stratigraphic-column.jpg', full:'north-dakota-stratigraphic-column.pdf', fmt:'Searchable PDF', r:'Williston Basin', t:'North Dakota Stratigraphic Column', s:'North Dakota Geological Survey, Miscellaneous Series 91 (2009). Searchable PDF.'},
+      {f:'north-louisiana-salt-basin.jpg', full:'north-louisiana-salt-basin.pdf', fmt:'Searchable PDF', r:'North Louisiana', t:'North Louisiana Salt Basin Stratigraphic Column', s:'Published North Louisiana Salt Basin column, Triassic through Paleogene. Searchable PDF.'},
+      {f:'east-texas-stratigraphic-chart.jpg', full:'east-texas-stratigraphic-chart.pdf', fmt:'Searchable PDF', r:'East Texas Basin', t:'East Texas Stratigraphic Chart', s:'Published East Texas Basin chart covering the Houston and Rio Grande embayments. Searchable PDF.'},
+      {f:'powder-river-basin.jpg', full:'powder-river-basin.pdf', fmt:'Searchable PDF', r:'Wyoming & Montana', t:'Powder River Basin Stratigraphic Column', s:'U.S. Geological Survey, Storage Assessment Unit chart (public domain). Searchable PDF.'}
     ];
     var grid = document.getElementById('grid');
     grid.innerHTML = CHARTS.map(function(c){

@@ -105,6 +105,8 @@
     .proof{background:linear-gradient(180deg,var(--surface),var(--bg-2));border:1px solid var(--line);border-radius:22px;padding:40px;display:flex;gap:30px;align-items:center;justify-content:space-between;flex-wrap:wrap}
     .proof h2{font-family:var(--head);font-weight:700;font-size:clamp(1.5rem,3vw,2rem);letter-spacing:-.02em;margin:0 0 10px;max-width:16ch}
     .proof p{color:var(--muted);margin:0;max-width:440px}
+    a.card{text-decoration:none;color:inherit}
+    .card .go{display:inline-block;margin-top:14px;font-weight:600;font-size:.9rem;color:var(--g2)}
 
     /* contact */
     .contact-card{background:linear-gradient(180deg,var(--surface),var(--bg-2));border:1px solid var(--line);border-radius:22px;padding:40px;max-width:640px;margin:0 auto}
@@ -226,13 +228,28 @@
 
       <section id="proof">
         <div class="wrap">
-          <div class="proof reveal">
-            <div>
-              <span class="eyebrow">Proof</span>
-              <h2>You are already looking at our work.</h2>
-              <p>McCracken Land Services, the site that sent you here, was designed and built by McCracken Labs. It is the same kind of hand-built site we make for everyone else.</p>
-            </div>
-            <a class="btn btn-ghost" href="../index.html">View McCracken Land Services &rarr;</a>
+          <div class="sec-head reveal">
+            <span class="eyebrow">Selected work</span>
+            <h2>Sites we have built.</h2>
+            <p>A mix of client work and our own projects. Each one is hand-built and self-contained, the same way we would build yours. You are already looking at one of them.</p>
+          </div>
+          <div class="cards">
+            <a class="card reveal" href="../index.html">
+              <div class="ic" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/><path d="M9 11h.01M15 11h.01"/></svg>
+              </div>
+              <h3>McCracken Land Services</h3>
+              <p>The site that sent you here. A landman practice site with a browser-based deed tool, a growing library of field-reference PDFs, a stratigraphic chart library, and a blog.</p>
+              <span class="go">View site &rarr;</span>
+            </a>
+            <a class="card reveal" href="https://mccracken-labs.github.io/viewonamerica/" target="_blank" rel="noopener">
+              <div class="ic" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18z"/></svg>
+              </div>
+              <h3>A View on America</h3>
+              <p>A daily digest that translates how newspapers around the world cover American news, tags each source by editorial stance, and links straight to the original reporting. Free and ad-free.</p>
+              <span class="go">Visit site &rarr;</span>
+            </a>
           </div>
         </div>
       </section>
