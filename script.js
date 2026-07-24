@@ -21,6 +21,21 @@
     });
   }
 
+  /* Logo scrolls to the top of the homepage.
+     The #top id is on the sticky header, and browsers treat a sticky element as
+     already in view, so the plain anchor won't scroll. Handle it directly. */
+  var brandLink = document.querySelector("a.brand");
+  if (brandLink) {
+    var bh = brandLink.getAttribute("href") || "";
+    if (bh === "#top" || bh === "#") {
+      brandLink.addEventListener("click", function (e) {
+        e.preventDefault();
+        var rm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        window.scrollTo({ top: 0, behavior: rm ? "auto" : "smooth" });
+      });
+    }
+  }
+
   /* Formspree AJAX forms (contact + resume) */
   function initFormspreeForm(opts) {
     var form = document.getElementById(opts.formId);
