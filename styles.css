@@ -126,7 +126,7 @@ a:hover { color: var(--gold-500); }
 
 /* ---------- Stats band ---------- */
 .stats { background: var(--navy-900); color: #fff; border-top: 1px solid rgba(255,255,255,.06); }
-.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 34px 24px; }
+.stats-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; padding: 34px 24px; }
 .stat { text-align: center; padding: 12px 16px; border-right: 1px solid rgba(255,255,255,.1); }
 .stat:last-child { border-right: 0; }
 .stat-num { display: block; font-family: var(--font-head); font-weight: 600; color: var(--gold-400); font-size: 1.5rem; line-height: 1.15; margin-bottom: 6px; }
@@ -345,7 +345,7 @@ a.tool-card:hover .tool-cta { color: var(--gold-400); }
   .cards, .industry-grid { grid-template-columns: repeat(2, 1fr); }
   .value-grid { grid-template-columns: repeat(2, 1fr); }
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 20px 8px; }
-  .stat:nth-child(2) { border-right: 0; }
+  .stat:nth-child(2), .stat:nth-child(4) { border-right: 0; }
   .process-inner { grid-template-columns: 1fr; gap: 34px; }
   .about-inner { grid-template-columns: 1fr; gap: 34px; }
   .about-media { max-width: 220px; }
