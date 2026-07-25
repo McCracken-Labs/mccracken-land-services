@@ -1,80 +1,44 @@
 # Scissortail
 
-A quiet, cookie-free page counter. It tells you how many people visited and what
-they looked at, without cookies, without storing IP addresses, and without following
-anyone around the web. Built to run for free on Cloudflare.
-
-Named after the scissor-tailed flycatcher, the Oklahoma state bird.
+Privacy-first web analytics, a McCracken Labs project. Counts page views and visitors
+with no cookies and no stored IP addresses. Right now it runs only on our own sites;
+the plan is to grow it into a hosted service later. These are the deploy notes.
 
 Parts:
 
-- `count.js` - the tracking snippet you add to a site (about 1 KB).
-- `worker/` - the collector that receives views and serves stats (Cloudflare Worker + D1).
-- `dashboard.html` - a private dashboard that reads your stats.
-- `index.html` - the public landing page.
+- `count.js` - the tracking snippet added to my pages.
+- `worker/` - the collector (Cloudflare Worker + D1) that receives views and serves stats.
+- `dashboard.html` - my private dashboard.
+- `index.html` - internal overview page.
 
 ## What it stores
 
-One row per page view: the day, the site key, the path, the referrer host (like
-`google.com`, never the full URL), and the screen size. Instead of an IP address it
-stores a one-way daily hash of the coarsened IP plus the browser, salted with a secret,
-so it can count distinct visitors per day but the value cannot be turned back into a
-person and it resets every night. It honors Do Not Track and Global Privacy Control.
+One row per page view: the day, the site key, the path, the referrer host, and the
+screen size. Instead of an IP address it stores a one-way daily hash (coarsened IP +
+browser + a secret salt) so it can count distinct visitors per day without keeping
+anything identifying, and that value resets every night. Honors Do Not Track.
 
-## Deploy the collector (one time, free)
+## Deploy the collector (one time)
 
-You need a free Cloudflare account and Node installed.
+Needs a Cloudflare account and Node.
 
 ```bash
 cd worker
 npm install
 npx wrangler login
-
-# create the database, then paste the printed database_id into wrangler.toml
-npx wrangler d1 create scissortail
-
-# create the table
+npx wrangler d1 create scissortail        # paste the printed database_id into wrangler.toml
 npx wrangler d1 execute scissortail --file=./schema.sql --remote
-
-# set your secrets
-npx wrangler secret put SALT         # any long random string
-npx wrangler secret put DASH_TOKEN   # the password your dashboard will use
-
-# ship it
-npx wrangler deploy
+npx wrangler secret put SALT              # any long random string
+npx wrangler secret put DASH_TOKEN        # the password the dashboard uses
+npx wrangler deploy                       # prints the Worker URL (the endpoint)
 ```
 
-Wrangler prints your Worker URL, something like
-`https://scissortail.YOUR-SUBDOMAIN.workers.dev`. That URL is your endpoint.
+## Turn it on
 
-## Add it to a site
+Put the Worker URL into `data-endpoint` on the `count.js` script tag across the pages
+(they currently ship with `data-endpoint=""`, which is a no-op). Use a `data-site` key
+per site (`mccrackenlandservices`, `aworldview`).
 
-Put this on every page you want to count (just before `</body>`):
+## See the numbers
 
-```html
-<script defer src="https://scissortail.YOUR-SUBDOMAIN.workers.dev-or-your-hosted-count.js"
-        data-endpoint="https://scissortail.YOUR-SUBDOMAIN.workers.dev"
-        data-site="mysite"></script>
-```
-
-- `data-endpoint` is your Worker URL.
-- `data-site` is a short key that separates one site's numbers from another's
-  (for example `mccrackenlandservices` and `aworldview`). Use the same key everywhere on that site.
-
-You can serve `count.js` from anywhere (your own site, GitHub Pages, or the Worker).
-
-## See your numbers
-
-Open `dashboard.html`, enter your Worker URL and your `DASH_TOKEN`, and pick a site.
-It shows views and visitors over time, top pages, top referrers, and screen sizes.
-The token stays in the browser and is sent only to your own Worker.
-
-## Cost
-
-Cloudflare's free tier covers a lot: 100,000 Worker requests a day and a generous D1
-free allowance. A normal small site stays free.
-
-## License
-
-Open source. Do what you like with it. If it saves you money, you can
-[buy me a coffee](https://www.buymeacoffee.com/mccrackenlabs).
+Open `dashboard.html`, enter the Worker URL, the `DASH_TOKEN`, and a site key.

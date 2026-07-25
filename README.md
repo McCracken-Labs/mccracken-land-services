@@ -1,5 +1,15 @@
 # McCracken Land Services, Website
 
+> **This is a personal company site. Please don't clone it.** This repository is the
+> source of the McCracken Land Services website (mccrackenlandservices.com), the site of
+> Michael McCracken, an Oklahoma landman. It is on GitHub so the site can be hosted, not
+> as a template for anyone else. If you do reuse any of the code, you **must** first
+> remove everything that identifies it as McCracken Land Services: the name, the logo and
+> artwork in `/assets`, the company copy, and the tools and guides under `/tools`, and the
+> contact details, and you must not present a copy as McCracken Land Services or imply any
+> connection to it or to McCracken Labs. © McCracken Land Services. All rights reserved.
+> The guides and charts under `/tools` are general information, not legal advice.
+
 A fast, mobile-friendly static website for McCracken Land Services. No build step,
 no frameworks, just HTML, CSS, and a little JavaScript, so it hosts free on GitHub
 Pages and loads instantly.
