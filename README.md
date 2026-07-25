@@ -1,137 +1,54 @@
-# McCracken Land Services, Website
+# McCracken Land Services
 
-> **This is a personal company site. Please don't clone it.** This repository is the
-> source of the McCracken Land Services website (mccrackenlandservices.com), the site of
-> Michael McCracken, an Oklahoma landman. It is on GitHub so the site can be hosted, not
-> as a template for anyone else. If you do reuse any of the code, you **must** first
-> remove everything that identifies it as McCracken Land Services: the name, the logo and
-> artwork in `/assets`, the company copy, and the tools and guides under `/tools`, and the
-> contact details, and you must not present a copy as McCracken Land Services or imply any
-> connection to it or to McCracken Labs. © McCracken Land Services. All rights reserved.
-> The guides and charts under `/tools` are general information, not legal advice.
+Source for the McCracken Land Services website (mccrackenlandservices.com), the company
+site of Michael McCracken, an Oklahoma landman. Static site, hosted on GitHub Pages.
 
-A fast, mobile-friendly static website for McCracken Land Services. No build step,
-no frameworks, just HTML, CSS, and a little JavaScript, so it hosts free on GitHub
-Pages and loads instantly.
+## Ownership and reuse
+
+This is a personal company site, not a template. Do not clone it to build your own site.
+Any reuse of the code requires first removing everything that identifies it as McCracken
+Land Services: the name, the logo and artwork in `/assets`, the site copy, and the tools
+and guides under `/tools`. Do not publish a copy as McCracken Land Services or imply any
+connection to it or to McCracken Labs.
+
+© McCracken Land Services. All rights reserved. The guides and charts under `/tools` are
+general information, not legal advice.
+
+## Stack
+
+HTML, CSS, and vanilla JavaScript. No build step and no framework. Fonts are Source Serif 4
+(headings) and Inter (body), served from Google Fonts under the SIL Open Font License.
+
+## Structure
 
 ```
-index.html      → the whole site (one page, with sections)
-styles.css      → all styling
-script.js       → mobile menu + scroll animations
-assets/         → logo, favicon, background art
-CNAME           → tells GitHub Pages your custom domain
-.nojekyll       → tells GitHub Pages to serve files as-is
+index.html        Home page (single page, sectioned)
+styles.css        All styling
+script.js         Navigation, scroll reveal, WTI price tile
+assets/           Logo, favicon, hero art and video, headshot
+tools/            Landman tools and reference guides/charts (PDFs)
+blog/             Static blog posts
+labs/             McCracken Labs page and Scissortail analytics
+CNAME, .nojekyll  GitHub Pages configuration
 ```
 
----
+## Analytics
 
-## 1. Put the code on GitHub
+Privacy-first and self-hosted with Scissortail (`labs/scissortail`). No cookies, no stored
+IP addresses. A small snippet on each page reports page views to a Cloudflare Worker.
+Setup and details are in `labs/scissortail/README.md`.
 
-You want this under your **mccracken-labs** GitHub account. Two ways:
+## Editing and publishing
 
-**Option A, GitHub website (easiest, no command line)**
-1. Go to <https://github.com/new> and create a repository named `mccracken-land-services`
-   (or whatever you like). Set it to **Public**.
-2. On the new repo page, click **"uploading an existing file"**.
-3. Drag in everything from this folder, `index.html`, `styles.css`, `script.js`,
-   `CNAME`, `.nojekyll`, and the whole `assets` folder, then **Commit changes**.
+Edit the HTML, CSS, or JS and commit to `main`. GitHub Pages redeploys within a minute or two.
 
-**Option B, Command line**
-```bash
-cd mccracken-land-services
-git init
-git add .
-git commit -m "Initial McCracken Land Services website"
-git branch -M main
-git remote add origin https://github.com/mccracken-labs/mccracken-land-services.git
-git push -u origin main
-```
-> Replace `mccracken-labs` if that's your **username**; if it's an organization, create
-> the repo inside it and use the same URL pattern.
+## Custom domain
 
----
+mccrackenlandservices.com. Point DNS at GitHub Pages: four A records on the apex to
+`185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`, and a CNAME on
+`www` to `mccracken-labs.github.io`. Then set the custom domain under Settings, Pages, and
+enable Enforce HTTPS.
 
-## 2. Turn on GitHub Pages
+## Contact
 
-1. In your repo, go to **Settings → Pages**.
-2. Under **Build and deployment → Source**, choose **Deploy from a branch**.
-3. Set **Branch** to `main` and folder to `/ (root)`, then **Save**.
-4. Wait 1–2 minutes. GitHub gives you a temporary URL like
-   `https://mccracken-labs.github.io/mccracken-land-services/`, open it to confirm the
-   site works before you touch the domain.
-
----
-
-## 3. Point your domain at it
-
-Your domain **McCrackenLandServices.com** is almost certainly managed at **Squarespace**,
-not Square: you bought it through **Google Domains**, and in 2023 Google sold that
-business to **Squarespace**, migrating every domain there. Log in at
-**<https://account.squarespace.com>** and open
-**Domains → McCrackenLandServices.com → DNS Settings**.
-
-### DNS records to add
-
-**A. Four A records** (send the bare `mccrackenlandservices.com` to GitHub):
-
-| Type | Host / Name | Value                |
-|------|-------------|----------------------|
-| A    | `@`         | `185.199.108.153`    |
-| A    | `@`         | `185.199.109.153`    |
-| A    | `@`         | `185.199.110.153`    |
-| A    | `@`         | `185.199.111.153`    |
-
-**B. One CNAME record** (send `www` to GitHub):
-
-| Type  | Host / Name | Value                      |
-|-------|-------------|----------------------------|
-| CNAME | `www`       | `mccracken-labs.github.io` |
-
-> Use `mccracken-labs.github.io` exactly, your account name + `.github.io`, no repo name.
-
-*(Optional IPv6: four AAAA records on `@`: `2606:50c0:8000::153`, `2606:50c0:8001::153`,
-`2606:50c0:8002::153`, `2606:50c0:8003::153`.)*
-
-Delete any existing parking/forwarding records on `@` or `www` so they don't conflict.
-
-### Finish in GitHub
-1. **Settings → Pages → Custom domain** → enter `www.mccrackenlandservices.com` → **Save**.
-2. DNS can take minutes to a few hours.
-3. Once verified, tick **Enforce HTTPS**.
-
----
-
-## 4. Turn on the contact form (2 minutes)
-
-The form points at a placeholder. To deliver messages to your inbox, use free
-[Formspree](https://formspree.io):
-
-1. Sign up at <https://formspree.io> with `landmanmike@gmail.com`.
-2. Create a form; it gives you an endpoint like `https://formspree.io/f/abcxyz`.
-3. In `index.html`, replace `your-form-id` in the form's `action` with your real ID.
-4. Commit. Submissions now land in your email.
-
----
-
-## 5. Things to update before go-live
-
-- **Contact form**, add your Formspree ID (replaces `your-form-id`) to start receiving
-  messages. No email or phone is published on the site by design.
-- **Stephens Land Services line**, under "How we work," the "Capacity for large projects"
-  card names Stephens. Confirm the wording with them before publishing.
-- **Service area**, set to "Oklahoma & surrounding states."
-- **Guides & Writeups**, the Tools section has a spot ready for your PDF guides.
-
-To edit text, open `index.html` in any editor, change the words, re-commit. The live site
-updates within a minute or two.
-
----
-
-## Note on automatic publishing
-
-This site was built in a **cloud** Cowork session, which has no connection to your GitHub
-account, so it can't push for you. Your daily news site publishes itself because that task
-runs **on your computer** through the Claude desktop app, using your computer's own GitHub
-login. To get this site publishing the same automatic way, run the task on your computer
-(desktop app → "Run this task" → on your computer), and it can push here and stay updated.
-Otherwise, the one-time manual upload in Step 1 is all you need.
+Through the contact form on the site.
