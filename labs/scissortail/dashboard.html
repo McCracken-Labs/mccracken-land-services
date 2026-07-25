@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex" />
+<title>Scissortail Dashboard</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<style>
+  :root{
+    --accent:#0f766e; --accent-2:#14b8a6; --ink:#0f172a; --muted:#64748b;
+    --bg:#f1f5f9; --card:#ffffff; --line:#e2e8f0; --soft:#f8fafc;
+    --font:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.5}
+  a{color:var(--accent)}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+  header{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+  .bar{display:flex;align-items:center;gap:14px;height:62px}
+  .brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:1.05rem;letter-spacing:-.01em}
+  .brand svg{width:26px;height:26px}
+  .brand .tag{color:var(--muted);font-weight:500;font-size:.9rem}
+  .spacer{flex:1}
+  .btn{border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:.9rem;font-weight:600;padding:8px 14px;border-radius:9px;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+  .btn:hover{border-color:var(--accent);color:var(--accent)}
+  .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  .btn-primary:hover{background:var(--accent-2);border-color:var(--accent-2);color:#fff}
+  main{padding:26px 0 60px}
+  .notice{background:#fffbeb;border:1px solid #fde68a;color:#92400e;border-radius:10px;padding:11px 14px;font-size:.9rem;margin-bottom:20px}
+  .settings{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:22px;display:none;grid-template-columns:1fr 1fr;gap:14px}
+  .settings.open{display:grid}
+  .settings label{display:block;font-size:.78rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+  .settings input,.settings select{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:9px;font:inherit;font-size:.92rem;background:var(--soft)}
+  .settings .full{grid-column:1 / -1}
+  .settings .actions{grid-column:1 / -1;display:flex;gap:10px;justify-content:flex-end}
+  .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:22px}
+  .tile{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+  .tile .k{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 8px}
+  .tile .v{font-size:1.8rem;font-weight:700;letter-spacing:-.02em}
+  .tile .s{font-size:.8rem;color:var(--muted);margin-top:2px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:22px}
+  .card h2{font-size:1rem;margin:0 0 4px}
+  .card .sub{color:var(--muted);font-size:.85rem;margin:0 0 14px}
+  canvas{width:100%;height:230px;display:block}
+  .legend{display:flex;gap:18px;font-size:.82rem;color:var(--muted);margin-top:10px}
+  .legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .rows{display:flex;flex-direction:column;gap:9px}
+  .row{position:relative;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 11px;border-radius:8px;overflow:hidden;font-size:.9rem;background:var(--soft)}
+  .row .fill{position:absolute;left:0;top:0;bottom:0;background:rgba(20,184,166,.16);z-index:0}
+  .row .label{position:relative;z-index:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .row .n{position:relative;z-index:1;font-weight:700;color:var(--accent)}
+  .empty{color:var(--muted);font-size:.9rem;padding:8px 2px}
+  footer{color:var(--muted);font-size:.85rem;text-align:center;padding:24px 0 10px}
+  footer a{font-weight:600}
+  @media(max-width:760px){.tiles{grid-template-columns:repeat(2,1fr)}.cols{grid-template-columns:1fr}.settings{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+  <header>
+    <div class="wrap bar">
+      <span class="brand">
+        <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M4 22c7 1 12-2 16-8 2-3 4-5 8-6-1 4-3 7-6 9 2 0 4-.5 6-2-2 5-7 8-13 8-5 0-8-.5-11-1z" fill="#0f766e"/><path d="M4 22l-2 6 7-3" stroke="#14b8a6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Scissortail <span class="tag">dashboard</span>
+      </span>
+      <span class="spacer"></span>
+      <select id="days" class="btn" title="Time range" style="padding-right:10px">
+        <option value="7">7 days</option>
+        <option value="30" selected>30 days</option>
+        <option value="90">90 days</option>
+        <option value="365">1 year</option>
+      </select>
+      <button class="btn" id="gear">Settings</button>
+      <button class="btn btn-primary" id="refresh">Refresh</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div id="notice" class="notice" style="display:none"></div>
+
+    <div class="settings" id="settings">
+      <div class="full">
+        <label for="endpoint">Collector URL</label>
+        <input id="endpoint" placeholder="https://scissortail.your-subdomain.workers.dev" />
+      </div>
+      <div>
+        <label for="token">Dashboard token</label>
+        <input id="token" type="password" placeholder="your DASH_TOKEN" />
+      </div>
+      <div>
+        <label for="site">Site key</label>
+        <input id="site" placeholder="mccrackenlandservices" />
+      </div>
+      <div class="actions">
+        <button class="btn" id="demo">Load demo</button>
+        <button class="btn btn-primary" id="save">Save &amp; load</button>
+      </div>
+    </div>
+
+    <div class="tiles">
+      <div class="tile"><p class="k">Page views</p><div class="v" id="t-views">-</div><div class="s" id="t-views-s"></div></div>
+      <div class="tile"><p class="k">Visitors</p><div class="v" id="t-visitors">-</div><div class="s" id="t-visitors-s"></div></div>
+      <div class="tile"><p class="k">Pages seen</p><div class="v" id="t-pages">-</div><div class="s">distinct paths</div></div>
+      <div class="tile"><p class="k">Busiest day</p><div class="v" id="t-peak">-</div><div class="s" id="t-peak-s"></div></div>
+    </div>
+
+    <div class="card">
+      <h2>Traffic</h2>
+      <p class="sub" id="chart-sub">Page views and visitors over time</p>
+      <canvas id="chart" width="1000" height="230"></canvas>
+      <div class="legend"><span><i style="background:#0f766e"></i>Page views</span><span><i style="background:#f59e0b"></i>Visitors</span></div>
+    </div>
+
+    <div class="cols">
+      <div class="card"><h2>Top pages</h2><p class="sub">Most viewed paths</p><div class="rows" id="pages"></div></div>
+      <div class="card"><h2>Top referrers</h2><p class="sub">Where visits came from</p><div class="rows" id="refs"></div></div>
+    </div>
+
+    <div class="card"><h2>Screen sizes</h2><p class="sub">Device widths, roughly</p><div class="rows" id="screens"></div></div>
+
+    <footer>
+      No cookies. No personal data. Honors Do Not Track. &middot;
+      <a href="index.html">About Scissortail</a> &middot;
+      <a href="https://www.buymeacoffee.com/mccrackenlabs" target="_blank" rel="noopener">Buy me a coffee</a>
+    </footer>
+  </main>
+
+<script>
+(function(){
+  "use strict";
+  var $ = function(id){ return document.getElementById(id); };
+  var store = {
+    get: function(k){ try { return localStorage.getItem("st_"+k) || ""; } catch(e){ return ""; } },
+    set: function(k,v){ try { localStorage.setItem("st_"+k, v); } catch(e){} }
+  };
+
+  // restore settings
+  $("endpoint").value = store.get("endpoint");
+  $("token").value = store.get("token");
+  $("site").value = store.get("site") || "mccrackenlandservices";
+  if (store.get("days")) $("days").value = store.get("days");
+
+  $("gear").onclick = function(){ $("settings").classList.toggle("open"); };
+  $("save").onclick = function(){
+    store.set("endpoint", $("endpoint").value.trim().replace(/\/+$/,""));
+    store.set("token", $("token").value.trim());
+    store.set("site", $("site").value.trim());
+    $("settings").classList.remove("open");
+    load();
+  };
+  $("refresh").onclick = load;
+  $("days").onchange = function(){ store.set("days", $("days").value); load(); };
+  $("demo").onclick = function(){ render(demoData(parseInt($("days").value,10))); notice("Showing demo data. Add your collector URL and token in Settings for live numbers.", true); };
+
+  function notice(msg, warn){
+    var n = $("notice");
+    if(!msg){ n.style.display="none"; return; }
+    n.textContent = msg; n.style.display="block";
+    n.style.background = warn ? "#fffbeb" : "#ecfdf5";
+    n.style.borderColor = warn ? "#fde68a" : "#a7f3d0";
+    n.style.color = warn ? "#92400e" : "#065f46";
+  }
+
+  function load(){
+    var ep = store.get("endpoint"), tok = store.get("token"), site = store.get("site") || "default";
+    var days = parseInt($("days").value,10) || 30;
+    if(!ep){ $("settings").classList.add("open"); render(demoData(days)); notice("Add your collector URL and token in Settings to see live numbers. Showing demo data.", true); return; }
+    notice("");
+    var url = ep + "/api/stats?site=" + encodeURIComponent(site) + "&days=" + days;
+    fetch(url, { headers: tok ? { "Authorization": "Bearer " + tok } : {} })
+      .then(function(r){ if(!r.ok) throw new Error(r.status===401?"Token rejected (check your DASH_TOKEN).":"Collector returned "+r.status); return r.json(); })
+      .then(function(d){ render(d); if(!d.totals.views) notice("Connected. No views recorded yet for \""+site+"\".", false); })
+      .catch(function(e){ render(demoData(days)); notice("Could not reach the collector ("+e.message+"). Showing demo data.", true); });
+  }
+
+  function render(d){
+    var fmt = function(n){ return (n||0).toLocaleString(); };
+    $("t-views").textContent = fmt(d.totals.views);
+    $("t-visitors").textContent = fmt(d.totals.visitors);
+    $("t-pages").textContent = fmt((d.pages||[]).length);
+    var peak = (d.series||[]).reduce(function(a,b){ return b.views>(a?a.views:-1)?b:a; }, null);
+    $("t-peak").textContent = peak && peak.views ? fmt(peak.views) : "-";
+    $("t-peak-s").textContent = peak && peak.views ? niceDay(peak.day) : "";
+    $("chart-sub").textContent = "Page views and visitors over the last " + d.days + " days";
+    drawChart(d.series||[]);
+    rows($("pages"), (d.pages||[]).map(function(p){return {label:p.path, n:p.views};}));
+    rows($("refs"), (d.referrers||[]).map(function(p){return {label:p.ref, n:p.views};}));
+    rows($("screens"), (d.screens||[]).map(function(p){return {label:p.screen, n:p.views};}));
+  }
+
+  function rows(el, items){
+    el.innerHTML = "";
+    if(!items.length){ el.innerHTML = '<div class="empty">Nothing yet.</div>'; return; }
+    var max = items[0].n || 1;
+    items.forEach(function(it){
+      var d = document.createElement("div"); d.className = "row";
+      d.innerHTML = '<span class="fill" style="width:'+Math.max(3,Math.round(100*it.n/max))+'%"></span>'+
+        '<span class="label">'+esc(it.label)+'</span><span class="n">'+(it.n||0).toLocaleString()+'</span>';
+      el.appendChild(d);
+    });
+  }
+
+  function drawChart(series){
+    var c = $("chart"), ctx = c.getContext("2d");
+    var W = c.width = c.clientWidth * (window.devicePixelRatio||1);
+    var H = c.height = 230 * (window.devicePixelRatio||1);
+    ctx.clearRect(0,0,W,H);
+    var padL=42, padR=12, padT=14, padB=26;
+    var n = series.length; if(!n){ return; }
+    var max = Math.max(1, series.reduce(function(m,p){ return Math.max(m, p.views); }, 0));
+    var x = function(i){ return padL + (W-padL-padR) * (n>1? i/(n-1):0.5); };
+    var y = function(v){ return H-padB - (H-padT-padB) * (v/max); };
+    // gridlines + y labels
+    ctx.strokeStyle="#e2e8f0"; ctx.fillStyle="#94a3b8"; ctx.lineWidth=1;
+    ctx.font=(11*(window.devicePixelRatio||1))+"px sans-serif"; ctx.textBaseline="middle";
+    for(var g=0; g<=3; g++){
+      var val = Math.round(max*g/3), yy = y(val);
+      ctx.beginPath(); ctx.moveTo(padL,yy); ctx.lineTo(W-padR,yy); ctx.stroke();
+      ctx.fillText(val.toLocaleString(), 4, yy);
+    }
+    function area(key, stroke, fill){
+      ctx.beginPath();
+      series.forEach(function(p,i){ var xx=x(i),yy=y(p[key]); i?ctx.lineTo(xx,yy):ctx.moveTo(xx,yy); });
+      ctx.strokeStyle=stroke; ctx.lineWidth=2*(window.devicePixelRatio||1); ctx.stroke();
+      ctx.lineTo(x(n-1),H-padB); ctx.lineTo(x(0),H-padB); ctx.closePath();
+      ctx.fillStyle=fill; ctx.fill();
+    }
+    area("views", "#0f766e", "rgba(15,118,110,.10)");
+    area("visitors", "#f59e0b", "rgba(245,158,11,.10)");
+    // x labels: first + middle + last
+    ctx.fillStyle="#94a3b8"; ctx.textAlign="center"; ctx.textBaseline="top";
+    [0, Math.floor((n-1)/2), n-1].forEach(function(i){ ctx.fillText(niceDay(series[i].day), x(i), H-padB+5); });
+    ctx.textAlign="start";
+  }
+
+  function niceDay(s){ if(!s) return ""; var p=s.split("-"); return p[1]+"/"+p[2]; }
+  function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+
+  function demoData(days){
+    days = days||30;
+    var series=[], pages={}, refs={}, screens={}, tv=0, tvis=0;
+    var paths=["/","/tools/index.html","/blog/index.html","/tools/downloads/mccracken-tx-intestacy-chart.pdf","/tools/strat-charts.html","/labs/index.html","/#contact","/blog/the-landmans-job-changed.html"];
+    var rf=["(direct)","google.com","linkedin.com","bing.com","duckduckgo.com"];
+    var sc=["1920x1080","1536x864","390x844","1440x900","412x915"];
+    var today=new Date();
+    for(var i=days-1;i>=0;i--){
+      var d=new Date(today.getTime()-i*86400000).toISOString().slice(0,10);
+      var base=18+Math.round(14*Math.sin(i/4))+Math.round(Math.random()*16);
+      var v=Math.max(3,base), vis=Math.max(2,Math.round(v*0.62));
+      series.push({day:d,views:v,visitors:vis}); tv+=v; tvis+=vis;
+    }
+    paths.forEach(function(p,i){ pages[p]=Math.round(tv*(0.26/(i+1))); });
+    rf.forEach(function(p,i){ refs[p]=Math.round(tv*(0.34/(i+1))); });
+    sc.forEach(function(p,i){ screens[p]=Math.round(tv*(0.30/(i+1))); });
+    var toArr=function(o,k){ return Object.keys(o).map(function(x){ var r={n:o[x]}; r[k]=x; r.views=o[x]; return r; }); };
+    return {
+      site:"demo", days:days, totals:{views:tv,visitors:tvis},
+      series:series,
+      pages:Object.keys(pages).map(function(p){return {path:p,views:pages[p]};}),
+      referrers:Object.keys(refs).map(function(p){return {ref:p,views:refs[p]};}),
+      screens:Object.keys(screens).map(function(p){return {screen:p,views:screens[p]};})
+    };
+  }
+
+  window.addEventListener("resize", function(){ /* redraw current chart on resize */ });
+  load();
+})();
+</script>
+</body>
+</html>

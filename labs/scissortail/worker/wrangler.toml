@@ -1,0 +1,17 @@
+# Scissortail collector - Cloudflare Worker config.
+# Fill in the two placeholders after you create the D1 database (see README).
+
+name = "scissortail"
+main = "worker.js"
+compatibility_date = "2025-01-01"
+
+# 1) Create the database:   wrangler d1 create scissortail
+#    then paste the printed database_id below.
+[[d1_databases]]
+binding = "DB"
+database_name = "scissortail"
+database_id = "PASTE-YOUR-D1-DATABASE-ID-HERE"
+
+# Secrets are NOT stored here. Set them once from the terminal:
+#   wrangler secret put SALT         (any long random string)
+#   wrangler secret put DASH_TOKEN   (the read password for your dashboard)

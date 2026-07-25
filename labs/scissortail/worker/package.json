@@ -1,0 +1,14 @@
+{
+  "name": "scissortail",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Scissortail collector - a quiet, cookie-free page counter on Cloudflare Workers + D1.",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "init-db": "wrangler d1 execute scissortail --file=./schema.sql --remote"
+  },
+  "devDependencies": {
+    "wrangler": "^3"
+  }
+}

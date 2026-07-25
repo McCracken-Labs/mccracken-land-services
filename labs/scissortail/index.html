@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Scissortail — quiet, cookie-free web analytics</title>
+<meta name="description" content="Scissortail is a small, privacy-first page counter. See who visits and what they read, with no cookies, no stored IP addresses, and no tracking across the web. Open source, runs free on Cloudflare." />
+<meta name="theme-color" content="#0f766e" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --accent:#0f766e; --accent-2:#14b8a6; --accent-3:#5eead4;
+    --ink:#0f172a; --muted:#475569; --faint:#64748b;
+    --bg:#f8fafc; --card:#ffffff; --line:#e2e8f0; --soft:#f1f5f9; --dark:#0b1f1c;
+    --head:"Fraunces",Georgia,serif; --body:"Inter",system-ui,Arial,sans-serif;
+    --radius:16px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--body);color:var(--ink);background:var(--bg);line-height:1.6}
+  a{color:var(--accent);text-decoration:none}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+  h1,h2,h3{font-family:var(--head);font-weight:700;letter-spacing:-.01em;line-height:1.1}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.95rem;padding:12px 20px;border-radius:11px;border:1.5px solid transparent;cursor:pointer}
+  .btn-primary{background:var(--accent);color:#fff}.btn-primary:hover{background:var(--accent-2)}
+  .btn-ghost{border-color:var(--line);color:var(--ink);background:#fff}.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+  header{position:sticky;top:0;z-index:20;background:rgba(248,250,252,.86);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;gap:12px;height:64px}
+  .brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:1.12rem;letter-spacing:-.02em}
+  .brand svg{width:28px;height:28px}
+  .nav .sp{flex:1}
+  .nav a.link{color:var(--muted);font-weight:600;font-size:.92rem;padding:6px 10px}
+  .nav a.link:hover{color:var(--accent)}
+  @media(max-width:640px){.nav a.link{display:none}}
+
+  .hero{padding:70px 0 44px;text-align:center}
+  .kicker{display:inline-block;background:#ccfbf1;color:#0f766e;font-weight:700;font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;padding:6px 13px;border-radius:999px;margin-bottom:22px}
+  .hero h1{font-size:clamp(2.3rem,6vw,3.7rem);margin:0 auto 18px;max-width:15ch}
+  .hero h1 em{font-style:normal;color:var(--accent)}
+  .hero p{font-size:clamp(1.05rem,2vw,1.28rem);color:var(--muted);max-width:620px;margin:0 auto 30px}
+  .hero-cta{display:flex;gap:13px;justify-content:center;flex-wrap:wrap}
+  .trust{margin-top:26px;color:var(--faint);font-size:.86rem}
+
+  section{padding:52px 0}
+  .sec-head{max-width:640px;margin:0 0 34px}
+  .sec-head .eyebrow{color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.76rem;margin:0 0 10px}
+  .sec-head h2{font-size:clamp(1.7rem,3.4vw,2.3rem);margin:0 0 10px}
+  .sec-head p{color:var(--muted);font-size:1.05rem;margin:0}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .step .n{width:34px;height:34px;border-radius:9px;background:#ccfbf1;color:#0f766e;font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+  .step h3{font-size:1.12rem;margin:0 0 7px;font-family:var(--body);font-weight:700;letter-spacing:0}
+  .step p{color:var(--muted);font-size:.95rem;margin:0}
+
+  .codewrap{background:var(--dark);border-radius:var(--radius);padding:22px 22px;color:#d1fae5;overflow:auto}
+  .codewrap .lbl{color:#5eead4;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin:0 0 10px}
+  pre{margin:0;font-family:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;font-size:.86rem;line-height:1.7;white-space:pre-wrap;word-break:break-word}
+  .tok{color:#5eead4}.str{color:#fcd34d}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center}
+  .privacy{background:linear-gradient(160deg,#ecfdf5,#f0fdfa);border:1px solid #a7f3d0;border-radius:20px;padding:30px 32px}
+  .privacy h2{font-size:clamp(1.6rem,3vw,2.1rem);margin:0 0 14px}
+  .privacy ul{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+  .privacy li{position:relative;padding-left:28px;color:#134e4a;font-size:.98rem}
+  .privacy li::before{content:"";position:absolute;left:0;top:6px;width:15px;height:9px;border-left:2.5px solid #0f766e;border-bottom:2.5px solid #0f766e;transform:rotate(-45deg)}
+
+  .features{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .feat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+  .feat h3{font-family:var(--body);font-weight:700;font-size:1.05rem;letter-spacing:0;margin:0 0 6px}
+  .feat p{color:var(--muted);font-size:.93rem;margin:0}
+
+  .cta{background:var(--dark);border-radius:22px;padding:44px 34px;text-align:center;color:#ecfdf5}
+  .cta h2{color:#fff;font-size:clamp(1.7rem,3.4vw,2.3rem);margin:0 0 12px}
+  .cta p{color:#a7f3d0;max-width:520px;margin:0 auto 24px}
+  .cta .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
+  .cta .btn-ghost:hover{border-color:#5eead4;color:#5eead4}
+  .coffee{background:#ffdd00;color:#0f172a;border-color:#ffdd00}.coffee:hover{background:#ffe74d;border-color:#ffe74d;color:#0f172a}
+
+  footer{border-top:1px solid var(--line);margin-top:20px;padding:26px 0;color:var(--faint);font-size:.88rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  footer a{color:var(--muted);font-weight:600}
+  @media(max-width:720px){.steps{grid-template-columns:1fr}.grid2{grid-template-columns:1fr}.features{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <span class="brand">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 22c7 1 12-2 16-8 2-3 4-5 8-6-1 4-3 7-6 9 2 0 4-.5 6-2-2 5-7 8-13 8-5 0-8-.5-11-1z" fill="#0f766e"/><path d="M4 22l-2 6 7-3" stroke="#14b8a6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        Scissortail
+      </span>
+      <span class="sp"></span>
+      <a class="link" href="#how">How it works</a>
+      <a class="link" href="#privacy">Privacy</a>
+      <a class="link" href="dashboard.html">Demo</a>
+      <a class="btn btn-primary" href="dashboard.html" style="padding:9px 15px">Open dashboard</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <span class="kicker">Privacy-first web analytics</span>
+        <h1>Know your traffic. <em>Respect your visitors.</em></h1>
+        <p>Scissortail is a small page counter that tells you how many people visit and what they read, without cookies, without storing anyone's IP address, and without following people around the web.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="dashboard.html">See the live demo</a>
+          <a class="btn btn-ghost" href="#how">How it works</a>
+        </div>
+        <p class="trust">Open source &middot; runs free on Cloudflare &middot; no cookie banner needed</p>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="eyebrow">How it works</p>
+          <h2>Three small pieces.</h2>
+          <p>Add one line to your site. A tiny collector counts the views. You watch a clean dashboard. That is the whole thing.</p>
+        </div>
+        <div class="steps">
+          <div class="step"><div class="n">1</div><h3>Drop in the snippet</h3><p>One script tag on your pages, about a kilobyte. It sends a page path and a screen size, nothing personal.</p></div>
+          <div class="step"><div class="n">2</div><h3>The collector counts</h3><p>A small Cloudflare Worker records the view in a database you own. No third party sees your traffic.</p></div>
+          <div class="step"><div class="n">3</div><h3>Read your dashboard</h3><p>Views and visitors over time, your top pages, and where people came from. Nothing you have to explain to a lawyer.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top:8px">
+      <div class="wrap">
+        <div class="codewrap">
+          <p class="lbl">Add to your site</p>
+<pre>&lt;<span class="tok">script</span> defer src=<span class="str">"https://scissortail.your-domain.workers.dev/count.js"</span>
+        data-endpoint=<span class="str">"https://scissortail.your-domain.workers.dev"</span>
+        data-site=<span class="str">"mysite"</span>&gt;&lt;/<span class="tok">script</span>&gt;</pre>
+        </div>
+      </div>
+    </section>
+
+    <section id="privacy">
+      <div class="wrap">
+        <div class="privacy">
+          <h2>Built to not know things about people.</h2>
+          <div class="grid2">
+            <ul>
+              <li>No cookies, so no cookie banner to bolt on.</li>
+              <li>No IP addresses stored. The address is coarsened and hashed with a daily secret, then thrown away.</li>
+              <li>No profile that follows a person from one site to the next.</li>
+              <li>Honors Do Not Track and Global Privacy Control automatically.</li>
+            </ul>
+            <ul>
+              <li>Counts distinct visitors per day without keeping anything that identifies them.</li>
+              <li>Your data lives in your own database, not a vendor's.</li>
+              <li>Open source, so you can read exactly what it does.</li>
+              <li>Small and fast, it will not slow your pages down.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="eyebrow">What you get</p>
+          <h2>The numbers that matter, and nothing you have to hide.</h2>
+        </div>
+        <div class="features">
+          <div class="feat"><h3>Views and visitors</h3><p>A clean daily graph of page views and distinct visitors over any range you pick.</p></div>
+          <div class="feat"><h3>Top pages</h3><p>See what people actually read, ranked, so you know what is worth doing more of.</p></div>
+          <div class="feat"><h3>Referrers</h3><p>Where visits came from, by site, without the creepy full-URL tracking.</p></div>
+          <div class="feat"><h3>Many sites, one place</h3><p>Give each site a key and watch them all from the same dashboard.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="cta">
+          <h2>Run your own, for free.</h2>
+          <p>Scissortail is open source and deploys to Cloudflare's free tier in a few minutes. Take it, change it, use it on every site you build.</p>
+          <div class="hero-cta">
+            <a class="btn btn-ghost" href="https://github.com/McCracken-Labs/mccracken-land-services/tree/main/labs/scissortail" target="_blank" rel="noopener">View the code on GitHub</a>
+            <a class="btn coffee" href="https://www.buymeacoffee.com/mccrackenlabs" target="_blank" rel="noopener">Buy me a coffee</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;width:100%">
+      <span>Scissortail &middot; a McCracken Labs project</span>
+      <span>
+        <a href="dashboard.html">Dashboard</a> &middot;
+        <a href="https://github.com/McCracken-Labs/mccracken-land-services/tree/main/labs/scissortail" target="_blank" rel="noopener">GitHub</a> &middot;
+        <a href="../index.html">McCracken Labs</a>
+      </span>
+    </div>
+  </footer>
+</body>
+</html>
