@@ -81,7 +81,7 @@ async function count(request, url, env, cors) {
 async function wti(cors) {
   // Primary: Yahoo Finance chart API for CL=F (NYMEX WTI front-month continuous).
   try {
-    var r = await fetch("https://query1.finance.yahoo.com/v8/finance/chart/CL=F?interval=1d&range=5d", {
+    var r = await fetch("https://query1.finance.yahoo.com/v8/finance/chart/CL=F?interval=15m&range=1d", {
       headers: { "User-Agent": "Mozilla/5.0" },
       cf: { cacheTtl: 300, cacheEverything: true },
     });
@@ -91,7 +91,7 @@ async function wti(cors) {
       var meta = res && res.meta;
       if (meta && meta.regularMarketPrice != null) {
         var price = meta.regularMarketPrice;
-        var prev = (meta.chartPreviousClose != null ? meta.chartPreviousClose : meta.previousClose);
+        var prev = (meta.previousClose != null ? meta.previousClose : meta.chartPreviousClose);
         if (prev == null) prev = price;
         var change = price - prev;
         var pct = prev ? (change / prev) * 100 : 0;
