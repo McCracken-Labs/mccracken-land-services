@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Landman Tools &amp; Resources | McCracken Land Services</title>
-  <meta name="description" content="Practical tools and field references for land, title, and mineral work: the Net Deed Plotter Formatter, cheat sheets, state intestate succession guides, Oklahoma forced pooling and marketable record title references, and a stratigraphic chart library." />
+  <meta name="description" content="Landman tools and field references, organized by state: the Net Deed Plotter Formatter and cheat sheet, the Duhig and Pugh write-ups, a stratigraphic chart library, and state-specific intestate succession, well spacing, pooling, and record title guides for Oklahoma, Texas, Ohio, and New Mexico." />
   <meta name="theme-color" content="#0b2233" />
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,6 +18,10 @@
     .tools-hero p{color:rgba(255,255,255,.85);max-width:720px;margin:0;font-size:1.05rem}
     .tools-page{padding:44px 0 64px}
     .tools-page .cards{margin-top:0}
+    .tool-group-head{margin:48px 0 18px;border-bottom:2px solid var(--gold-500);padding-bottom:10px}
+    .tool-group-head:first-of-type{margin-top:4px}
+    .tool-group{font-family:var(--font-head);font-weight:600;color:var(--ink-900);font-size:clamp(1.4rem,3vw,1.8rem);letter-spacing:-.2px;margin:0}
+    .tool-group-lead{color:var(--ink-500);font-size:.98rem;margin:6px 0 0;max-width:700px}
     .tools-feedback{background:var(--navy-800);padding:56px 0}
     .feedback-card{max-width:660px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:16px;padding:34px 34px 30px;box-shadow:0 12px 34px rgba(0,0,0,.18)}
     .feedback-card .fb-eyebrow{color:var(--gold-500);font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:.72rem;margin:0 0 10px}
@@ -57,12 +61,17 @@
       <div class="container">
         <p class="eyebrow">Landman Tools</p>
         <h1 id="tools-h1">Tools &amp; resources for land work.</h1>
-        <p>Practical tools and writeups from the field, built to save time on the tedious parts of title and mineral work. Everything here runs in your browser or downloads as a PDF. More on the way.</p>
+        <p>Practical tools and writeups from the field, built to save time on the tedious parts of title and mineral work. General tools are up top, then guides grouped by state. Everything runs in your browser or downloads as a PDF.</p>
       </div>
     </section>
 
     <section class="tools tools-page" aria-label="Tools and resources">
       <div class="container">
+
+        <div class="tool-group-head">
+          <h2 class="tool-group">General tools &amp; references</h2>
+          <p class="tool-group-lead">Useful in any state: the deed formatter and cheat sheet, the Duhig and Pugh write-ups, the stratigraphic chart library, and outside references.</p>
+        </div>
         <div class="cards">
           <a class="card tool-card" href="net-deed-plotter-formatter.html">
             <div class="card-icon" aria-hidden="true">
@@ -84,103 +93,13 @@
             <span class="tool-cta">Download &rarr;</span>
           </a>
 
-          <a class="card tool-card" href="downloads/mccracken-nm-fee-lands-communitization-guide.pdf?v=2" target="_blank" rel="noopener">
+          <a class="card tool-card" href="downloads/mccracken-duhig-rule.pdf?v=2" target="_blank" rel="noopener">
             <div class="card-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h11l5 5v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M14 4v5h5"/><path d="M8 13h8M8 17h5"/></svg>
             </div>
             <span class="tool-badge pdf">PDF &bull; Guide</span>
-            <h3>New Mexico Fee Lands &amp; Communitization</h3>
-            <p>How to confirm whether a fee tract is held by production through a state or BLM communitization agreement, when the county record shows nothing.</p>
-            <span class="tool-cta">Download &rarr;</span>
-          </a>
-
-          <a class="card tool-card" href="downloads/mccracken-ok-intestate-succession-reference.pdf?v=1" target="_blank" rel="noopener">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h11l5 5v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M14 4v5h5"/><path d="M8 13h8M8 17h5"/></svg>
-            </div>
-            <span class="tool-badge pdf">PDF &bull; Guide</span>
-            <h3>Oklahoma Intestate Succession</h3>
-            <p>Who inherits when there is no will. Descent and distribution under 84 O.S. &sect; 213, with the scenario tables landmen need for heirship and mineral title work.</p>
-            <span class="tool-cta">Download &rarr;</span>
-          </a>
-
-          <a class="card tool-card" href="downloads/mccracken-ok-intestacy-chart.pdf?v=1" target="_blank" rel="noopener">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h13M3 12h18M3 18h8"/></svg>
-            </div>
-            <span class="tool-badge pdf">PDF &bull; Chart</span>
-            <h3>Oklahoma Intestacy Chart</h3>
-            <p>The visual companion to the guide. Who takes what under 84 O.S. &sect; 213, including the joint-industry rule and the July 1, 1985 line, shown as at-a-glance bars with links to the statute.</p>
-            <span class="tool-cta">Download &rarr;</span>
-          </a>
-
-          <a class="card tool-card" href="downloads/mccracken-tx-intestate-succession-reference.pdf?v=2" target="_blank" rel="noopener">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h11l5 5v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M14 4v5h5"/><path d="M8 13h8M8 17h5"/></svg>
-            </div>
-            <span class="tool-badge pdf">PDF &bull; Guide</span>
-            <h3>Texas Intestate Succession</h3>
-            <p>Descent and distribution under the Texas Estates Code, Chapter 201. Community and separate property tables, the surviving spouse's life estate, and the September 1, 1993 change in the community property rule.</p>
-            <span class="tool-cta">Download &rarr;</span>
-          </a>
-
-          <a class="card tool-card" href="downloads/mccracken-tx-intestacy-chart.pdf?v=1" target="_blank" rel="noopener">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9h-9z"/><path d="M12 3v9"/><path d="M12 3a9 9 0 0 1 9 9"/></svg>
-            </div>
-            <span class="tool-badge pdf">PDF &bull; Chart</span>
-            <h3>Texas Intestacy Chart</h3>
-            <p>The same Texas descent rules as the guide, shown at a glance. A visual, one-look chart of who takes what for community and separate real property, with the statute cites on each panel.</p>
-            <span class="tool-cta">Download &rarr;</span>
-          </a>
-
-          <a class="card tool-card" href="downloads/mccracken-oh-intestate-succession-reference.pdf?v=1" target="_blank" rel="noopener">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h11l5 5v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M14 4v5h5"/><path d="M8 13h8M8 17h5"/></svg>
-            </div>
-            <span class="tool-badge pdf">PDF &bull; Guide</span>
-            <h3>Ohio Intestate Succession</h3>
-            <p>Descent of real property under Ohio Revised Code &sect; 2105.06, written for mineral and surface title work. Current law, the historical date eras for old chains, and Ohio's ancestral property and dower notes.</p>
-            <span class="tool-cta">Download &rarr;</span>
-          </a>
-
-          <a class="card tool-card" href="downloads/mccracken-oh-intestacy-chart.pdf?v=1" target="_blank" rel="noopener">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h13M3 12h18M3 18h8"/></svg>
-            </div>
-            <span class="tool-badge pdf">PDF &bull; Chart</span>
-            <h3>Ohio Intestacy Chart</h3>
-            <p>The visual companion to the Ohio guide. Who takes the minerals and surface under &sect; 2105.06, shown as at-a-glance bars, with the money preferential and the date eras noted and links to the statute.</p>
-            <span class="tool-cta">Download &rarr;</span>
-          </a>
-
-          <a class="card tool-card" href="downloads/mccracken-ok-forced-pooling-reference.pdf?v=2" target="_blank" rel="noopener">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h11l5 5v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M14 4v5h5"/><path d="M8 13h8M8 17h5"/></svg>
-            </div>
-            <span class="tool-badge pdf">PDF &bull; Guide</span>
-            <h3>Oklahoma Forced Pooling</h3>
-            <p>How the Corporation Commission pooling process works under 52 O.S. &sect; 87.1: the application and hearing, election options and deadlines, who can and cannot be pooled, the 2022 multiunit horizontal rule, and what a landman checks in the order. Links to the current statutes.</p>
-            <span class="tool-cta">Download &rarr;</span>
-          </a>
-
-          <a class="card tool-card" href="downloads/mccracken-ok-marketable-record-title-act-reference.pdf?v=1" target="_blank" rel="noopener">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h11l5 5v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M14 4v5h5"/><path d="M8 13h8M8 17h5"/></svg>
-            </div>
-            <span class="tool-badge pdf">PDF &bull; Guide</span>
-            <h3>Oklahoma Marketable Record Title Act</h3>
-            <p>The 30-year curative rule under 16 O.S. &sect;&sect; 71 through 80: root of title, what the Act extinguishes, and the exceptions that survive, including severed minerals.</p>
-            <span class="tool-cta">Download &rarr;</span>
-          </a>
-
-          <a class="card tool-card" href="downloads/mccracken-well-spacing.pdf?v=1" target="_blank" rel="noopener">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
-            </div>
-            <span class="tool-badge pdf">PDF &bull; Guide</span>
-            <h3>Well Spacing</h3>
-            <p>How drilling and spacing units work in Oklahoma under 52 O.S. &sect; 87.1, and how Texas handles spacing through Rule 37, Rule 38, and field rules. Includes increased density, location exceptions, and links to the current statutes and rules.</p>
+            <h3>The Duhig Rule</h3>
+            <p>The over-conveyance rule from Duhig v. Peavy-Moore: who absorbs the shortfall when a warranty deed reserves more than the grantor owns, a worked fraction example, and how Oklahoma and Texas apply it. Links to the opinion.</p>
             <span class="tool-cta">Download &rarr;</span>
           </a>
 
@@ -194,14 +113,14 @@
             <span class="tool-cta">Download &rarr;</span>
           </a>
 
-          <a class="card tool-card" href="downloads/mccracken-duhig-rule.pdf?v=2" target="_blank" rel="noopener">
+          <a class="card tool-card" href="strat-charts.html">
             <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h11l5 5v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M14 4v5h5"/><path d="M8 13h8M8 17h5"/></svg>
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
             </div>
-            <span class="tool-badge pdf">PDF &bull; Guide</span>
-            <h3>The Duhig Rule</h3>
-            <p>The over-conveyance rule from Duhig v. Peavy-Moore: who absorbs the shortfall when a warranty deed reserves more than the grantor owns, a worked fraction example, and how Oklahoma and Texas apply it. Links to the opinion.</p>
-            <span class="tool-cta">Download &rarr;</span>
+            <span class="tool-badge pdf">6 charts</span>
+            <h3>Stratigraphic Chart Library</h3>
+            <p>Reference stratigraphic charts for the basins landmen work most, from Oklahoma and the Permian to the Williston, Powder River, and East Texas.</p>
+            <span class="tool-cta">Open library &rarr;</span>
           </a>
 
           <a class="card tool-card" href="https://deedplotter.com/" target="_blank" rel="noopener">
@@ -224,16 +143,6 @@
             <span class="tool-cta">Visit mcpubco.com &rarr;</span>
           </a>
 
-          <a class="card tool-card" href="strat-charts.html">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
-            </div>
-            <span class="tool-badge pdf">6 charts</span>
-            <h3>Stratigraphic Chart Library</h3>
-            <p>Reference stratigraphic charts for the basins landmen work most, from Oklahoma and the Permian to the Williston, Powder River, and East Texas.</p>
-            <span class="tool-cta">Open library &rarr;</span>
-          </a>
-
           <div class="card tool-card muted">
             <div class="card-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a3 3 0 0 1 3 3v1a3 3 0 0 1 2 5 3 3 0 0 1-2 5v1a3 3 0 0 1-6 0v-1a3 3 0 0 1-2-5 3 3 0 0 1 2-5V6a3 3 0 0 1 3-3z"/><path d="M12 8v8M9 12h6"/></svg>
@@ -243,6 +152,151 @@
             <p>Drop in a deed and get an instant breakdown of the parties, legal description, and deed calls, pulled out for you. In development.</p>
           </div>
         </div>
+
+        <div class="tool-group-head">
+          <h2 class="tool-group">Oklahoma</h2>
+          <p class="tool-group-lead">Oklahoma-specific guides and charts: intestacy, well spacing, pooling, and marketable record title.</p>
+        </div>
+        <div class="cards">
+          <a class="card tool-card" href="downloads/mccracken-ok-intestate-succession-reference.pdf?v=1" target="_blank" rel="noopener">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h11l5 5v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M14 4v5h5"/><path d="M8 13h8M8 17h5"/></svg>
+            </div>
+            <span class="tool-badge pdf">PDF &bull; Guide</span>
+            <h3>Oklahoma Intestate Succession</h3>
+            <p>Who inherits when there is no will. Descent and distribution under 84 O.S. &sect; 213, with the scenario tables landmen need for heirship and mineral title work.</p>
+            <span class="tool-cta">Download &rarr;</span>
+          </a>
+
+          <a class="card tool-card" href="downloads/mccracken-ok-intestacy-chart.pdf?v=1" target="_blank" rel="noopener">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h13M3 12h18M3 18h8"/></svg>
+            </div>
+            <span class="tool-badge pdf">PDF &bull; Chart</span>
+            <h3>Oklahoma Intestacy Chart</h3>
+            <p>The visual companion to the guide. Who takes what under 84 O.S. &sect; 213, including the joint-industry rule and the July 1, 1985 line, shown as at-a-glance bars with links to the statute.</p>
+            <span class="tool-cta">Download &rarr;</span>
+          </a>
+
+          <a class="card tool-card" href="downloads/mccracken-ok-spacing-reference.pdf?v=1" target="_blank" rel="noopener">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+            </div>
+            <span class="tool-badge pdf">PDF &bull; Guide</span>
+            <h3>Oklahoma Well Spacing</h3>
+            <p>How drilling and spacing units work under 52 O.S. &sect; 87.1: unit sizes, one well per unit, increased density, location exceptions, and how spacing feeds into pooling and the statutory Pugh clause. Links to the statute and OCC rules.</p>
+            <span class="tool-cta">Download &rarr;</span>
+          </a>
+
+          <a class="card tool-card" href="downloads/mccracken-ok-pooling-reference.pdf?v=1" target="_blank" rel="noopener">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h11l5 5v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M14 4v5h5"/><path d="M8 13h8M8 17h5"/></svg>
+            </div>
+            <span class="tool-badge pdf">PDF &bull; Guide</span>
+            <h3>Oklahoma Pooling</h3>
+            <p>How the Corporation Commission forced pooling process works under 52 O.S. &sect; 87.1: the application and hearing, election options and deadlines, who can and cannot be pooled, the 2022 multiunit horizontal rule, and what a landman checks in the order. Links to the current statutes.</p>
+            <span class="tool-cta">Download &rarr;</span>
+          </a>
+
+          <a class="card tool-card" href="downloads/mccracken-ok-marketable-record-title-act-reference.pdf?v=1" target="_blank" rel="noopener">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h11l5 5v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M14 4v5h5"/><path d="M8 13h8M8 17h5"/></svg>
+            </div>
+            <span class="tool-badge pdf">PDF &bull; Guide</span>
+            <h3>Oklahoma Marketable Record Title Act</h3>
+            <p>The 30-year curative rule under 16 O.S. &sect;&sect; 71 through 80: root of title, what the Act extinguishes, and the exceptions that survive, including severed minerals.</p>
+            <span class="tool-cta">Download &rarr;</span>
+          </a>
+        </div>
+
+        <div class="tool-group-head">
+          <h2 class="tool-group">Texas</h2>
+          <p class="tool-group-lead">Texas-specific guides and charts: intestacy, well spacing, and pooling.</p>
+        </div>
+        <div class="cards">
+          <a class="card tool-card" href="downloads/mccracken-tx-intestate-succession-reference.pdf?v=2" target="_blank" rel="noopener">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h11l5 5v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M14 4v5h5"/><path d="M8 13h8M8 17h5"/></svg>
+            </div>
+            <span class="tool-badge pdf">PDF &bull; Guide</span>
+            <h3>Texas Intestate Succession</h3>
+            <p>Descent and distribution under the Texas Estates Code, Chapter 201. Community and separate property tables, the surviving spouse's life estate, and the September 1, 1993 change in the community property rule.</p>
+            <span class="tool-cta">Download &rarr;</span>
+          </a>
+
+          <a class="card tool-card" href="downloads/mccracken-tx-intestacy-chart.pdf?v=1" target="_blank" rel="noopener">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9h-9z"/><path d="M12 3v9"/><path d="M12 3a9 9 0 0 1 9 9"/></svg>
+            </div>
+            <span class="tool-badge pdf">PDF &bull; Chart</span>
+            <h3>Texas Intestacy Chart</h3>
+            <p>The same Texas descent rules as the guide, shown at a glance. A visual, one-look chart of who takes what for community and separate real property, with the statute cites on each panel.</p>
+            <span class="tool-cta">Download &rarr;</span>
+          </a>
+
+          <a class="card tool-card" href="downloads/mccracken-tx-spacing-reference.pdf?v=1" target="_blank" rel="noopener">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+            </div>
+            <span class="tool-badge pdf">PDF &bull; Guide</span>
+            <h3>Texas Well Spacing</h3>
+            <p>How Texas spacing works: Statewide Rule 37 and Rule 38, field rules, proration units, and Rule 37/38 exceptions, with links to the rules. Combining tracts is left to pooling under the lease.</p>
+            <span class="tool-cta">Download &rarr;</span>
+          </a>
+
+          <a class="card tool-card" href="downloads/mccracken-tx-pooling-reference.pdf?v=1" target="_blank" rel="noopener">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h11l5 5v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M14 4v5h5"/><path d="M8 13h8M8 17h5"/></svg>
+            </div>
+            <span class="tool-badge pdf">PDF &bull; Guide</span>
+            <h3>Texas Pooling</h3>
+            <p>Texas pooling, mostly voluntary under the lease clause, with the Mineral Interest Pooling Act as the limited compulsory backstop under Natural Resources Code Ch. 102. How it works, and how it differs from Oklahoma.</p>
+            <span class="tool-cta">Download &rarr;</span>
+          </a>
+        </div>
+
+        <div class="tool-group-head">
+          <h2 class="tool-group">Ohio</h2>
+          <p class="tool-group-lead">Ohio-specific intestacy guide and chart, written for mineral and surface title work.</p>
+        </div>
+        <div class="cards">
+          <a class="card tool-card" href="downloads/mccracken-oh-intestate-succession-reference.pdf?v=1" target="_blank" rel="noopener">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h11l5 5v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M14 4v5h5"/><path d="M8 13h8M8 17h5"/></svg>
+            </div>
+            <span class="tool-badge pdf">PDF &bull; Guide</span>
+            <h3>Ohio Intestate Succession</h3>
+            <p>Descent of real property under Ohio Revised Code &sect; 2105.06, written for mineral and surface title work. Current law, the historical date eras for old chains, and Ohio's ancestral property and dower notes.</p>
+            <span class="tool-cta">Download &rarr;</span>
+          </a>
+
+          <a class="card tool-card" href="downloads/mccracken-oh-intestacy-chart.pdf?v=1" target="_blank" rel="noopener">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h13M3 12h18M3 18h8"/></svg>
+            </div>
+            <span class="tool-badge pdf">PDF &bull; Chart</span>
+            <h3>Ohio Intestacy Chart</h3>
+            <p>The visual companion to the Ohio guide. Who takes the minerals and surface under &sect; 2105.06, shown as at-a-glance bars, with the money preferential and the date eras noted and links to the statute.</p>
+            <span class="tool-cta">Download &rarr;</span>
+          </a>
+        </div>
+
+        <div class="tool-group-head">
+          <h2 class="tool-group">New Mexico</h2>
+          <p class="tool-group-lead">New Mexico fee-lands communitization guide.</p>
+        </div>
+        <div class="cards">
+          <a class="card tool-card" href="downloads/mccracken-nm-fee-lands-communitization-guide.pdf?v=2" target="_blank" rel="noopener">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h11l5 5v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M14 4v5h5"/><path d="M8 13h8M8 17h5"/></svg>
+            </div>
+            <span class="tool-badge pdf">PDF &bull; Guide</span>
+            <h3>New Mexico Fee Lands &amp; Communitization</h3>
+            <p>How to confirm whether a fee tract is held by production through a state or BLM communitization agreement, when the county record shows nothing.</p>
+            <span class="tool-cta">Download &rarr;</span>
+          </a>
+        </div>
+
       </div>
     </section>
 
