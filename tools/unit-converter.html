@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Land Measurement Converter | McCracken Land Services</title>
+  <meta name="description" content="Convert surveying and land units: varas, rods, chains, links, feet, yards, furlongs, miles, and meters. Runs in your browser, nothing uploaded." />
+  <meta name="theme-color" content="#0b2233" />
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .tools-hero{background:var(--navy-800);color:#fff;padding:52px 0 44px;border-bottom:1px solid rgba(255,255,255,.08)}
+    .tools-hero .eyebrow{color:var(--gold-400);font-weight:600;letter-spacing:.2em;text-transform:uppercase;font-size:.74rem;margin:0 0 12px}
+    .tools-hero h1{font-family:var(--font-head);font-weight:600;font-size:clamp(1.9rem,4vw,2.7rem);line-height:1.1;margin:0 0 14px;color:#fff}
+    .tools-hero p{color:rgba(255,255,255,.85);max-width:720px;margin:0;font-size:1.05rem}
+    .conv-wrap{padding:44px 0 64px}
+    .conv-card{max-width:760px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px 30px 26px;box-shadow:0 10px 30px rgba(15,42,63,.08)}
+    .conv-inputs{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end}
+    .conv-field{display:flex;flex-direction:column;gap:6px}
+    .conv-field.grow{flex:1 1 220px}
+    .conv-field label{font-weight:600;font-size:.9rem;color:var(--ink-900)}
+    .conv-field input,.conv-field select{font-family:var(--font-body,inherit);font-size:1.05rem;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:var(--ink-900);width:100%}
+    .conv-field input:focus,.conv-field select:focus{outline:none;border-color:var(--gold-500)}
+    .conv-results{margin-top:24px;border-top:1px solid var(--line);padding-top:8px}
+    .conv-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:10px 6px;border-bottom:1px solid var(--sand-100)}
+    .conv-row:last-child{border-bottom:0}
+    .conv-row .u{color:var(--ink-700);font-size:.98rem}
+    .conv-row .v{font-weight:600;color:var(--ink-900);font-variant-numeric:tabular-nums;font-size:1.05rem}
+    .conv-row.feet{background:var(--sand-50);border-radius:8px;border-bottom:0;margin:4px 0}
+    .conv-row.feet .u,.conv-row.feet .v{color:var(--navy-800)}
+    .conv-row.feet .v{font-size:1.2rem}
+    .conv-note{margin:18px 0 0;color:var(--ink-500);font-size:.9rem}
+    .conv-tip{margin:14px 0 0;color:var(--ink-500);font-size:.86rem}
+    .back-link{display:inline-block;margin-top:26px;color:var(--navy-700);font-weight:600;text-decoration:none}
+    .back-link:hover{color:var(--gold-500)}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#conv-main">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html#top" aria-label="McCracken Land Services home">
+        <img src="../assets/logo-full-trans.svg" class="brand-full" alt="McCracken Land Services" />
+      </a>
+      <nav class="main-nav" aria-label="Primary">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul id="nav-menu" class="nav-menu">
+          <li><a href="../index.html#services">Services</a></li>
+          <li><a href="../index.html#process">Projects</a></li>
+          <li><a href="index.html" aria-current="page">Tools</a></li>
+          <li><a href="../blog/index.html">Blog</a></li>
+          <li><a href="../index.html#expertise">Expertise</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a class="nav-cta" href="../index.html#contact">Get in touch</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conv-main">
+    <section class="tools-hero" aria-labelledby="conv-h1">
+      <div class="container">
+        <p class="eyebrow">Landman Tools</p>
+        <h1 id="conv-h1">Land Measurement Converter</h1>
+        <p>Type a value, pick the unit, and see it in feet and every other surveying unit. Varas, rods, chains, links, yards, furlongs, miles, and meters. It runs in your browser, so nothing is uploaded.</p>
+      </div>
+    </section>
+
+    <section class="conv-wrap" aria-label="Converter">
+      <div class="container">
+        <div class="conv-card">
+          <div class="conv-inputs">
+            <div class="conv-field grow">
+              <label for="val">Value</label>
+              <input id="val" type="number" inputmode="decimal" step="any" value="100" aria-label="Value to convert" />
+            </div>
+            <div class="conv-field grow">
+              <label for="fromUnit">From unit</label>
+              <select id="fromUnit" aria-label="Unit to convert from">
+                <option value="1">Feet</option>
+                <option value="0.0833333333">Inches</option>
+                <option value="3">Yards</option>
+                <option value="0.66">Links</option>
+                <option value="16.5">Rods (poles, perches)</option>
+                <option value="66">Chains (Gunter's)</option>
+                <option value="2.7777777778" selected>Varas (Texas)</option>
+                <option value="660">Furlongs</option>
+                <option value="5280">Miles</option>
+                <option value="3.2808398950">Meters</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="results" class="conv-results" aria-live="polite"></div>
+
+          <p class="conv-tip">Tip: the Texas vara is 33&#8531; inches, so 36 varas equals 100 feet. A chain is 66 feet, which is why 10 square chains make an acre.</p>
+          <p class="conv-note">Runs entirely in your browser. Nothing is uploaded or stored.</p>
+        </div>
+        <a class="back-link" href="index.html">&larr; Back to all tools</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="../assets/logo-full-trans.svg" class="footer-full" alt="McCracken Land Services" />
+        <p class="footer-tag">Title &bull; Research &bull; Leasing &bull; Due Diligence &bull; GIS</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="../index.html#services">Services</a>
+        <a href="../index.html#process">Projects</a>
+        <a href="index.html">Tools</a>
+        <a href="../blog/index.html">Blog</a>
+        <a href="../index.html#expertise">Expertise</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#contact">Contact</a>
+        <a href="https://www.linkedin.com/in/michaeltmccracken/" target="_blank" rel="noopener">LinkedIn</a>
+      </nav>
+      <p class="footer-legal">&copy; <span id="year"></span> McCracken Land Services. All rights reserved.<br />
+        <span class="footer-credit">Design &amp; Development by <a href="../labs/index.html">McCracken Labs</a></span></p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    (function () {
+      "use strict";
+      // Each unit's length in FEET.
+      var UNITS = [
+        ["Feet", 1],
+        ["Inches", 1/12],
+        ["Yards", 3],
+        ["Links", 0.66],
+        ["Rods (poles, perches)", 16.5],
+        ["Chains (Gunter's)", 66],
+        ["Varas (Texas)", 100/36],
+        ["Furlongs", 660],
+        ["Miles", 5280],
+        ["Meters", 1/0.3048]
+      ];
+      var valEl = document.getElementById("val");
+      var fromEl = document.getElementById("fromUnit");
+      var out = document.getElementById("results");
+
+      function fmt(n) {
+        if (!isFinite(n)) return "—";
+        var abs = Math.abs(n);
+        var digits = abs !== 0 && abs < 0.001 ? 6 : abs < 1 ? 4 : abs < 1000 ? 3 : 2;
+        return n.toLocaleString(undefined, { maximumFractionDigits: digits });
+      }
+
+      function render() {
+        var v = parseFloat(valEl.value);
+        var fromFactor = parseFloat(fromEl.value);
+        out.innerHTML = "";
+        if (isNaN(v)) {
+          out.innerHTML = '<p class="conv-note">Enter a value to convert.</p>';
+          return;
+        }
+        var feet = v * fromFactor;
+        UNITS.forEach(function (u) {
+          var name = u[0], factor = u[1];
+          var row = document.createElement("div");
+          row.className = "conv-row" + (name === "Feet" ? " feet" : "");
+          var un = document.createElement("span"); un.className = "u"; un.textContent = name;
+          var vs = document.createElement("span"); vs.className = "v"; vs.textContent = fmt(feet / factor);
+          row.appendChild(un); row.appendChild(vs);
+          out.appendChild(row);
+        });
+      }
+
+      valEl.addEventListener("input", render);
+      fromEl.addEventListener("change", render);
+      render();
+    })();
+  </script>
+  <script defer src="../labs/scissortail/count.js" data-endpoint="https://scissortail.mccrackenlabs.workers.dev" data-site="mccrackenlandservices"></script>
+</body>
+</html>
