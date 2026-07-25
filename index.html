@@ -61,6 +61,23 @@
           <a class="btn btn-ghost" href="#services">Explore services</a>
         </div>
       </div>
+
+      <aside class="wti-tile" aria-label="WTI crude oil price (delayed)">
+        <p class="wti-head">WTI Crude Oil</p>
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+          {
+          "symbol": "TVC:USOIL",
+          "width": "100%",
+          "isTransparent": true,
+          "colorTheme": "dark",
+          "locale": "en"
+          }
+          </script>
+        </div>
+        <p class="wti-cap">Delayed &middot; not for trading</p>
+      </aside>
     </section>
 
     <!-- ===================== STATS ===================== -->

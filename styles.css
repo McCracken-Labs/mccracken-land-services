@@ -305,6 +305,18 @@ a.tool-card:hover .tool-cta { color: var(--gold-400); }
 .ticker-band .tradingview-widget-copyright, .ticker-band .tradingview-widget-copyright a { color: rgba(255,255,255,.4); text-decoration: none; }
 .ticker-band .tradingview-widget-copyright a:hover { color: var(--gold-400); }
 
+/* WTI price square (hero) */
+.wti-tile {
+  position: absolute; right: 26px; bottom: 26px; z-index: 3; width: 214px;
+  background: rgba(9,18,28,.82); backdrop-filter: blur(5px);
+  border: 1px solid rgba(199,154,59,.55); border-radius: 14px;
+  padding: 11px 13px 9px; box-shadow: 0 10px 30px rgba(0,0,0,.4);
+}
+.wti-tile .wti-head { margin: 0 0 2px; font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-400); }
+.wti-tile .wti-cap { margin: 4px 0 0; font-size: .6rem; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.45); }
+.wti-tile .tradingview-widget-copyright { display: none; }
+@media (max-width: 900px) { .wti-tile { display: none; } }
+
 /* ---------- Footer ---------- */
 .site-footer { background: var(--navy-900); color: rgba(255,255,255,.7); border-top: 1px solid rgba(255,255,255,.08); padding: 42px 0; }
 .footer-inner { display: grid; grid-template-columns: 1fr auto; gap: 20px 40px; align-items: center; }
