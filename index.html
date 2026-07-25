@@ -62,22 +62,31 @@
         </div>
       </div>
 
-      <aside class="wti-tile" aria-label="WTI crude oil price (delayed)">
+      <aside class="wti-tile" id="wtiTile" data-endpoint="" hidden aria-label="WTI crude oil price (delayed)">
         <p class="wti-head">WTI Crude Oil</p>
-        <div class="tradingview-widget-container">
-          <div class="tradingview-widget-container__widget"></div>
-          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
-          {
-          "symbol": "NYMEX:CL1!",
-          "width": "100%",
-          "isTransparent": true,
-          "colorTheme": "dark",
-          "locale": "en"
-          }
-          </script>
-        </div>
-        <p class="wti-cap">Delayed &middot; not for trading</p>
+        <div class="wti-price" id="wtiPrice">&mdash;</div>
+        <div class="wti-change" id="wtiChange"></div>
+        <p class="wti-cap">Front-month futures &middot; delayed</p>
       </aside>
+      <script>
+        (function () {
+          var t = document.getElementById("wtiTile");
+          if (!t) return;
+          var ep = (t.getAttribute("data-endpoint") || "").replace(/\/+$/, "");
+          if (!ep) return; // no price source wired yet, stays hidden
+          fetch(ep + "/wti").then(function (r) { return r.json(); }).then(function (d) {
+            if (!d || d.price == null) return;
+            document.getElementById("wtiPrice").textContent = "$" + Number(d.price).toFixed(2);
+            var el = document.getElementById("wtiChange");
+            if (d.change != null && (d.change !== 0 || d.pct !== 0)) {
+              var up = d.change >= 0;
+              el.textContent = (up ? "▲ +" : "▼ ") + Number(d.change).toFixed(2) + " (" + (up ? "+" : "") + Number(d.pct).toFixed(2) + "%)";
+              el.className = "wti-change " + (up ? "up" : "down");
+            }
+            t.hidden = false;
+          }).catch(function () { /* stays hidden */ });
+        })();
+      </script>
     </section>
 
     <!-- ===================== STATS ===================== -->

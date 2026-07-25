@@ -33,6 +33,7 @@ export default {
     try {
       if (url.pathname === "/count") return await count(request, url, env, cors);
       if (url.pathname === "/api/stats") return await stats(request, url, env, cors);
+      if (url.pathname === "/wti") return await wti(cors);
       if (url.pathname === "/") return text("Scissortail is running.", 200, cors);
       return text("Not found", 404, cors);
     } catch (err) {
@@ -74,6 +75,46 @@ async function count(request, url, env, cors) {
   ).bind(ts, day, site, path, ref, screen, visitor.slice(0, 32)).run();
 
   return pixel(cors);
+}
+
+/* ---------- WTI crude price (real front-month futures) ---------- */
+async function wti(cors) {
+  // Primary: Yahoo Finance chart API for CL=F (NYMEX WTI front-month continuous).
+  try {
+    var r = await fetch("https://query1.finance.yahoo.com/v8/finance/chart/CL=F?interval=1d&range=5d", {
+      headers: { "User-Agent": "Mozilla/5.0" },
+      cf: { cacheTtl: 300, cacheEverything: true },
+    });
+    if (r.ok) {
+      var j = await r.json();
+      var res = j && j.chart && j.chart.result && j.chart.result[0];
+      var meta = res && res.meta;
+      if (meta && meta.regularMarketPrice != null) {
+        var price = meta.regularMarketPrice;
+        var prev = (meta.chartPreviousClose != null ? meta.chartPreviousClose : meta.previousClose);
+        if (prev == null) prev = price;
+        var change = price - prev;
+        var pct = prev ? (change / prev) * 100 : 0;
+        return json({ price: price, change: change, pct: pct, prev: prev, t: meta.regularMarketTime || 0, source: "yahoo" }, 200, cors);
+      }
+    }
+  } catch (e) { /* fall through */ }
+
+  // Fallback: Stooq CSV (price only).
+  try {
+    var r2 = await fetch("https://stooq.com/q/l/?s=cl.f&f=sd2t2ohlcv&h&e=csv", { cf: { cacheTtl: 300, cacheEverything: true } });
+    if (r2.ok) {
+      var txt = await r2.text();
+      var lines = txt.trim().split("\n");
+      if (lines.length > 1) {
+        var c = lines[1].split(",");
+        var close = parseFloat(c[6]);
+        if (close) return json({ price: close, change: 0, pct: 0, source: "stooq" }, 200, cors);
+      }
+    }
+  } catch (e2) { /* fall through */ }
+
+  return json({ error: "unavailable" }, 502, cors);
 }
 
 /* ---------- aggregated stats ---------- */
