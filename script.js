@@ -84,6 +84,11 @@
     sendingLabel: "Sending...", sendLabel: "Submit resume",
     successMsg: "Thanks. Your resume is on its way, and I'll be in touch if something fits."
   });
+  initFormspreeForm({
+    formId: "toolsFeedbackForm", statusId: "toolsFeedbackStatus", submitId: "toolsFeedbackSubmit",
+    sendingLabel: "Sending...", sendLabel: "Send it my way",
+    successMsg: "Thanks for this. It's on its way to me, and I'll take a look."
+  });
 
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
