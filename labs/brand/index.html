@@ -92,6 +92,14 @@
   .voice ul{margin:0;padding-left:18px;display:grid;gap:7px}
   .voice li{font-size:.94rem}
 
+  .credit-band{background:var(--navy-800);color:#fff;padding:44px 0;border-bottom:0}
+  .credit-band .inner{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px}
+  .credit-band .cb-eyebrow{color:var(--gold-400);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.72rem;margin:0 0 8px}
+  .credit-band h2{color:#fff;font-size:1.5rem;margin:0}
+  .credit-band p{color:rgba(255,255,255,.82);margin:8px 0 0;max-width:460px;font-size:.98rem}
+  .cb-btn{display:inline-flex;align-items:center;gap:8px;background:var(--gold-500);color:var(--navy-900);font-weight:700;font-size:.98rem;padding:14px 26px;border-radius:999px;text-decoration:none;white-space:nowrap}
+  .cb-btn:hover{background:var(--gold-400)}
+
   footer{padding:28px 0 40px;color:var(--ink-500);font-size:.86rem}
   footer a{color:var(--navy-700);font-weight:600;text-decoration:none}
   @media(max-width:760px){.swatches{grid-template-columns:repeat(2,1fr)}.logo-row,.voice{grid-template-columns:1fr}}
@@ -259,6 +267,17 @@
       </div>
     </section>
   </main>
+
+  <div class="credit-band">
+    <div class="wrap inner">
+      <div>
+        <p class="cb-eyebrow">Built by McCracken Labs</p>
+        <h2>Brand, logo, and website by McCracken Labs.</h2>
+        <p>This brand system, the logo, and the McCracken Land Services site were designed and built by McCracken Labs. We do the same for other oil and gas companies.</p>
+      </div>
+      <a class="cb-btn" href="../index.html">See McCracken Labs &rarr;</a>
+    </div>
+  </div>
 
   <footer>
     <div class="wrap">
