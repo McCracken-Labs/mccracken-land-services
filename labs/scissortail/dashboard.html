@@ -92,7 +92,15 @@
         <label for="site">Site key</label>
         <input id="site" placeholder="mccrackenlandservices" />
       </div>
+      <div class="full">
+        <label>Your own visits</label>
+        <label style="text-transform:none;font-weight:500;color:var(--ink);display:flex;align-items:center;gap:9px;font-size:.92rem;margin:0;letter-spacing:0">
+          <input type="checkbox" id="optout" style="width:auto" /> Don&#39;t count my visits to the site from this browser
+        </label>
+      </div>
       <div class="actions">
+        <button class="btn" id="reset" style="border-color:#fecaca;color:#b91c1c">Clear data</button>
+        <span style="flex:1"></span>
         <button class="btn" id="demo">Load demo</button>
         <button class="btn btn-primary" id="save">Save &amp; load</button>
       </div>
@@ -152,6 +160,24 @@
   $("refresh").onclick = load;
   $("days").onchange = function(){ store.set("days", $("days").value); load(); };
   $("demo").onclick = function(){ render(demoData(parseInt($("days").value,10))); notice("Showing demo data. Add your collector URL and token in Settings for live numbers.", true); };
+
+  // Owner opt-out: same localStorage flag the site's tracker checks (shared origin).
+  var OPTOUT_KEY = "scissortail-optout";
+  $("optout").checked = (function(){ try { return localStorage.getItem(OPTOUT_KEY) === "1"; } catch(e){ return false; } })();
+  $("optout").onchange = function(){
+    try { if(this.checked) localStorage.setItem(OPTOUT_KEY,"1"); else localStorage.removeItem(OPTOUT_KEY); } catch(e){}
+    notice(this.checked ? "This browser will no longer be counted on the site." : "This browser will be counted again.", false);
+  };
+
+  $("reset").onclick = function(){
+    var ep = store.get("endpoint"), tok = store.get("token"), site = store.get("site") || "default";
+    if(!ep || !tok){ notice("Add your collector URL and token first.", true); return; }
+    if(!confirm('Delete all recorded views for "'+site+'"? This cannot be undone.')) return;
+    fetch(ep + "/api/reset?site=" + encodeURIComponent(site), { method:"POST", headers:{ "Authorization":"Bearer "+tok } })
+      .then(function(r){ if(!r.ok) throw new Error(r.status===401?"Token rejected.":(r.status===404?"reset endpoint not found, redeploy the Worker":"Reset returned "+r.status)); return r.json(); })
+      .then(function(d){ notice('Cleared '+(d.removed||0)+' views for "'+site+'". Starting fresh.', false); load(); })
+      .catch(function(e){ notice("Could not clear data ("+e.message+"). If you have not redeployed the Worker with the reset endpoint yet, do that first.", true); });
+  };
 
   function notice(msg, warn){
     var n = $("notice");

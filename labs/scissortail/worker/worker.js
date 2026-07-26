@@ -33,6 +33,7 @@ export default {
     try {
       if (url.pathname === "/count") return await count(request, url, env, cors);
       if (url.pathname === "/api/stats") return await stats(request, url, env, cors);
+      if (url.pathname === "/api/reset") return await reset(request, url, env, cors);
       if (url.pathname === "/wti") return await wti(cors);
       if (url.pathname === "/") return text("Scissortail is running.", 200, cors);
       return text("Not found", 404, cors);
@@ -150,6 +151,20 @@ async function stats(request, url, env, cors) {
     screens: results[4].results || [],
     sites: (results[5].results || []).map(function (r) { return r.site; }),
   }, 200, cors);
+}
+
+/* ---------- clear a site's data (start fresh) ---------- */
+async function reset(request, url, env, cors) {
+  if (request.method !== "POST") return json({ error: "method not allowed" }, 405, cors);
+  if (env.DASH_TOKEN) {
+    var auth = request.headers.get("Authorization") || "";
+    if (auth !== "Bearer " + env.DASH_TOKEN) return json({ error: "unauthorized" }, 401, cors);
+  }
+  var site = clean(url.searchParams.get("site"), 64);
+  if (!site) return json({ error: "site required" }, 400, cors);
+  var res = await env.DB.prepare("DELETE FROM hits WHERE site=?").bind(site).run();
+  var removed = (res && res.meta && res.meta.changes) || 0;
+  return json({ ok: true, site: site, removed: removed }, 200, cors);
 }
 
 /* ---------- helpers ---------- */
