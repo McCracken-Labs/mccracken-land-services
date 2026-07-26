@@ -158,12 +158,13 @@
     store.set("endpoint", $("endpoint").value.trim().replace(/\/+$/,""));
     store.set("token", $("token").value.trim());
     store.set("site", $("site").value.trim());
+    rememberSite($("site").value.trim());
     $("settings").classList.remove("open");
     load();
   };
   $("refresh").onclick = load;
   $("days").onchange = function(){ store.set("days", $("days").value); load(); };
-  $("siteSel").onchange = function(){ store.set("site", this.value); $("site").value = this.value; load(); };
+  $("siteSel").onchange = function(){ store.set("site", this.value); $("site").value = this.value; rememberSite(this.value); load(); };
   $("demo").onclick = function(){ render(demoData(parseInt($("days").value,10))); notice("Showing demo data. Add your collector URL and token in Settings for live numbers.", true); };
 
   // Owner opt-out: same localStorage flag the site's tracker checks (shared origin).
@@ -222,12 +223,16 @@
     populateSites(d);
   }
 
+  function rememberedSites(){ try { return JSON.parse(store.get("sitelist")||"[]"); } catch(e){ return []; } }
+  function rememberSite(s){ s=(s||"").trim(); if(!s) return; var l=rememberedSites(); if(l.indexOf(s)===-1){ l.push(s); store.set("sitelist", JSON.stringify(l)); } }
+
   function populateSites(d){
     var sel = $("siteSel");
     if(d.site === "demo"){ sel.style.display="none"; return; }   // hide only on the demo fallback
     var cur = store.get("site") || "default";
-    var sites = (d.sites && d.sites.length) ? d.sites.slice() : [];
-    if(sites.indexOf(cur) === -1) sites.unshift(cur);
+    rememberSite(cur);
+    var seen={}, sites=[];
+    [cur].concat(rememberedSites(), (d.sites||[])).forEach(function(s){ if(s && !seen[s]){ seen[s]=1; sites.push(s); } });
     sel.innerHTML = sites.map(function(s){ return '<option'+(s===cur?" selected":"")+'>'+esc(s)+'</option>'; }).join("");
     sel.style.display = "";
   }
