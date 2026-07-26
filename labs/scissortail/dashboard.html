@@ -65,6 +65,7 @@
         Scissortail <span class="tag">dashboard</span>
       </span>
       <span class="spacer"></span>
+      <select id="siteSel" class="btn" title="Switch site" style="padding-right:10px;display:none"></select>
       <select id="days" class="btn" title="Time range" style="padding-right:10px">
         <option value="7">7 days</option>
         <option value="30" selected>30 days</option>
@@ -162,6 +163,7 @@
   };
   $("refresh").onclick = load;
   $("days").onchange = function(){ store.set("days", $("days").value); load(); };
+  $("siteSel").onchange = function(){ store.set("site", this.value); $("site").value = this.value; load(); };
   $("demo").onclick = function(){ render(demoData(parseInt($("days").value,10))); notice("Showing demo data. Add your collector URL and token in Settings for live numbers.", true); };
 
   // Owner opt-out: same localStorage flag the site's tracker checks (shared origin).
@@ -217,6 +219,17 @@
     rows($("refs"), (d.referrers||[]).map(function(p){return {label:p.ref, n:p.views};}));
     rows($("screens"), (d.screens||[]).map(function(p){return {label:p.screen, n:p.views};}));
     rows($("locations"), (d.locations||[]).map(function(p){return {label:locLabel(p), n:p.views};}));
+    populateSites(d);
+  }
+
+  function populateSites(d){
+    var sel = $("siteSel");
+    if(!d.sites || !d.sites.length){ sel.style.display="none"; return; }
+    var cur = store.get("site") || "default";
+    var sites = d.sites.slice();
+    if(sites.indexOf(cur) === -1) sites.unshift(cur);
+    sel.innerHTML = sites.map(function(s){ return '<option'+(s===cur?" selected":"")+'>'+esc(s)+'</option>'; }).join("");
+    sel.style.display = "";
   }
 
   function locLabel(p){
