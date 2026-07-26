@@ -224,9 +224,9 @@
 
   function populateSites(d){
     var sel = $("siteSel");
-    if(!d.sites || !d.sites.length){ sel.style.display="none"; return; }
+    if(d.site === "demo"){ sel.style.display="none"; return; }   // hide only on the demo fallback
     var cur = store.get("site") || "default";
-    var sites = d.sites.slice();
+    var sites = (d.sites && d.sites.length) ? d.sites.slice() : [];
     if(sites.indexOf(cur) === -1) sites.unshift(cur);
     sel.innerHTML = sites.map(function(s){ return '<option'+(s===cur?" selected":"")+'>'+esc(s)+'</option>'; }).join("");
     sel.style.display = "";
