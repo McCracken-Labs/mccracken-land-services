@@ -125,7 +125,10 @@
       <div class="card"><h2>Top referrers</h2><p class="sub">Where visits came from</p><div class="rows" id="refs"></div></div>
     </div>
 
-    <div class="card"><h2>Screen sizes</h2><p class="sub">Device widths, roughly</p><div class="rows" id="screens"></div></div>
+    <div class="cols">
+      <div class="card"><h2>Top locations</h2><p class="sub">Approximate, by city</p><div class="rows" id="locations"></div></div>
+      <div class="card"><h2>Screen sizes</h2><p class="sub">Device widths, roughly</p><div class="rows" id="screens"></div></div>
+    </div>
 
     <footer>
       No cookies. No personal data. Honors Do Not Track. &middot;
@@ -213,6 +216,17 @@
     rows($("pages"), (d.pages||[]).map(function(p){return {label:p.path, n:p.views};}));
     rows($("refs"), (d.referrers||[]).map(function(p){return {label:p.ref, n:p.views};}));
     rows($("screens"), (d.screens||[]).map(function(p){return {label:p.screen, n:p.views};}));
+    rows($("locations"), (d.locations||[]).map(function(p){return {label:locLabel(p), n:p.views};}));
+  }
+
+  function locLabel(p){
+    if(p.loc) return p.loc;
+    var city=(p.city||"").trim(), region=(p.region||"").trim(), country=(p.country||"").trim();
+    if(!city || city==="(unknown)"){ var t=[region,country].filter(Boolean).join(", "); return t || "(unknown)"; }
+    var out=city;
+    if(region) out+=", "+region;
+    if(country && country!=="US") out+=", "+country;
+    return out;
   }
 
   function rows(el, items){
@@ -265,10 +279,11 @@
 
   function demoData(days){
     days = days||30;
-    var series=[], pages={}, refs={}, screens={}, tv=0, tvis=0;
+    var series=[], pages={}, refs={}, screens={}, locs={}, tv=0, tvis=0;
     var paths=["/","/tools/index.html","/blog/index.html","/tools/downloads/mccracken-tx-intestacy-chart.pdf","/tools/strat-charts.html","/labs/index.html","/#contact","/blog/the-landmans-job-changed.html"];
     var rf=["(direct)","google.com","linkedin.com","bing.com","duckduckgo.com"];
     var sc=["1920x1080","1536x864","390x844","1440x900","412x915"];
+    var loc=["Oklahoma City, OK","Dallas, TX","Tulsa, OK","Houston, TX","Norman, OK","Fort Worth, TX"];
     var today=new Date();
     for(var i=days-1;i>=0;i--){
       var d=new Date(today.getTime()-i*86400000).toISOString().slice(0,10);
@@ -279,13 +294,15 @@
     paths.forEach(function(p,i){ pages[p]=Math.round(tv*(0.26/(i+1))); });
     rf.forEach(function(p,i){ refs[p]=Math.round(tv*(0.34/(i+1))); });
     sc.forEach(function(p,i){ screens[p]=Math.round(tv*(0.30/(i+1))); });
+    loc.forEach(function(p,i){ locs[p]=Math.round(tv*(0.28/(i+1))); });
     var toArr=function(o,k){ return Object.keys(o).map(function(x){ var r={n:o[x]}; r[k]=x; r.views=o[x]; return r; }); };
     return {
       site:"demo", days:days, totals:{views:tv,visitors:tvis},
       series:series,
       pages:Object.keys(pages).map(function(p){return {path:p,views:pages[p]};}),
       referrers:Object.keys(refs).map(function(p){return {ref:p,views:refs[p]};}),
-      screens:Object.keys(screens).map(function(p){return {screen:p,views:screens[p]};})
+      screens:Object.keys(screens).map(function(p){return {screen:p,views:screens[p]};}),
+      locations:Object.keys(locs).map(function(p){return {loc:p,views:locs[p]};})
     };
   }
 

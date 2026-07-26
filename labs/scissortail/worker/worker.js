@@ -70,10 +70,24 @@ async function count(request, url, env, cors) {
   var ip = (request.headers.get("CF-Connecting-IP") || "").trim();
   var coarse = coarsen(ip);
   var visitor = await sha256(day + "|" + site + "|" + coarse + "|" + ua + "|" + (env.SALT || "scissortail"));
+  var vis = visitor.slice(0, 32);
 
-  await env.DB.prepare(
-    "INSERT INTO hits (ts, day, site, path, ref, screen, visitor) VALUES (?,?,?,?,?,?,?)"
-  ).bind(ts, day, site, path, ref, screen, visitor.slice(0, 32)).run();
+  // Approximate location from Cloudflare's edge (derived from IP, but the IP is never stored).
+  var cf = request.cf || {};
+  var city = clean(cf.city, 64) || null;
+  var region = clean(cf.regionCode || cf.region, 32) || null;
+  var country = clean(cf.country, 8) || null;
+
+  try {
+    await env.DB.prepare(
+      "INSERT INTO hits (ts, day, site, path, ref, screen, visitor, city, region, country) VALUES (?,?,?,?,?,?,?,?,?,?)"
+    ).bind(ts, day, site, path, ref, screen, vis, city, region, country).run();
+  } catch (e) {
+    // Location columns may not exist yet; fall back so tracking never breaks.
+    await env.DB.prepare(
+      "INSERT INTO hits (ts, day, site, path, ref, screen, visitor) VALUES (?,?,?,?,?,?,?)"
+    ).bind(ts, day, site, path, ref, screen, vis).run();
+  }
 
   return pixel(cors);
 }
@@ -140,6 +154,16 @@ async function stats(request, url, env, cors) {
     db.prepare("SELECT DISTINCT site FROM hits ORDER BY site").all(),
   ]);
 
+  // Locations are queried separately and defensively, so the dashboard still works
+  // before the city/region/country columns have been added.
+  var locations = [];
+  try {
+    var lr = await db.prepare(
+      "SELECT COALESCE(NULLIF(city,''),'(unknown)') city, COALESCE(NULLIF(region,''),'') region, COALESCE(NULLIF(country,''),'') country, COUNT(*) views FROM hits WHERE site=? AND day>=? GROUP BY city, region, country ORDER BY views DESC LIMIT 12"
+    ).bind(site, since).all();
+    locations = lr.results || [];
+  } catch (e) { locations = []; }
+
   var totals = results[0] || {};
   return json({
     site: site,
@@ -149,6 +173,7 @@ async function stats(request, url, env, cors) {
     pages: results[2].results || [],
     referrers: results[3].results || [],
     screens: results[4].results || [],
+    locations: locations,
     sites: (results[5].results || []).map(function (r) { return r.site; }),
   }, 200, cors);
 }
