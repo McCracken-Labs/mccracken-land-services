@@ -16,6 +16,17 @@
   var site = script.getAttribute("data-site") || location.host;
   if (!endpoint) return; // nothing configured yet, do nothing
 
+  // Manual opt-out for the site owner's own browsers.
+  // Visit any page with ?scissortail=off to stop counting this browser; ?scissortail=on to resume.
+  try {
+    var opt = /[?&]scissortail=(off|on)\b/i.exec(location.search);
+    if (opt) {
+      if (opt[1].toLowerCase() === "off") localStorage.setItem("scissortail-optout", "1");
+      else localStorage.removeItem("scissortail-optout");
+    }
+    if (localStorage.getItem("scissortail-optout") === "1") return;
+  } catch (e) { /* localStorage unavailable; ignore */ }
+
   // Respect Do Not Track and Global Privacy Control.
   var dnt = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
   if (dnt === "1" || dnt === "yes" || navigator.globalPrivacyControl === true) return;
