@@ -105,11 +105,23 @@
   @media(max-width:760px){.swatches{grid-template-columns:repeat(2,1fr)}.logo-row,.voice{grid-template-columns:1fr}}
 
   /* contents subnav */
-  .subnav{position:sticky;top:0;z-index:20;background:rgba(11,34,51,.94);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid rgba(255,255,255,.10)}
+  .subnav{position:sticky;top:0;z-index:20;background:var(--navy-900);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid rgba(255,255,255,.10)}
   .subnav .inner{display:flex;gap:4px;overflow-x:auto;padding:11px 24px;max-width:1000px;margin:0 auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .subnav .inner::-webkit-scrollbar{display:none}
   .subnav a{color:rgba(255,255,255,.72);font-size:.82rem;font-weight:600;letter-spacing:.02em;white-space:nowrap;padding:6px 12px;border-radius:999px;text-decoration:none}
   .subnav a:hover{color:#fff;background:rgba(255,255,255,.08)}
+
+  /* palette explorer */
+  .palette-switch{margin-top:28px;padding-top:22px;border-top:1px solid rgba(255,255,255,.16)}
+  .palette-switch .ps-label{display:block;color:var(--gold-400);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.72rem;margin:0 0 12px}
+  .ps-chips{display:flex;flex-wrap:wrap;gap:10px}
+  .pchip{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.22);color:#fff;font-family:var(--body);font-weight:600;font-size:.86rem;padding:8px 14px;border-radius:999px;cursor:pointer;transition:border-color .2s,background .2s,transform .2s}
+  .pchip:hover{background:rgba(255,255,255,.12);transform:translateY(-1px)}
+  .pchip.is-active{border-color:var(--gold-400);background:rgba(216,178,86,.18)}
+  .pchip .dots{display:inline-flex}
+  .pchip .dots i{width:13px;height:13px;border-radius:50%;display:block;border:1px solid rgba(255,255,255,.55)}
+  .pchip .dots i+i{margin-left:-4px}
+  .ps-note{display:block;color:rgba(255,255,255,.6);font-size:.78rem;margin-top:12px;max-width:560px}
 
   /* logo specs */
   .spec-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:26px}
@@ -229,6 +241,18 @@
       <p class="eyebrow">Brand Guidelines</p>
       <h1>McCracken Land Services</h1>
       <p>The look, colors, type, and voice of the McCracken Land Services brand. Use these so everything, the site, documents, and any printed piece, reads as one company.</p>
+
+      <div class="palette-switch" role="group" aria-label="Preview the brand in a different palette">
+        <span class="ps-label">Preview a palette</span>
+        <div class="ps-chips">
+          <button class="pchip is-active" type="button" data-pal="navy"><span class="dots"><i style="background:#0b2233"></i><i style="background:#c79a3b"></i></span>Navy &amp; Gold</button>
+          <button class="pchip" type="button" data-pal="forest"><span class="dots"><i style="background:#14291f"></i><i style="background:#b0873a"></i></span>Forest &amp; Brass</button>
+          <button class="pchip" type="button" data-pal="charcoal"><span class="dots"><i style="background:#1c1e22"></i><i style="background:#b3673d"></i></span>Charcoal &amp; Copper</button>
+          <button class="pchip" type="button" data-pal="oxblood"><span class="dots"><i style="background:#2e1414"></i><i style="background:#c0972f"></i></span>Oxblood &amp; Gold</button>
+          <button class="pchip" type="button" data-pal="slate"><span class="dots"><i style="background:#17242e"></i><i style="background:#2f9d94"></i></span>Slate &amp; Teal</button>
+        </div>
+        <span class="ps-note">A preview to explore other directions. The brand stays Navy &amp; Gold, and the logo and mark artwork keep the current colors.</span>
+      </div>
     </div>
   </header>
 
@@ -368,18 +392,18 @@
 
         <p class="grp-title">Core</p>
         <div class="swatches">
-          <div class="sw"><div class="chip" style="background:#0b2233"></div><div class="meta"><div class="nm">Primary Navy</div><div class="hex">#0B2233</div><div class="role">Header, hero, footer</div></div></div>
-          <div class="sw"><div class="chip" style="background:#c79a3b"></div><div class="meta"><div class="nm">Signature Gold</div><div class="hex">#C79A3B</div><div class="role">Buttons, accents</div></div></div>
+          <div class="sw" data-hexvar="--navy-900"><div class="chip" style="background:var(--navy-900)"></div><div class="meta"><div class="nm">Primary Navy</div><div class="hex">#0B2233</div><div class="role">Header, hero, footer</div></div></div>
+          <div class="sw" data-hexvar="--gold-500"><div class="chip" style="background:var(--gold-500)"></div><div class="meta"><div class="nm">Signature Gold</div><div class="hex">#C79A3B</div><div class="role">Buttons, accents</div></div></div>
           <div class="sw"><div class="chip" style="background:#f7f4ee"></div><div class="meta"><div class="nm">Sand</div><div class="hex">#F7F4EE</div><div class="role">Page background</div></div></div>
           <div class="sw"><div class="chip" style="background:#14202b"></div><div class="meta"><div class="nm">Ink</div><div class="hex">#14202B</div><div class="role">Headings</div></div></div>
         </div>
 
         <p class="grp-title">Navy range</p>
         <div class="swatches">
-          <div class="sw"><div class="chip" style="background:#0f2a3f"></div><div class="meta"><div class="nm">Deep Navy</div><div class="hex">#0F2A3F</div><div class="role">Sections, mastheads</div></div></div>
-          <div class="sw"><div class="chip" style="background:#163b56"></div><div class="meta"><div class="nm">Mid Navy</div><div class="hex">#163B56</div><div class="role">Accent lines</div></div></div>
-          <div class="sw"><div class="chip" style="background:#1f4e70"></div><div class="meta"><div class="nm">Light Navy</div><div class="hex">#1F4E70</div><div class="role">Hover, detail</div></div></div>
-          <div class="sw"><div class="chip" style="background:#d8b256"></div><div class="meta"><div class="nm">Light Gold</div><div class="hex">#D8B256</div><div class="role">Eyebrows, logo gold</div></div></div>
+          <div class="sw" data-hexvar="--navy-800"><div class="chip" style="background:var(--navy-800)"></div><div class="meta"><div class="nm">Deep Navy</div><div class="hex">#0F2A3F</div><div class="role">Sections, mastheads</div></div></div>
+          <div class="sw" data-hexvar="--navy-700"><div class="chip" style="background:var(--navy-700)"></div><div class="meta"><div class="nm">Mid Navy</div><div class="hex">#163B56</div><div class="role">Accent lines</div></div></div>
+          <div class="sw" data-hexvar="--navy-600"><div class="chip" style="background:var(--navy-600)"></div><div class="meta"><div class="nm">Light Navy</div><div class="hex">#1F4E70</div><div class="role">Hover, detail</div></div></div>
+          <div class="sw" data-hexvar="--gold-400"><div class="chip" style="background:var(--gold-400)"></div><div class="meta"><div class="nm">Light Gold</div><div class="hex">#D8B256</div><div class="role">Eyebrows, logo gold</div></div></div>
         </div>
 
         <p class="grp-title">Neutrals</p>
@@ -629,5 +653,41 @@
       <a href="../index.html">McCracken Labs</a> &middot; <a href="../../index.html">visit the site</a>
     </div>
   </footer>
+
+  <script>
+  (function(){
+    var PAL = {
+      navy:     {'--navy-900':'#0b2233','--navy-800':'#0f2a3f','--navy-700':'#163b56','--navy-600':'#1f4e70','--gold-500':'#c79a3b','--gold-400':'#d8b256'},
+      forest:   {'--navy-900':'#14291f','--navy-800':'#1b3628','--navy-700':'#245039','--navy-600':'#2f6a4c','--gold-500':'#b0873a','--gold-400':'#c8a24f'},
+      charcoal: {'--navy-900':'#1c1e22','--navy-800':'#26292f','--navy-700':'#343941','--navy-600':'#4a515b','--gold-500':'#b3673d','--gold-400':'#c9865c'},
+      oxblood:  {'--navy-900':'#2e1414','--navy-800':'#3d1c1c','--navy-700':'#552828','--navy-600':'#743a3a','--gold-500':'#c0972f','--gold-400':'#d6b257'},
+      slate:    {'--navy-900':'#17242e','--navy-800':'#1f303c','--navy-700':'#294252','--navy-600':'#365a6e','--gold-500':'#2f9d94','--gold-400':'#3ab7ad'}
+    };
+    var NAMES = {
+      navy:     {'--navy-900':'Primary Navy','--gold-500':'Signature Gold','--navy-800':'Deep Navy','--navy-700':'Mid Navy','--navy-600':'Light Navy','--gold-400':'Light Gold'},
+      forest:   {'--navy-900':'Forest','--gold-500':'Brass','--navy-800':'Deep Forest','--navy-700':'Mid Forest','--navy-600':'Light Forest','--gold-400':'Light Brass'},
+      charcoal: {'--navy-900':'Charcoal','--gold-500':'Copper','--navy-800':'Deep Charcoal','--navy-700':'Mid Charcoal','--navy-600':'Light Charcoal','--gold-400':'Light Copper'},
+      oxblood:  {'--navy-900':'Oxblood','--gold-500':'Gold','--navy-800':'Deep Oxblood','--navy-700':'Mid Oxblood','--navy-600':'Light Oxblood','--gold-400':'Light Gold'},
+      slate:    {'--navy-900':'Slate','--gold-500':'Teal','--navy-800':'Deep Slate','--navy-700':'Mid Slate','--navy-600':'Light Slate','--gold-400':'Light Teal'}
+    };
+    var root = document.documentElement;
+    function apply(key){
+      var vars = PAL[key] || PAL.navy, names = NAMES[key] || NAMES.navy;
+      for (var v in vars){ if (key === 'navy') root.style.removeProperty(v); else root.style.setProperty(v, vars[v]); }
+      document.querySelectorAll('[data-hexvar]').forEach(function(sw){
+        var vn = sw.getAttribute('data-hexvar');
+        var hexEl = sw.querySelector('.hex'), nmEl = sw.querySelector('.nm');
+        if (hexEl && vars[vn]) hexEl.textContent = vars[vn].toUpperCase();
+        if (nmEl && names[vn]) nmEl.textContent = names[vn];
+      });
+      document.querySelectorAll('.pchip').forEach(function(c){
+        c.classList.toggle('is-active', c.getAttribute('data-pal') === key);
+      });
+    }
+    document.querySelectorAll('.pchip').forEach(function(c){
+      c.addEventListener('click', function(){ apply(c.getAttribute('data-pal')); });
+    });
+  })();
+  </script>
 </body>
 </html>
