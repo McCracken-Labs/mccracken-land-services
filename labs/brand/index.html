@@ -127,7 +127,8 @@
   .minsizes .u .box{background:var(--navy-800);border-radius:7px;padding:12px 14px;display:flex;align-items:center;justify-content:center}
   .minsizes .u img{width:auto;display:block}
   .minsizes .u span{font-family:var(--body);font-size:.78rem;color:var(--ink-500)}
-  .variant-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
+  .variant-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:8px}
+  .variant .vh .mk{width:76px;height:76px;border-radius:14px;box-shadow:0 3px 10px rgba(11,34,51,.14)}
   .variant{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
   .variant .vh{min-height:120px;display:flex;align-items:center;justify-content:center;padding:22px}
   .variant .vh.dark{background:var(--navy-800)}
@@ -340,16 +341,20 @@
         <p class="grp-title" style="margin-top:26px">Variants</p>
         <div class="variant-row">
           <div class="variant">
-            <div class="vh dark"><img src="../../assets/logo-full-trans.svg" alt="Primary logo" /></div>
-            <p class="cap">Primary wordmark, white and gold on navy.</p>
+            <div class="vh dark"><img src="../../assets/logo-full-trans.svg" alt="Primary wordmark" /></div>
+            <p class="cap">Primary wordmark, on navy.</p>
           </div>
           <div class="variant">
-            <div class="vh tile"><img src="../../assets/logo-mark.svg" style="width:76px;height:76px;border-radius:14px" alt="The M mark" /></div>
-            <p class="cap">The mark, for avatars and tight spaces.</p>
+            <div class="vh tile"><img class="mk" src="../../assets/logo-mark.svg" alt="Mark on navy" /></div>
+            <p class="cap">Mark on navy, the default.</p>
           </div>
           <div class="variant">
-            <div class="vh tile"><img src="../../assets/logo-mark.svg" style="width:56px;height:56px;border-radius:12px" alt="App icon and favicon" /></div>
-            <p class="cap">App icon and favicon, on the navy tile.</p>
+            <div class="vh tile"><img class="mk" src="../../assets/logo-mark-white.svg" alt="Mark on white" /></div>
+            <p class="cap">Mark on white, one color, for light backgrounds.</p>
+          </div>
+          <div class="variant">
+            <div class="vh tile"><img class="mk" src="../../assets/logo-mark-gold.svg" alt="Mark on gold" /></div>
+            <p class="cap">Mark on gold, for accents.</p>
           </div>
         </div>
       </div>
