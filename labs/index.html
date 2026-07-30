@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <script>(function(){try{if(localStorage.getItem("theme")==="light")document.documentElement.setAttribute("data-theme","light");}catch(e){}})();</script>
   <style>
     :root{
       --bg:#0a0b12; --bg-2:#0e1019; --surface:#14161f; --surface-2:#171a26;
@@ -140,6 +141,31 @@
     .brand-proof h3{font-family:var(--head);font-weight:700;font-size:1.2rem;margin:0 0 6px;letter-spacing:-.01em}
     .brand-proof p{color:var(--muted);margin:0;max-width:520px;font-size:.98rem}
     @media(max-width:720px){.bkit{grid-template-columns:1fr}}
+
+    /* hero specialization line */
+    .hero-spec{font-family:var(--head);font-weight:600;font-size:clamp(1rem,2.1vw,1.3rem);color:var(--g2);margin:-6px auto 22px;letter-spacing:.01em}
+
+    /* theme toggle */
+    .theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:999px;border:1px solid var(--line-2);background:transparent;color:var(--text);cursor:pointer;transition:border-color .2s,color .2s,transform .2s}
+    .theme-toggle:hover{border-color:var(--g2);color:var(--g2);transform:translateY(-1px)}
+    .theme-toggle svg{width:18px;height:18px;display:block}
+    .theme-toggle .icon-moon{display:none}
+    html[data-theme="light"] .theme-toggle .icon-sun{display:none}
+    html[data-theme="light"] .theme-toggle .icon-moon{display:inline}
+
+    /* ===== Light theme ===== */
+    html[data-theme="light"]{
+      --bg:#eef1f7; --bg-2:#e6eaf2; --surface:#ffffff; --surface-2:#f3f6fb;
+      --line:rgba(20,26,43,.12); --line-2:rgba(20,26,43,.20);
+      --text:#141a2b; --muted:#4b5266; --faint:#7b8296;
+    }
+    html[data-theme="light"] header{background:rgba(247,248,251,.82);border-bottom:1px solid var(--line)}
+    html[data-theme="light"] .grid-bg{background-image:linear-gradient(rgba(20,26,43,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(20,26,43,.05) 1px,transparent 1px)}
+    html[data-theme="light"] .orb{opacity:.26}
+    html[data-theme="light"] .field input,html[data-theme="light"] .field textarea{background:#fff;border-color:var(--line-2);color:var(--text)}
+    html[data-theme="light"] .btn-ghost{color:var(--text)}
+    html[data-theme="light"] .card:hover{box-shadow:0 18px 44px rgba(20,26,43,.12)}
+    html[data-theme="light"] body,html[data-theme="light"] header{transition:background-color .32s ease,border-color .32s ease}
   </style>
 </head>
 <body>
@@ -157,7 +183,13 @@
           <a href="#approach">Approach</a>
           <a href="#contact">Contact</a>
         </nav>
-        <a class="btn btn-grad" href="#contact">Start a project</a>
+        <div style="display:flex;align-items:center;gap:12px">
+          <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme" title="Toggle light and dark">
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/></svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.3 6.3 0 0 0 10.5 10.5z"/></svg>
+          </button>
+          <a class="btn btn-grad" href="#contact">Start a project</a>
+        </div>
       </div>
     </header>
 
@@ -166,6 +198,7 @@
         <div class="wrap">
           <span class="eyebrow">// Design &amp; development studio</span>
           <h1>Informational websites, <span class="grad-text">built right.</span></h1>
+          <p class="hero-spec">Specializing in oil &amp; gas broker sites.</p>
           <p>McCracken Labs designs and builds fast, clean websites, along with the brand identity that goes with them, for businesses that need to look sharp and be found online. Every piece is hand-built to work on any screen and stays easy to keep current.</p>
           <div class="hero-cta">
             <a class="btn btn-grad" href="#contact">Start a project</a>
@@ -211,7 +244,7 @@
         <div class="wrap">
           <div class="sec-head reveal">
             <span class="eyebrow">Brand identity</span>
-            <h2>A brand identity, not just a logo.</h2>
+            <h2>A brand is more than a logo.</h2>
             <p>A logo on its own is not a brand. We build the whole system, the colors, type, icons, imagery, and voice, then write it all down so it stays consistent everywhere your business shows up.</p>
           </div>
           <div class="bkit">
@@ -364,6 +397,16 @@
 
   <script>
     document.getElementById('yr').textContent=new Date().getFullYear();
+    // theme toggle
+    var themeToggle=document.getElementById('themeToggle');
+    if(themeToggle){themeToggle.addEventListener('click',function(){
+      var isLight=document.documentElement.getAttribute('data-theme')==='light';
+      var next=isLight?'dark':'light';
+      if(next==='light')document.documentElement.setAttribute('data-theme','light');
+      else document.documentElement.removeAttribute('data-theme');
+      try{localStorage.setItem('theme',next);}catch(e){}
+      themeToggle.setAttribute('aria-label',next==='light'?'Switch to dark theme':'Switch to light theme');
+    });}
     // reveal on scroll
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
     document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
