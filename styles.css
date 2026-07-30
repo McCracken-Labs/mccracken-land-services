@@ -447,7 +447,36 @@ html[data-theme="light"] .contact-list a,
 html[data-theme="light"] .contact-list span:not(.contact-label) { color: var(--ink-900); }
 html[data-theme="light"] .contact-label { color: var(--gold-500); }
 
+/* Logo swap: white logo on dark theme, navy/gold logo on light theme */
+.brand-on-light, .footer-on-light { display: none; }
+html[data-theme="light"] .brand-on-dark, html[data-theme="light"] .footer-on-dark { display: none; }
+html[data-theme="light"] .brand-on-light, html[data-theme="light"] .footer-on-light { display: block; }
+
+/* ---- Header (light) ---- */
+html[data-theme="light"] .site-header { background: rgba(247,244,238,.94); border-bottom: 1px solid var(--line); }
+html[data-theme="light"] .nav-menu a { color: var(--ink-700); }
+html[data-theme="light"] .nav-menu a:hover { color: var(--navy-800); background: rgba(11,34,51,.06); }
+html[data-theme="light"] .nav-menu .nav-cta { color: var(--navy-900); }
+html[data-theme="light"] .nav-toggle span { background: var(--ink-900); }
+html[data-theme="light"] .theme-toggle { color: var(--ink-900); border-color: rgba(15,42,63,.25); }
+html[data-theme="light"] .theme-toggle:hover { background: rgba(11,34,51,.06); border-color: rgba(15,42,63,.5); color: var(--navy-900); }
+
+/* ---- Footer (light) ---- */
+html[data-theme="light"] .site-footer { background: var(--sand-100); color: var(--ink-700); border-top: 1px solid var(--line); }
+html[data-theme="light"] .footer-tag { color: var(--ink-500); }
+html[data-theme="light"] .footer-nav a { color: var(--ink-700); }
+html[data-theme="light"] .footer-nav a:hover { color: var(--gold-500); }
+html[data-theme="light"] .footer-legal { color: var(--ink-500); border-top-color: var(--line); }
+html[data-theme="light"] .footer-credit { color: var(--ink-500); }
+html[data-theme="light"] .footer-credit a { color: var(--gold-500); }
+html[data-theme="light"] .footer-credit a:hover { color: var(--navy-800); }
+
+html[data-theme="light"] .site-header,
+html[data-theme="light"] .site-footer { transition: background-color .32s var(--ease), border-color .32s var(--ease); }
+
 /* Toggle sits inline on mobile menu too */
 @media (max-width: 760px) {
   .theme-toggle-li { justify-content: flex-start; padding: 8px 12px; }
+  html[data-theme="light"] .nav-menu { background: var(--sand-50); border-bottom-color: var(--line); }
+  html[data-theme="light"] .nav-menu a { color: var(--ink-900); }
 }
