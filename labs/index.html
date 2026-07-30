@@ -128,6 +128,18 @@
     .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
     .reveal.in{opacity:1;transform:none}
     @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.orb{display:none}}
+
+    /* brand identity capability */
+    .bkit{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px}
+    .bk{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}
+    .bk .ic{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(34,211,238,.10);border:1px solid rgba(34,211,238,.26);margin-bottom:13px}
+    .bk .ic svg{width:20px;height:20px;stroke:var(--g2);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+    .bk h4{font-family:var(--head);font-weight:600;font-size:1.02rem;margin:0 0 6px;color:var(--text)}
+    .bk p{color:var(--muted);font-size:.9rem;margin:0}
+    .brand-proof{margin-top:20px;background:linear-gradient(120deg,rgba(167,139,250,.12),rgba(34,211,238,.06));border:1px solid var(--line);border-radius:18px;padding:26px 28px;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    .brand-proof h3{font-family:var(--head);font-weight:700;font-size:1.2rem;margin:0 0 6px;letter-spacing:-.01em}
+    .brand-proof p{color:var(--muted);margin:0;max-width:520px;font-size:.98rem}
+    @media(max-width:720px){.bkit{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -140,6 +152,7 @@
         <a class="brand" href="#top"><span class="dot"></span><span class="mark">&lt;/&gt;</span> McCracken&nbsp;Labs</a>
         <nav class="nav-links">
           <a href="#build">What we build</a>
+          <a href="#brand">Brand identity</a>
           <a href="#focus">Focus</a>
           <a href="#approach">Approach</a>
           <a href="#contact">Contact</a>
@@ -153,7 +166,7 @@
         <div class="wrap">
           <span class="eyebrow">// Design &amp; development studio</span>
           <h1>Informational websites, <span class="grad-text">built right.</span></h1>
-          <p>McCracken Labs designs and builds fast, clean websites for businesses that need to look sharp and be found online. Every site is hand-built to work on any screen and stays easy to keep current.</p>
+          <p>McCracken Labs designs and builds fast, clean websites, along with the brand identity that goes with them, for businesses that need to look sharp and be found online. Every piece is hand-built to work on any screen and stays easy to keep current.</p>
           <div class="hero-cta">
             <a class="btn btn-grad" href="#contact">Start a project</a>
             <a class="btn btn-ghost" href="#build">See what we build</a>
@@ -190,6 +203,55 @@
               <h3>Reference tools &amp; resources</h3>
               <p>Interactive calculators, downloadable guides, and reference pages that give your visitors something useful.</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="brand">
+        <div class="wrap">
+          <div class="sec-head reveal">
+            <span class="eyebrow">Brand identity</span>
+            <h2>A brand identity, not just a logo.</h2>
+            <p>A logo on its own is not a brand. We build the whole system, the colors, type, icons, imagery, and voice, then write it all down so it stays consistent everywhere your business shows up.</p>
+          </div>
+          <div class="bkit">
+            <div class="bk reveal">
+              <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 21l-4.9 2.6.9-5.5-4-3.9 5.5-.8z"/></svg></div>
+              <h4>Logo &amp; wordmark</h4>
+              <p>A primary mark plus the variants you actually need: emblem, one-color, and an app icon.</p>
+            </div>
+            <div class="bk reveal">
+              <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18c1.7 0 2-1.3 1-2.3-.8-.8-.3-2 .8-2H16a5 5 0 0 0 5-5A9 9 0 0 0 12 3z"/></svg></div>
+              <h4>Color palette</h4>
+              <p>A tight, purposeful palette with hex codes and rules for where each color is used.</p>
+            </div>
+            <div class="bk reveal">
+              <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 7V5h16v2M9 19h6M12 5v14"/></svg></div>
+              <h4>Typography</h4>
+              <p>A heading and body pairing, licensed for web and print, with a clear hierarchy.</p>
+            </div>
+            <div class="bk reveal">
+              <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div>
+              <h4>Iconography</h4>
+              <p>A matching icon style so every graphic on the site and in documents reads as one set.</p>
+            </div>
+            <div class="bk reveal">
+              <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 17l5-4 4 3 3-2 4 3"/></svg></div>
+              <h4>Photography direction</h4>
+              <p>How photos are chosen and treated, so imagery supports the message instead of fighting it.</p>
+            </div>
+            <div class="bk reveal">
+              <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/><path d="M8 9h8M8 12h5"/></svg></div>
+              <h4>Voice &amp; guidelines</h4>
+              <p>How the brand sounds, written into a guide your whole team can follow.</p>
+            </div>
+          </div>
+          <div class="brand-proof reveal">
+            <div>
+              <h3>See a full brand system we built.</h3>
+              <p>We put together the complete identity for McCracken Land Services, from the logo to the voice. The guidelines are public, take a look at the kind of work you would get.</p>
+            </div>
+            <a class="btn btn-grad" href="brand/index.html">View the brand guidelines &rarr;</a>
           </div>
         </div>
       </section>
