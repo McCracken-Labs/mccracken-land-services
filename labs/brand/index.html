@@ -194,11 +194,16 @@
   .doc-mock .db .ln{height:7px;border-radius:3px;background:var(--sand-100);margin-bottom:8px}
   .doc-mock .db .ln.s{width:60%}
   /* business card mock */
-  .cardface{width:300px;max-width:100%;aspect-ratio:1.75/1;background:var(--navy-800);border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 12px 30px rgba(11,34,51,.22)}
-  .cardface img{height:26px;width:auto}
-  .cardface .nm{color:#fff;font-family:var(--head);font-size:1.02rem;margin:0}
-  .cardface .rl{color:var(--gold-400);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;margin:3px 0 0}
-  .cardface .ct{color:rgba(255,255,255,.75);font-size:.74rem;margin:8px 0 0;line-height:1.5}
+  .cardface{width:360px;max-width:100%;aspect-ratio:1.75/1;background:linear-gradient(152deg,var(--navy-700),var(--navy-900) 78%);border-radius:14px;padding:24px 26px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 18px 40px rgba(11,34,51,.30);position:relative;overflow:hidden}
+  .cardface::after{content:"";position:absolute;right:-46px;top:-46px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(199,154,59,.18),transparent 70%);pointer-events:none}
+  .cardface .top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .cardface .top .wm{height:26px;width:auto;display:block}
+  .cardface .top .mk{height:38px;width:38px;border-radius:8px;display:block}
+  .cardface .rule{height:1.5px;border:0;margin:0;background:linear-gradient(90deg,var(--gold-500),rgba(199,154,59,0))}
+  .cardface .nm{color:#fff;font-family:var(--head);font-size:1.2rem;margin:0;letter-spacing:-.2px}
+  .cardface .rl{color:var(--gold-400);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;margin:3px 0 0;font-weight:700}
+  .cardface .ct{color:rgba(255,255,255,.8);font-size:.74rem;margin:0;line-height:1.7}
+  .cardface .ct b{color:#fff;font-weight:600}
   /* app icon / favicon */
   .tiles{display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:center}
   .tiles .t{display:flex;flex-direction:column;align-items:center;gap:8px}
@@ -325,10 +330,10 @@
             <p class="tk">Minimum size</p>
             <h3>Keep it legible</h3>
             <div class="minsizes">
-              <div class="u"><div class="box"><img src="../../assets/logo-full-trans.svg" style="height:34px" alt="Logo at 160px wide" /></div><span>Web &bull; 160px wide min</span></div>
-              <div class="u"><div class="box"><img src="../../assets/logo-full-trans.svg" style="height:22px" alt="Logo at 1 inch wide" /></div><span>Print &bull; 1 in wide min</span></div>
+              <div class="u"><div class="box"><img src="../../assets/logo-full-trans.svg" style="height:58px" alt="Logo at its web minimum" /></div><span>Web &bull; 180px wide minimum</span></div>
+              <div class="u"><div class="box"><img src="../../assets/logo-full-trans.svg" style="height:44px" alt="Logo at its print minimum" /></div><span>Print &bull; 1.25 in wide minimum</span></div>
             </div>
-            <p class="d">Below these sizes the wordmark starts to break down. When space is that tight, use the emblem on its own instead.</p>
+            <p class="d">Do not run the wordmark below these sizes, the lettering starts to fill in. When space is tighter than that, use the mark on its own instead.</p>
           </div>
         </div>
 
@@ -339,11 +344,11 @@
             <p class="cap">Primary wordmark, white and gold on navy.</p>
           </div>
           <div class="variant">
-            <div class="vh tile"><img src="../../assets/logo.svg" style="max-width:64px" alt="Emblem mark" /></div>
-            <p class="cap">Emblem only, for tight spaces and avatars.</p>
+            <div class="vh tile"><img src="../../assets/logo-mark.svg" style="width:76px;height:76px;border-radius:14px" alt="The M mark" /></div>
+            <p class="cap">The mark, for avatars and tight spaces.</p>
           </div>
           <div class="variant">
-            <div class="vh tile"><img class="tileimg" src="../../assets/favicon.svg" alt="App icon" /></div>
+            <div class="vh tile"><img src="../../assets/logo-mark.svg" style="width:56px;height:56px;border-radius:12px" alt="App icon and favicon" /></div>
             <p class="cap">App icon and favicon, on the navy tile.</p>
           </div>
         </div>
@@ -556,12 +561,16 @@
             <p class="lab">Business card</p>
             <div class="stage">
               <div class="cardface">
-                <img src="../../assets/logo-full-trans.svg" alt="Logo on a business card" />
+                <div class="top">
+                  <img class="wm" src="../../assets/logo-full-trans.svg" alt="McCracken Land Services" />
+                  <img class="mk" src="../../assets/logo-mark.svg" alt="" />
+                </div>
                 <div>
                   <p class="nm">Michael McCracken</p>
                   <p class="rl">Landman</p>
-                  <p class="ct">mccrackenlandservices.com<br />Oklahoma</p>
                 </div>
+                <hr class="rule" />
+                <p class="ct"><b>mccrackenlandservices.com</b><br />Oklahoma</p>
               </div>
             </div>
           </div>
@@ -569,9 +578,9 @@
             <p class="lab">App icon &amp; favicon</p>
             <div class="stage">
               <div class="tiles">
-                <div class="t"><img class="r16" src="../../assets/favicon.svg" width="72" height="72" alt="App icon" /><span>App icon</span></div>
-                <div class="t"><img class="r10" src="../../assets/favicon.svg" width="44" height="44" alt="Favicon" /><span>Favicon</span></div>
-                <div class="t"><img class="r7" src="../../assets/favicon.svg" width="28" height="28" alt="Small favicon" /><span>Tab</span></div>
+                <div class="t"><img class="r16" src="../../assets/logo-mark.svg" width="72" height="72" alt="App icon" /><span>App icon</span></div>
+                <div class="t"><img class="r10" src="../../assets/logo-mark.svg" width="44" height="44" alt="Favicon" /><span>Favicon</span></div>
+                <div class="t"><img class="r7" src="../../assets/logo-mark.svg" width="28" height="28" alt="Small favicon" /><span>Tab</span></div>
               </div>
             </div>
           </div>
