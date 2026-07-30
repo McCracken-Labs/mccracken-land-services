@@ -90,6 +90,22 @@
     successMsg: "Thanks for this. It's on its way to me, and I'll take a look."
   });
 
+  /* Light / dark theme toggle (choice remembered per visitor) */
+  var themeToggle = document.getElementById("themeToggle");
+  if (themeToggle) {
+    themeToggle.addEventListener("click", function () {
+      var isLight = document.documentElement.getAttribute("data-theme") === "light";
+      var next = isLight ? "dark" : "light";
+      if (next === "light") {
+        document.documentElement.setAttribute("data-theme", "light");
+      } else {
+        document.documentElement.removeAttribute("data-theme");
+      }
+      try { localStorage.setItem("theme", next); } catch (e) {}
+      themeToggle.setAttribute("aria-label", next === "light" ? "Switch to dark theme" : "Switch to light theme");
+    });
+  }
+
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* Scroll reveal */

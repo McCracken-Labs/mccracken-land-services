@@ -390,3 +390,64 @@ a.tool-card:hover .tool-cta { color: var(--gold-400); }
   .band-inner { padding: 84px 24px; }
   .footer-inner { grid-template-columns: 1fr; }
 }
+
+/* ===========================================================
+   THEME TOGGLE + LIGHT THEME
+   Default (no attribute) = the navy/brand look. html[data-theme="light"]
+   flips the big dark bands (stats, expertise, contact) to a light scheme.
+   The navy header and footer stay as the brand frame (they hold the
+   white-and-gold logo), and the hero and quote band keep their photos.
+   =========================================================== */
+.theme-toggle-li { display: flex; align-items: center; }
+.theme-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; padding: 0; margin-left: 4px;
+  background: transparent; border: 1px solid rgba(255,255,255,.2); border-radius: 999px;
+  color: rgba(255,255,255,.9); cursor: pointer;
+  transition: background .2s var(--ease), border-color .2s var(--ease), color .2s var(--ease), transform .2s var(--ease);
+}
+.theme-toggle:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.45); color: #fff; transform: translateY(-1px); }
+.theme-toggle svg { display: block; }
+.theme-toggle .icon-moon { display: none; }
+html[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+html[data-theme="light"] .theme-toggle .icon-moon { display: inline; }
+
+/* Smooth cross-fade between themes (only fires on toggle, not first paint) */
+body, .stats, .stat, .stat-num, .stat-label,
+.expertise, .industry, .industry h3, .industry p,
+.contact, .contact-body p, .contact-list a, .contact-list span {
+  transition: background-color .32s var(--ease), color .32s var(--ease), border-color .32s var(--ease);
+}
+
+/* ---- Stats band ---- */
+html[data-theme="light"] .stats { background: var(--sand-100); color: var(--ink-900); border-top-color: var(--line); }
+html[data-theme="light"] .stat { border-right-color: var(--line); }
+html[data-theme="light"] .stat-num { color: var(--gold-500); }
+html[data-theme="light"] .stat-label { color: var(--ink-500); }
+
+/* ---- Expertise / Industries ---- */
+html[data-theme="light"] .expertise { background: var(--sand-50); color: var(--ink-700); }
+html[data-theme="light"] .expertise .section-title { color: var(--ink-900); }
+html[data-theme="light"] .industry {
+  border-color: var(--line);
+  background: var(--white); box-shadow: var(--shadow-sm);
+}
+html[data-theme="light"] .industry:hover {
+  border-color: var(--gold-500);
+  background: linear-gradient(160deg, rgba(199,154,59,.12), #fff);
+}
+html[data-theme="light"] .industry h3 { color: var(--navy-700); }
+html[data-theme="light"] .industry p { color: var(--ink-500); }
+
+/* ---- Contact ---- */
+html[data-theme="light"] .contact { background: var(--sand-100); color: var(--ink-700); }
+html[data-theme="light"] .contact .section-title { color: var(--ink-900); }
+html[data-theme="light"] .contact-body p { color: var(--ink-700); }
+html[data-theme="light"] .contact-list a,
+html[data-theme="light"] .contact-list span:not(.contact-label) { color: var(--ink-900); }
+html[data-theme="light"] .contact-label { color: var(--gold-500); }
+
+/* Toggle sits inline on mobile menu too */
+@media (max-width: 760px) {
+  .theme-toggle-li { justify-content: flex-start; padding: 8px 12px; }
+}
