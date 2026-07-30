@@ -76,9 +76,9 @@ a:hover { color: var(--gold-500); }
   backdrop-filter: saturate(140%) blur(10px);
   border-bottom: 1px solid rgba(255,255,255,.08);
 }
-.header-inner { display: flex; align-items: center; justify-content: space-between; height: 84px; }
+.header-inner { display: flex; align-items: center; justify-content: space-between; height: 104px; }
 .brand { display: flex; align-items: center; gap: 12px; }
-.brand-full { height: 56px; width: auto; display: block; }
+.brand-full { height: 82px; width: auto; display: block; }
 .brand-mark { display: block; }
 .brand-text { display: flex; flex-direction: column; line-height: 1.05; }
 .brand-name { font-family: var(--font-head); font-weight: 700; color: #fff; font-size: 1.18rem; letter-spacing: .2px; }
@@ -372,10 +372,10 @@ a.tool-card:hover .tool-cta { color: var(--gold-400); }
 
 @media (max-width: 760px) {
   .nav-toggle { display: flex; z-index: 120; }
-  .header-inner { height: 74px; }
-  .brand-full { height: 46px; }
+  .header-inner { height: 88px; }
+  .brand-full { height: 64px; }
   .nav-menu {
-    position: fixed; inset: 74px 0 auto 0; flex-direction: column; align-items: stretch; gap: 4px;
+    position: fixed; inset: 88px 0 auto 0; flex-direction: column; align-items: stretch; gap: 4px;
     background: var(--navy-900); padding: 16px 20px 24px; border-bottom: 1px solid rgba(255,255,255,.1);
     transform: translateY(-140%); transition: transform .32s var(--ease); box-shadow: var(--shadow-md);
   }
